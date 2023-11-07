@@ -3,18 +3,29 @@ import requests
 import json
 
 class PubMedXrayScraper:
+    """
+    class for scraper
+    """
     def __init__(self, email):
         self.email = email
         self.api_key = None  # Set your API key here if needed
         Entrez.email = email
 
     def search_xray_articles(self, query, max_results=10):
+        """
+        retrieve up to max_results articles retrieved from query and 
+        return a list of dictionaries of the metadata and article text (messy text as of now)
+        """
         search_results = self._perform_search(query, max_results)
         articles = self._fetch_articles_metadata(search_results)
         self._fetch_full_articles(articles)
         return articles
 
     def _perform_search(self, query, max_results):
+        """
+        search query into the pubmed db and return up to max_results
+        returns a Bio.Entrez.Parser.ListElement of pubmed article ids (pmids) for the retrieved articles
+        """
         try:
             handle = Entrez.esearch(db="pubmed", term=query, retmax=max_results)
             record = Entrez.read(handle)
@@ -25,6 +36,9 @@ class PubMedXrayScraper:
             return []
 
     def _fetch_articles_metadata(self, pmids):
+        """
+        return the metadata for the articles in pmids as a list of dictionaries
+        """
         articles = []
         for pmid in pmids:
             article_data = self._fetch_article_metadata(pmid)
@@ -33,6 +47,9 @@ class PubMedXrayScraper:
         return articles
 
     def _fetch_article_metadata(self, pmid):
+        """
+        return the metadata for the article in pmid as a dictionary
+        """
         try:
             handle = Entrez.efetch(db="pubmed", id=pmid, rettype="xml", retmode="text")
             record = Entrez.read(handle)
@@ -44,6 +61,11 @@ class PubMedXrayScraper:
             return None
 
     def _parse_article_metadata(self, record):
+        """
+        parse the returned metadata in record
+        record must be the return of a call to the pubmed api for metadata
+        returns a dictionary of the metadata
+        """
         article_data = {
             "Title": record['PubmedArticle'][0]['MedlineCitation']['Article']['ArticleTitle'],
             "Authors": [author['LastName'] + ' ' + author['Initials'] for author in record['PubmedArticle'][0]['MedlineCitation']['Article']['AuthorList']],
@@ -54,11 +76,19 @@ class PubMedXrayScraper:
         return article_data
 
     def _fetch_full_articles(self, articles):
+        """
+        retrieve the full text of the articles in articles (parametere), where articles (parametere)
+        contains the parsed metadata of a return from the pubmed api
+        """
         for article in articles:
             pmid = article['PMID']
             article['FullText'] = self._fetch_full_article(pmid)
 
     def _fetch_full_article(self, pmid):
+        """
+        retrieve the full text of the article pmid as a string
+        note: some articles do not have full text available... only some are publicly available
+        """
         try:
             bioC_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/{pmid}/unicode"
             response = requests.get(bioC_url)
@@ -71,11 +101,14 @@ class PubMedXrayScraper:
         return None
 
     def save_to_json(self, data, filename):
+        """
+        save the dictionary 
+        """
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
-    email = "msspam132@gmail.com"  # Replace with your email address
+    email = "msspam132@gmail.com"  # Replace with your email address (this is my spam email address... I think the email address has to be associated with a pubmed account)
     xray_scraper = PubMedXrayScraper(email)
     xray_articles = xray_scraper.search_xray_articles("X-ray AND open access", max_results=10)
     xray_scraper.save_to_json(xray_articles, "xray_articles.json")
