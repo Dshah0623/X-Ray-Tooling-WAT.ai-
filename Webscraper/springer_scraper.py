@@ -131,10 +131,12 @@ class SpringerXrayScraper:
             json.dump(data, file, ensure_ascii=False, indent=2)
 
 
-if __name__ == "__main__":
-    api_key = os.environ.get("SPRINGER_API_KEY")
-    springer_scraper = SpringerXrayScraper(api_key)
-    springer_articles = springer_scraper.search_springer_articles(
-        'title:"X-ray" AND openaccess:"true"', max_results=200)
-    springer_scraper.save_to_json(
-        springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
+# Testing
+
+# if __name__ == "__main__":
+#     api_key = os.environ.get("SPRINGER_API_KEY")
+#     springer_scraper = SpringerXrayScraper(api_key)
+#     springer_articles = springer_scraper.search_springer_articles(
+#         'title:"X-ray" AND openaccess:"true"', max_results=200)
+#     springer_scraper.save_to_json(
+#         springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
