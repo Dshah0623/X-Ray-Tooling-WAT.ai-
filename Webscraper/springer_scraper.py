@@ -107,6 +107,10 @@ class SpringerXrayScraper:
                 if relative_pdf_url.startswith(('http', 'https')):
                     return relative_pdf_url
 
+                doi = article_url.replace("http://dx.doi.org/", "content/pdf/")
+
+                relative_pdf_url = doi + ".pdf"
+
                 # Correctly concatenate the base URL and the relative URL
                 base_url = 'https://link.springer.com'  # Assuming this is the correct base URL
                 if relative_pdf_url.startswith('/'):
@@ -118,17 +122,6 @@ class SpringerXrayScraper:
             print(f"Error while scraping PDF link: {e}")
 
         return None
-
-    def search_and_fetch_full_texts(self, query, max_results=10):
-        """
-        Search articles and fetch their full text if available.
-        """
-        articles_metadata = self.search_springer_articles(query, max_results)
-        for article in articles_metadata:
-            full_text_links = self._get_full_text_link(article)
-            if full_text_links:  # Check if there are any full text links
-                article['FullText'] = self._fetch_full_article(full_text_links)
-        return articles_metadata
 
     def save_to_json(self, data, filename):
         """
@@ -142,6 +135,6 @@ if __name__ == "__main__":
     api_key = os.environ.get("SPRINGER_API_KEY")
     springer_scraper = SpringerXrayScraper(api_key)
     springer_articles = springer_scraper.search_springer_articles(
-        'title:"X-ray" AND openaccess:"true"', max_results=10)
+        'title:"X-ray" AND openaccess:"true"', max_results=200)
     springer_scraper.save_to_json(
         springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")

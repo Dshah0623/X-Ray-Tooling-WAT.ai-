@@ -127,7 +127,7 @@
       "Materials Science",
       "Materials Science, general"
     ],
-    "FullText": null
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s40494-023-01073-5.pdf"
   },
   {
     "contentType": "Article",
@@ -469,7 +469,7 @@
       "Ultrasound",
       "Internal Medicine"
     ],
-    "FullText": null
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41747-023-00386-1.pdf"
   },
   {
     "contentType": "Article",
@@ -735,6 +735,3201 @@
       "Science, Humanities and Social Sciences, multidisciplinary",
       "Science, Humanities and Social Sciences, multidisciplinary",
       "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s43246-023-00414-y",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s43246-023-00414-y"
+      }
+    ],
+    "title": "Hybrid microstructure of smectite clay gels revealed using neutron and synchrotron X-ray scattering",
+    "creators": [
+      {
+        "creator": "Shoaib, Mohammad"
+      },
+      {
+        "ORCID": "0000-0003-0943-2195",
+        "creator": "Khan, Shaihroz"
+      },
+      {
+        "ORCID": "0000-0002-6308-6871",
+        "creator": "Wani, Omar B."
+      },
+      {
+        "ORCID": "0000-0001-9225-7900",
+        "creator": "Mata, Jitendra"
+      },
+      {
+        "creator": "Krzysko, Anthony J."
+      },
+      {
+        "creator": "Kuzmenko, Ivan"
+      },
+      {
+        "creator": "Bleuel, Markus"
+      },
+      {
+        "creator": "Fiddes, Lindsey K."
+      },
+      {
+        "creator": "Roth, Eric W."
+      },
+      {
+        "creator": "Bobicki, Erin R."
+      }
+    ],
+    "publicationName": "Communications Materials",
+    "openaccess": "true",
+    "doi": "10.1038/s43246-023-00414-y",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-07",
+    "publicationType": "Journal",
+    "issn": "2662-4443",
+    "volume": "4",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "43246",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Aqueous suspensions of swelling clays display a nematic sol-gel transition at very low solid concentrations. The underlying microstructure of the gel has remained a point of contention since the time of Irving Langmuir and has been a major obstacle to fully realizing the potential of clays for practical applications. Here, we comprehensively probe the microstructure of a smectite clay suspension using ultra-small angle neutron/X-ray scattering and find that the nematic gel is structurally ordered and contains entities that are at least an order of magnitude larger than the individual particles. Complementary cryo-electron microscopy shows the presence of domains having particle-particle ordering responsible for nematic texture and regions of particle-particle aggregation responsible for gel-like behavior. We find that the smectic clay gels have a hybrid microstructure with co-existing repulsive nematic domains and attractive disordered domains. The nematic sol-gel transition microstructure of swelling clays is not well understood. Here, the microstructure of a smectite clay suspension is probed with ultra-small angle neutron/X-ray scattering, uncovering the structural order of these nematic gels.",
+    "subjects": [
+      "Materials Science",
+      "Materials Science, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s40194-023-01616-1",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s40194-023-01616-1"
+      }
+    ],
+    "title": "In situ X-ray phase contrast imaging of the melt and vapor capillary behavior during the welding regime transition on aluminum with limited material thickness",
+    "creators": [
+      {
+        "ORCID": "0000-0001-9148-0713",
+        "creator": "Chung, W.-S."
+      },
+      {
+        "creator": "Hummel, M."
+      },
+      {
+        "creator": "Spurk, C."
+      },
+      {
+        "creator": "Häusler, A."
+      },
+      {
+        "creator": "Olowinsky, A."
+      },
+      {
+        "creator": "Häfner, C."
+      },
+      {
+        "creator": "Beckmann, F."
+      },
+      {
+        "creator": "Moosmann, J."
+      }
+    ],
+    "publicationName": "Welding in the World",
+    "openaccess": "true",
+    "doi": "10.1007/s40194-023-01616-1",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-06",
+    "publicationType": "Journal",
+    "issn": "1878-6669",
+    "volume": "",
+    "number": "",
+    "genre": [
+      "OriginalPaper",
+      "Research Paper"
+    ],
+    "startingPage": "1",
+    "endingPage": "8",
+    "journalId": "40194",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "The X-ray phase contrast imaging is a powerful method to understand the fundamental behavior of the melt and keyhole during the laser beam welding process. In this paper, the keyhole-induced vapor capillary formation in the melt pool is investigated by using an adjustable laser beam source. For this purpose, the aluminum A1050 specimen with a thickness of 0.5 mm is molten only with the heat conduction welding regime by using the ring-mode laser beam. Once the specimen is molten through, the core multi-mode laser beam is then applied to vaporize the melt and a transition to keyhole welding regime occurs. Therefore, the core multi-mode laser beam with an intensity value of 33.3 MW/cm 2 is investigated. The correlation between the keyhole-induced vapor capillary and the melt behavior is further investigated in this paper which was recorded with a high sampling rate of 19 kHz. In addition, a theoretical calculation about the keyhole depth is discussed in this paper.",
+    "subjects": [
+      "Materials Science",
+      "Metallic Materials",
+      "Solid Mechanics",
+      "Theoretical and Applied Mechanics"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s40194-023-01616-1.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-46066-3",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-46066-3"
+      }
+    ],
+    "title": "X-ray reflectivity study of the heat shock protein Hsp70 interaction with an artificial cell membrane model",
+    "creators": [
+      {
+        "creator": "Makky, Ali"
+      },
+      {
+        "creator": "Czajor, Julian"
+      },
+      {
+        "creator": "Konovalov, Oleg"
+      },
+      {
+        "creator": "Zhakhov, Alexander"
+      },
+      {
+        "creator": "Ischenko, Alexander"
+      },
+      {
+        "creator": "Behl, Ankita"
+      },
+      {
+        "creator": "Singh, Shailja"
+      },
+      {
+        "creator": "Abuillan, Wasim"
+      },
+      {
+        "creator": "Shevtsov, Maxim"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-46066-3",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-06",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "10",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Membrane-bound heat shock protein 70 (Hsp70) apart from its intracellular localization was shown to be specifically expressed on the plasma membrane surface of tumor but not normal cells. Although the association of Hsp70 with lipid membranes is well documented the exact mechanisms for chaperone membrane anchoring have not been fully elucidated. Herein, we addressed the question of how Hsp70 interacts with negatively charged phospholipids in artificial lipid compositions employing the X-ray reflectivity (XRR) studies. In a first step, the interactions between dioleoylphosphatidylcholine (DOPC) in the presence or absence of dioleoylphosphatidylserine (DOPS) and Hsp70 had been assessed using Quartz crystal microbalance measurements, suggesting that Hsp70 adsorbs to the surface of DOPC/DOPS bilayer. Atomic force microscopy (AFM) imaging demonstrated that the presence of DOPS is required for stabilization of the lipid bilayer. The interaction of Hsp70 with DOPC/DOPS lipid compositions was further quantitatively determined by high energy X-ray reflectivity. A systematic characterization of the chaperone-lipid membrane interactions by various techniques revealed that artificial membranes can be stabilized by the electrostatic interaction of anionic DOPS lipids with Hsp70.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-46066-3.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-45368-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-45368-w"
+      }
+    ],
+    "title": "How intra-source imbalanced datasets impact the performance of deep learning for COVID-19 diagnosis using chest X-ray images",
+    "creators": [
+      {
+        "creator": "Zhang, Zhang"
+      },
+      {
+        "creator": "Zhang, Xiaoyong"
+      },
+      {
+        "creator": "Ichiji, Kei"
+      },
+      {
+        "creator": "Bukovský, Ivo"
+      },
+      {
+        "creator": "Homma, Noriyasu"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-45368-w",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-03",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Over the past decade, the use of deep learning has been widely increasing in the medical image diagnosis field. Deep learning-based methods’ (DLMs) performance strongly relies on training data. Therefore, researchers often focus on collecting as much data as possible from different medical facilities or developing approaches to avoid the impact of inter-category imbalance (ICI), which means a difference in data quantity among categories. However, due to the ICI within each medical facility, medical data are often isolated and acquired in different settings among medical facilities, known as the issue of intra-source imbalance (ISI) characteristic. This imbalance also impacts the performance of DLMs but receives negligible attention. In this study, we study the impact of the ISI on DLMs by comparison of the version of a deep learning model that was trained separately by an intra-source imbalanced chest X-ray (CXR) dataset and an intra-source balanced CXR dataset for COVID-19 diagnosis. The finding is that using the intra-source imbalanced dataset causes a serious training bias, although the dataset has a good inter-category balance. In contrast, the deep learning model performed a reliable diagnosis when trained on the intra-source balanced dataset. Therefore, our study reports clear evidence that the intra-source balance is vital for training data to minimize the risk of poor performance of DLMs.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-45368-w.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s00402-023-04977-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s00402-023-04977-w"
+      }
+    ],
+    "title": "Retrospective clinical and X-ray-based outcome analysis of a short-stem hip arthroplasty taking into account the operative learning curve over 7 years in the 3-year control course",
+    "creators": [
+      {
+        "ORCID": "0000-0003-0968-9724",
+        "creator": "Jahnke, Alexander"
+      },
+      {
+        "creator": "Köther-Herrmann, Jan"
+      },
+      {
+        "creator": "Fonseca Ulloa, Carlos A."
+      },
+      {
+        "creator": "Harz, Torben"
+      },
+      {
+        "creator": "Rickert, Markus"
+      },
+      {
+        "creator": "Ishaque, Bernd Alexander"
+      }
+    ],
+    "publicationName": "Archives of Orthopaedic and Trauma Surgery",
+    "openaccess": "true",
+    "doi": "10.1007/s00402-023-04977-w",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-01",
+    "publicationType": "Journal",
+    "issn": "1434-3916",
+    "volume": "143",
+    "number": "11",
+    "genre": [
+      "OriginalPaper",
+      "Orthopaedic Surgery"
+    ],
+    "startingPage": "6589",
+    "endingPage": "6597",
+    "journalId": "402",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Introduction Self-monitoring is crucial to work progressively with a high-quality standard. A retrospective analysis is a valuable tool for studying the postoperative outcome of a prosthesis and for evaluating the learning process for the surgeon. Materials and methods The learning process of one surgeon was analysed in 133 cases of hip arthroplasty. These were divided into seven groups representing the surgical years 2008–2014. Over the course of 3 postoperative years, a total of 655 radiographs were analysed at regarding three radiological quality parameters (centrum-collum-diaphyseal angle (CCD angle), intramedullary fit&fill ratio (FFR), and migration) and ancillary outcome parameters (Harris Hip Score (HHS), blood loss, operating time, and complications). This period was divided into five times: 1st-day post-op, 6 M, 12 M, 24 M, and 36 M. Bivariate Spearman's correlation analysis and pairwise comparisons were performed. Results The total collective achieved a proximal FFR of over 0.8. The distal prosthesis tip migrated and was located on the lateral cortex within the first months. The CCD angle initially showed a variation with a subsequent constant course. The HHS showed a significant increase ( p  < 0.001) to over 90 points postoperatively. Over time, the operating time and blood loss decreased. Intraoperative complications existed only at the beginning of the learning phase. A learning curve effect can be determined for almost all parameters by comparing the subject groups. Conclusions Operative expertise was shown to gain through a learning curve, whereby postoperative results corresponded to the system philosophy of the short hip stem prosthesis. The distal FFR and the distal lateral distance could represent the principle of the prosthesis, which overall could be an interesting approach for verification of a new parameter.",
+    "subjects": [
+      "Medicine & Public Health",
+      "Orthopedics"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s00402-023-04977-w.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s40194-023-01581-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s40194-023-01581-9"
+      }
+    ],
+    "title": "Understanding the formation of “false friends” (hidden lack of fusion defects) in laser beam welding by means of high-speed synchrotron X-ray imaging",
+    "creators": [
+      {
+        "ORCID": "0000-0001-6291-7162",
+        "creator": "Schricker, K."
+      },
+      {
+        "creator": "Diegel, C."
+      },
+      {
+        "creator": "Schmidt, L."
+      },
+      {
+        "creator": "Seibold, M."
+      },
+      {
+        "creator": "Friedmann, H."
+      },
+      {
+        "creator": "Fröhlich, F."
+      },
+      {
+        "creator": "Eichler, S."
+      },
+      {
+        "creator": "Chen, Y."
+      },
+      {
+        "creator": "Requardt, H."
+      },
+      {
+        "creator": "Rack, A."
+      },
+      {
+        "creator": "Bergmann, J. P."
+      }
+    ],
+    "publicationName": "Welding in the World",
+    "openaccess": "true",
+    "doi": "10.1007/s40194-023-01581-9",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-01",
+    "publicationType": "Journal",
+    "issn": "1878-6669",
+    "volume": "67",
+    "number": "11",
+    "genre": [
+      "OriginalPaper",
+      "Research Paper"
+    ],
+    "startingPage": "2557",
+    "endingPage": "2570",
+    "journalId": "40194",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "This paper provides a fundamental understanding of “false friend” formation, i.e., hidden defects associated with lack of fusion, using an experimental setup that allowed an insight into the processing zone based on high-speed synchrotron X-ray imaging. The setup enabled the welding of a lap joint of AISI 304 high-alloy steel sheets (X5CrNi18-10/1.4301), with the ability to adjust different gap heights between top and bottom sheet (up to 0.20 mm) and to acquire high-speed X-ray images at 100 kHz simultaneously with the welding process. On this basis, a time-resolved description of the “false friend” formation can be provided by visualizing the interaction between keyhole and melt pool during laser welding and solidification processes within the gap area. The bridgeability of the gap was limited due to the gap height and insufficient melt supply leading to the solidification of the bridge. The distance between the solidified bridge and the keyhole increased with time, while the keyhole and melt pool dynamics initiated the formation of new melt bridges whose stability was defined by melt flow conditions, surface tension, and gap heights. The alternating formation and solidification of melt bridges resulted in entrapped areas of lacking fusion within the weld, i.e., “false friends.” Finally, based on the results of this study, a model concept is presented that concludes the main mechanisms of “false friend” formation.",
+    "subjects": [
+      "Materials Science",
+      "Metallic Materials",
+      "Solid Mechanics",
+      "Theoretical and Applied Mechanics"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s40194-023-01581-9.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41557-023-01329-4",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41557-023-01329-4"
+      }
+    ],
+    "title": "Mapping protein dynamics at high spatial resolution with temperature-jump X-ray crystallography",
+    "creators": [
+      {
+        "ORCID": "0000-0003-0474-7673",
+        "creator": "Wolff, Alexander M."
+      },
+      {
+        "ORCID": "0000-0001-9851-7355",
+        "creator": "Nango, Eriko"
+      },
+      {
+        "creator": "Young, Iris D."
+      },
+      {
+        "ORCID": "0000-0002-0908-7822",
+        "creator": "Brewster, Aaron S."
+      },
+      {
+        "ORCID": "0000-0002-1470-942X",
+        "creator": "Kubo, Minoru"
+      },
+      {
+        "creator": "Nomura, Takashi"
+      },
+      {
+        "creator": "Sugahara, Michihiro"
+      },
+      {
+        "creator": "Owada, Shigeki"
+      },
+      {
+        "ORCID": "0000-0002-1016-862X",
+        "creator": "Barad, Benjamin A."
+      },
+      {
+        "ORCID": "0000-0002-5704-4771",
+        "creator": "Ito, Kazutaka"
+      },
+      {
+        "ORCID": "0000-0002-6154-6635",
+        "creator": "Bhowmick, Asmit"
+      },
+      {
+        "ORCID": "0000-0002-5292-4470",
+        "creator": "Carbajo, Sergio"
+      },
+      {
+        "creator": "Hino, Tomoya"
+      },
+      {
+        "ORCID": "0000-0002-0596-0137",
+        "creator": "Holton, James M."
+      },
+      {
+        "creator": "Im, Dohyun"
+      },
+      {
+        "creator": "O’Riordan, Lee J."
+      },
+      {
+        "creator": "Tanaka, Tomoyuki"
+      },
+      {
+        "ORCID": "0000-0003-1062-4792",
+        "creator": "Tanaka, Rie"
+      },
+      {
+        "ORCID": "0000-0002-6253-8282",
+        "creator": "Sierra, Raymond G."
+      },
+      {
+        "creator": "Yumoto, Fumiaki"
+      },
+      {
+        "ORCID": "0000-0003-1218-3759",
+        "creator": "Tono, Kensuke"
+      },
+      {
+        "ORCID": "0000-0003-1735-2937",
+        "creator": "Iwata, So"
+      },
+      {
+        "ORCID": "0000-0003-2786-6552",
+        "creator": "Sauter, Nicholas K."
+      },
+      {
+        "ORCID": "0000-0002-5080-2859",
+        "creator": "Fraser, James S."
+      },
+      {
+        "ORCID": "0000-0002-6099-2027",
+        "creator": "Thompson, Michael C."
+      }
+    ],
+    "publicationName": "Nature Chemistry",
+    "openaccess": "true",
+    "doi": "10.1038/s41557-023-01329-4",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-01",
+    "publicationType": "Journal",
+    "issn": "1755-4349",
+    "volume": "15",
+    "number": "11",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1549",
+    "endingPage": "1558",
+    "journalId": "41557",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Understanding and controlling protein motion at atomic resolution is a hallmark challenge for structural biologists and protein engineers because conformational dynamics are essential for complex functions such as enzyme catalysis and allosteric regulation. Time-resolved crystallography offers a window into protein motions, yet without a universal perturbation to initiate conformational changes the method has been limited in scope. Here we couple a solvent-based temperature jump with time-resolved crystallography to visualize structural motions in lysozyme, a dynamic enzyme. We observed widespread atomic vibrations on the nanosecond timescale, which evolve on the submillisecond timescale into localized structural fluctuations that are coupled to the active site. An orthogonal perturbation to the enzyme, inhibitor binding, altered these dynamics by blocking key motions that allow energy to dissipate from vibrations into functional movements linked to the catalytic cycle. Because temperature jump is a universal method for perturbing molecular motion, the method demonstrated here is broadly applicable for studying protein dynamics. Shifts in temperature alter the structure and dynamics of macromolecules. Now, infra-red laser-induced temperature jump is combined with X-ray crystallography to observe protein structural dynamics in real time. Using this method, motions related to the catalytic cycle of lysozyme, a model enzyme, are visualized at atomic resolution and across broad timescales.",
+    "subjects": [
+      "Chemistry",
+      "Chemistry/Food Science, general",
+      "Analytical Chemistry",
+      "Organic Chemistry",
+      "Physical Chemistry",
+      "Inorganic Chemistry",
+      "Biochemistry, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41566-023-01305-x",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41566-023-01305-x"
+      }
+    ],
+    "title": "Cascaded hard X-ray self-seeded free-electron laser at megahertz repetition rate",
+    "creators": [
+      {
+        "ORCID": "0000-0002-6178-051X",
+        "creator": "Liu, Shan"
+      },
+      {
+        "ORCID": "0000-0003-3046-401X",
+        "creator": "Grech, Christian"
+      },
+      {
+        "ORCID": "0000-0001-9723-0467",
+        "creator": "Guetg, Marc"
+      },
+      {
+        "creator": "Karabekyan, Suren"
+      },
+      {
+        "creator": "Kocharyan, Vitali"
+      },
+      {
+        "ORCID": "0000-0001-5566-9551",
+        "creator": "Kujala, Naresh"
+      },
+      {
+        "creator": "Lechner, Christoph"
+      },
+      {
+        "creator": "Long, Tianyun"
+      },
+      {
+        "ORCID": "0000-0002-6152-2721",
+        "creator": "Mirian, Najmeh"
+      },
+      {
+        "ORCID": "0000-0001-9383-2612",
+        "creator": "Qin, Weilun"
+      },
+      {
+        "ORCID": "0000-0002-6224-1569",
+        "creator": "Serkez, Svitozar"
+      },
+      {
+        "creator": "Tomin, Sergey"
+      },
+      {
+        "ORCID": "0000-0003-2978-5799",
+        "creator": "Yan, Jiawei"
+      },
+      {
+        "creator": "Abeghyan, Suren"
+      },
+      {
+        "creator": "Anton, Jayson"
+      },
+      {
+        "creator": "Blank, Vladimir"
+      },
+      {
+        "creator": "Boesenberg, Ulrike"
+      },
+      {
+        "creator": "Brinker, Frank"
+      },
+      {
+        "ORCID": "0000-0003-1318-5561",
+        "creator": "Chen, Ye"
+      },
+      {
+        "ORCID": "0000-0001-6994-4083",
+        "creator": "Decking, Winfried"
+      },
+      {
+        "creator": "Dong, Xiaohao"
+      },
+      {
+        "creator": "Kearney, Steve"
+      },
+      {
+        "creator": "Civita, Daniele"
+      },
+      {
+        "ORCID": "0000-0001-6594-1029",
+        "creator": "Madsen, Anders"
+      },
+      {
+        "creator": "Maltezopoulos, Theophilos"
+      },
+      {
+        "creator": "Rodriguez-Fernandez, Angel"
+      },
+      {
+        "creator": "Saldin, Evgeni"
+      },
+      {
+        "creator": "Samoylova, Liubov"
+      },
+      {
+        "creator": "Scholz, Matthias"
+      },
+      {
+        "creator": "Sinn, Harald"
+      },
+      {
+        "creator": "Sleziona, Vivien"
+      },
+      {
+        "creator": "Shu, Deming"
+      },
+      {
+        "creator": "Tanikawa, Takanori"
+      },
+      {
+        "creator": "Terentiev, Sergey"
+      },
+      {
+        "creator": "Trebushinin, Andrei"
+      },
+      {
+        "ORCID": "0000-0002-2009-6869",
+        "creator": "Tschentscher, Thomas"
+      },
+      {
+        "creator": "Vannoni, Maurizio"
+      },
+      {
+        "creator": "Wohlenberg, Torsten"
+      },
+      {
+        "creator": "Yakopov, Mikhail"
+      },
+      {
+        "ORCID": "0000-0003-4764-1115",
+        "creator": "Geloni, Gianluca"
+      }
+    ],
+    "publicationName": "Nature Photonics",
+    "openaccess": "true",
+    "doi": "10.1038/s41566-023-01305-x",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-01",
+    "publicationType": "Journal",
+    "issn": "1749-4893",
+    "volume": "17",
+    "number": "11",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "984",
+    "endingPage": "991",
+    "journalId": "41566",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "High-resolution X-ray spectroscopy in the sub-nanosecond to femtosecond time range requires ultrashort X-ray pulses and a spectral X-ray flux considerably larger than that presently available. X-ray free-electron laser (XFEL) radiation from hard X-ray self-seeding (HXRSS) setups has been demonstrated in the past and offers the necessary peak flux properties. So far, these systems could not provide high repetition rates enabling a high average flux. We report the results for a cascaded HXRSS system installed at the European XFEL, currently the only operating high-repetition-rate hard X-ray XFEL facility worldwide. A high repetition rate, combined with HXRSS, allows the generation of millijoule-level pulses in the photon energy range of 6–14 keV with a bandwidth of around 1 eV (corresponding to about 1 mJ eV –1 peak spectral density) at the rate of ten trains per second, each train including hundreds of pulses arriving at a megahertz repetition rate. At 2.25 MHz repetition rate and photon energies in the 6–7 keV range, we observed and characterized the heat-load effects on the HXRSS crystals, substantially altering the spectra of subsequent X-ray pulses. We demonstrated that our cascaded self-seeding scheme reduces this detrimental effect to below the detection level. This opens up exciting new possibilities in a wide range of scientific fields employing ultrafast X-ray spectroscopy, scattering and imaging techniques. A cascaded hard X-ray self-seeding system is demonstrated at the European X-ray free-electron laser. The setup enables millijoule-level pulses in the photon energy range of 6–14 keV at the rate of ten trains per second, with each train including hundreds of pulses arriving at a megahertz repetition rate.",
+    "subjects": [
+      "Physics",
+      "Physics, general",
+      "Applied and Technical Physics",
+      "Quantum Physics"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s00586-023-07917-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s00586-023-07917-9"
+      }
+    ],
+    "title": "The correlation between osteoporotic vertebrae fracture risk and bone mineral density measured by quantitative computed tomography and dual energy X-ray absorptiometry: a systematic review and meta-analysis",
+    "creators": [
+      {
+        "ORCID": "0000-0001-9976-6986",
+        "creator": "Chen, Lin"
+      },
+      {
+        "creator": "Wu, Xin-yi"
+      },
+      {
+        "creator": "Jin, Qi"
+      },
+      {
+        "creator": "Chen, Guang-yao"
+      },
+      {
+        "creator": "Ma, Xiao"
+      }
+    ],
+    "publicationName": "European Spine Journal",
+    "openaccess": "true",
+    "doi": "10.1007/s00586-023-07917-9",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-01",
+    "publicationType": "Journal",
+    "issn": "1432-0932",
+    "volume": "32",
+    "number": "11",
+    "genre": [
+      "ReviewPaper",
+      "Review Article"
+    ],
+    "startingPage": "3875",
+    "endingPage": "3884",
+    "journalId": "586",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Summary This paper presents a comparison of quantitative computed tomography (QCT) and dual-energy X-ray absorptiometry (DXA) in osteoporosis with vertebral fracture and osteoporosis without fracture. It has been proved that the volumetric bone mineral density (vBMD) measured by QCT exhibits a stronger correlation with fracture risk than areal bone mineral density (aBMD) measured by DXA. Purpose This study aims to systematically evaluate the ability of QCT and DXA to distinguish between osteoporosis with vertebral fracture and osteoporosis without fracture according to vBMD and aBMD. Methods We conducted a primary literature search of the online databases up to 3 July, 2022, in both English and Chinese publications, combining synonyms for “QCT”, “DXA” and “osteoporosis”. The Newcastle–Ottawa scale (NOS) was employed to evaluate the quality of the selected articles. vBMD obtained through QCT and aBMD obtained through DXA were extracted, and were analyzed by Review Manager 5.4 and RStudio. Results Six studies with 610 individuals aged 45 to 90, of which 179 had vertebral fractures, were included in the final analysis. The weighted mean difference (WMD) between osteoporosis with vertebral fracture and osteoporosis without fracture for vBMD was − 27.08 (95% CI  − 31.24 to  − 22.92), while for aBMD was − 0.05 (95% CI − 0.08 to − 0.03). Conclusions Both vBMD detected by QCT and aBMD detected by DXA could discriminate fracture status in the spine, and vBMD performed a stronger correlation with fracture risk. Trial registration : PROSPERO 2022 CRD42022349185.",
+    "subjects": [
+      "Medicine & Public Health",
+      "Surgical Orthopedics",
+      "Neurosurgery"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s00586-023-07917-9.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-45305-x",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-45305-x"
+      }
+    ],
+    "title": "Longitudinal x-ray based lung function measurement for monitoring Nintedanib treatment response in a mouse model of lung fibrosis",
+    "creators": [
+      {
+        "creator": "Khan, Amara"
+      },
+      {
+        "creator": "Markus, M. Andrea"
+      },
+      {
+        "creator": "Svetlove, Angelika"
+      },
+      {
+        "creator": "Hülsmann, Swen"
+      },
+      {
+        "creator": "Alves, Frauke"
+      },
+      {
+        "creator": "Dullin, Christian"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-45305-x",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-30",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Lung fibrosis (LF) is a chronic progressive, incurable, and debilitating condition of the lung, which is associated with different lung disease. Treatment options are still sparse. Nintedanib, an oral tyrosine kinase inhibitor, significantly slows the LF progression. However, there is a strong need of further research and the development of novel therapies. In this study, we used a correlative set-up that combines X-ray based lung function (XLF) with microCT and whole body plethysmography (WBP) for a comprehensive functional and structural evaluation of lung fibrosis (LF) as well as for monitoring response to orally administered Nintedanib in the mouse model of bleomycin induced LF. The decline in lung function as early as one week after intratracheal bleomycin instillation was reliably detected by XLF, revealing the lowest decay rate in the LF mice compared to healthy ones. Simultaneously performed microCT and WBP measurements corroborated XLF findings by exhibiting reduced lung volume $$V^{insp}_{\\mu CT}$$ V μ C T insp and tidal volume $$TV_{WBP}$$ T V WBP . In LF mice XLF also revealed profound improvement in lung function one week after Nintedanib treatment. This positive response to Nintedanib therapy was further substantiated by microCT and WBP measurements which also showed significantly improved $$V^{insp}_{\\mu CT}$$ V μ C T insp and $$TV_{WBP}$$ T V WBP in the Nintedanib treated mice. By comparing the XLF data to structural features assessing the extent of fibrosis obtained by ex-vivo high-resolution synchrotron radiation-based imaging and classical histology we demonstrate that: (1) a simple low dose x-ray measurement like XLF is sensitive enough to pick up treatment response, (2) Nintedanib treatment successfully improved lung function in a bleomycin induced LF mouse model and (3) differences between the fully restored lung function and the partially reduced fibrotic burden compared to healthy and untreated mice. The presented analysis pipeline underlines the importance of a combined functional and anatomical readout to reliably measure treatment response and could easily be adapted to other preclinical lung disease models.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-45902-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-45902-w"
+      }
+    ],
+    "title": "Early diagnosis of aortic calcification through dental X-ray examination for dental pulp stones",
+    "creators": [
+      {
+        "creator": "Ishikawa, Misao"
+      },
+      {
+        "creator": "Kanzaki, Hiroyuki"
+      },
+      {
+        "creator": "Kodera, Ryo"
+      },
+      {
+        "creator": "Sekimizu, Takehiro"
+      },
+      {
+        "creator": "Wada, Satoshi"
+      },
+      {
+        "creator": "Tohyama, Syunnosuke"
+      },
+      {
+        "creator": "Ida, Tomomi"
+      },
+      {
+        "creator": "Shimoyama, Miho"
+      },
+      {
+        "creator": "Manase, Shugo"
+      },
+      {
+        "creator": "Tomonari, Hiroshi"
+      },
+      {
+        "creator": "Kuroda, Noriyuki"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-45902-w",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-30",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "14",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Vascular calcification, an ectopic calcification exacerbated by aging and renal dysfunction, is closely associated with cardiovascular disease. However, early detection indicators are limited. This study focused on dental pulp stones, ectopic calcifications found in oral tissues that are easily identifiable on dental radiographs. Our investigation explored the frequency and timing of these calcifications in different locations and their relationship to aortic calcification. In cadavers, we examined the association between the frequency of dental pulp stones and aortic calcification, revealing a significant association. Notably, dental pulp stones appeared prior to aortic calcification. Using a rat model of hyperphosphatemia, we confirmed that dental pulp stones formed earlier than calcification in the aortic arch. Interestingly, there were very few instances of aortic calcification without dental pulp stones. Additionally, we conducted cell culture experiments with vascular smooth muscle cells (SMCs) and dental pulp cells (DPCs) to explore the regulatory mechanism underlying high phosphate-mediated calcification. We found that DPCs produced calcification deposits more rapidly and exhibited a stronger augmentation of osteoblast differentiation markers compared with SMCs. In conclusion, the observation of dental pulp stones through X-ray examination during dental checkups could be a valuable method for early diagnosis of aortic calcification risk.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-45902-w.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s10853-023-09030-0",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s10853-023-09030-0"
+      }
+    ],
+    "title": "X-ray line profile analysis study on the evolution of the microstructure in additively manufactured 316L steel during severe plastic deformation",
+    "creators": [
+      {
+        "ORCID": "0000-0002-8938-7293",
+        "creator": "Gubicza, Jenő"
+      },
+      {
+        "creator": "Kawasaki, Megumi"
+      },
+      {
+        "creator": "Dankházi, Zoltán"
+      },
+      {
+        "creator": "Windisch, Márk"
+      },
+      {
+        "creator": "El-Tahawy, Moustafa"
+      }
+    ],
+    "publicationName": "Journal of Materials Science",
+    "openaccess": "true",
+    "doi": "10.1007/s10853-023-09030-0",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-30",
+    "publicationType": "Journal",
+    "issn": "1573-4803",
+    "volume": "",
+    "number": "",
+    "genre": [
+      "OriginalPaper",
+      "Processing Bulk Nanostructured Materials"
+    ],
+    "startingPage": "1",
+    "endingPage": "16",
+    "journalId": "10853",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "316L stainless steel was manufactured by additive manufacturing (AM), and then, the samples were severely deformed by the high-pressure torsion (HPT) technique. The evolution of the microstructure was monitored by X-ray line profile analysis. This method gives the crystallite size and the density of lattice defects, such as dislocations and twin faults. The AM-processing of the HPT disks was performed in two different modes: the laser beam was parallel or orthogonal to the normal direction of the disks. The subsequent HPT deformation was carried out for ½, 1, 5 and 10 turns. The microstructure and hardness evolution during HPT were similar regardless of the laser beam direction. For both sample series, the minimum achievable crystallite size was about 30 nm, while the dislocation density and the twin fault probability got saturated at the values of 300–350 × 10 14  m −2 and 3.5–4%, respectively. The microstructure evolution during HPT of the AM-prepared 316L steel was compared with the HPT-induced changes in an as-cast counterpart. It was found that while the AM-prepared 316L steel remained a single-phase face-centered cubic γ-structure during HPT, in the as-cast samples a body-centered cubic (bcc) martensitic α-phase became the main phase with increasing the imposed strain of HPT due to the lower Ni content. In the saturation state achieved by HPT the initially as-cast 316L steel had a considerably higher hardness (about 6000 MPa) than that for the AM-prepared samples (~ 5000 MPa) due to the large fraction of the hard bcc phase formed during HPT.",
+    "subjects": [
+      "Materials Science",
+      "Materials Science, general",
+      "Characterization and Evaluation of Materials",
+      "Polymer Sciences",
+      "Solid Mechanics",
+      "Crystallography and Scattering Methods",
+      "Classical Mechanics"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s10853-023-09030-0.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s11220-023-00444-3",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s11220-023-00444-3"
+      }
+    ],
+    "title": "Ultrasound and X-ray Cross-Characterization of a Graded Impedance Impactor used for Shock-Ramp Compression Experiments",
+    "creators": [
+      {
+        "creator": "Stobbe, David"
+      },
+      {
+        "creator": "Kelly, James"
+      },
+      {
+        "creator": "Rogers, Brian"
+      },
+      {
+        "creator": "Champley, Kyle"
+      },
+      {
+        "creator": "Townsend, Andrew"
+      },
+      {
+        "creator": "Tringe, Joseph"
+      }
+    ],
+    "publicationName": "Sensing and Imaging",
+    "openaccess": "true",
+    "doi": "10.1007/s11220-023-00444-3",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-30",
+    "publicationType": "Journal",
+    "issn": "1557-2072",
+    "volume": "24",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Brief Report"
+    ],
+    "startingPage": "1",
+    "endingPage": "12",
+    "journalId": "11220",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "In this work we perform ultrasound measurements on an impedance graded impactor made by tape casting magnesium, copper, and tungsten. We also destructively extract small representative samples from the part for complementary characterization with x-ray computed tomography. Combining the two data sets enables direct assignment of some of the measured ultrasound features to specific material characteristics identified by x-ray tomography. Our results demonstrate how ultrasound inspection, informed by x-ray computed tomography, can be used to identify sub-millimeter material amalgamations and spatial heterogeneities in this graded material.",
+    "subjects": [
+      "Engineering",
+      "Electrical Engineering",
+      "Microwaves, RF and Optical Engineering",
+      "Imaging / Radiology"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s11220-023-00444-3.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-45258-1",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-45258-1"
+      }
+    ],
+    "title": "Understanding the hot isostatic pressing effectiveness of laser powder bed fusion Ti-6Al-4V by in-situ X-ray imaging and diffraction experiments",
+    "creators": [
+      {
+        "creator": "Mishurova, Tatiana"
+      },
+      {
+        "creator": "Evsevleev, Sergei"
+      },
+      {
+        "creator": "Piault, Pierre"
+      },
+      {
+        "creator": "King, Andrew"
+      },
+      {
+        "creator": "Henry, Laura"
+      },
+      {
+        "ORCID": "0000-0001-9632-3960",
+        "creator": "Bruno, Giovanni"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-45258-1",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-27",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "In the present study, in-situ observation of Hot Isostatic Pressure (HIP) procedure of laser powder bed fusion manufactured Ti-6Al-4V parts was performed to quantitatively estimate the densification rate of the material and the influence of the defect initial size and shape on such rate. The observations were performed in-situ using the Ultrafast Tomography Paris-Edinburgh Cell and the combination of fast phase-contrast synchrotron X-ray tomography and energy dispersive diffraction. With this strategy, we could quantify how the effectiveness of HIP depends on the characteristics of a defect. Smaller defects showed a higher densification rate, while the defect shape did not have significant effect on such rate.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-45258-1.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s13007-023-01096-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s13007-023-01096-w"
+      }
+    ],
+    "title": "Detection and characterization of spike architecture based on deep learning and X-ray computed tomography in barley",
+    "creators": [
+      {
+        "creator": "Ling, Yimin"
+      },
+      {
+        "creator": "Zhao, Qinlong"
+      },
+      {
+        "creator": "Liu, Wenxin"
+      },
+      {
+        "creator": "Wei, Kexu"
+      },
+      {
+        "creator": "Bao, Runfei"
+      },
+      {
+        "creator": "Song, Weining"
+      },
+      {
+        "creator": "Nie, Xiaojun"
+      }
+    ],
+    "publicationName": "Plant Methods",
+    "openaccess": "true",
+    "doi": "10.1186/s13007-023-01096-w",
+    "publisher": "BioMed Central",
+    "publicationDate": "2023-10-27",
+    "publicationType": "Journal",
+    "issn": "1746-4811",
+    "volume": "19",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Research"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "13007",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Background Spike is the grain-bearing organ in cereal crops, which is a key proxy indicator determining the grain yield and quality. Machine learning methods for image analysis of spike-related phenotypic traits not only hold the promise for high-throughput estimating grain production and quality, but also lay the foundation for better dissection of the genetic basis for spike development. Barley ( Hordeum vulgare L.) is one of the most important crops globally, ranking as the fourth largest cereal crop in terms of cultivated area and total yield. However, image analysis of spike-related traits in barley, especially based on CT-scanning, remains elusive at present. Results In this study, we developed a non-invasive, high-throughput approach to quantitatively measuring the multitude of spike architectural traits in barley through combining X-ray computed tomography (CT) and a deep learning model (UNet). Firstly, the spikes of 11 barley accessions, including 2 wild barley, 3 landraces and 6 cultivars were used for X-ray CT scanning to obtain the tomographic images. And then, an optimized 3D image processing method was used to point cloud data to generate the 3D point cloud images of spike, namely ‘virtual’ spike, which is then used to investigate internal structures and morphological traits of barley spikes. Furthermore, the virtual spike-related traits, such as spike length, grain number per spike, grain volume, grain surface area, grain length and grain width as well as grain thickness were efficiently and non-destructively quantified. The virtual values of these traits were highly consistent with the actual value using manual measurement, demonstrating the accuracy and reliability of the developed model. The reconstruction process took 15 min approximately, 10 min for CT scanning and 5 min for imaging and features extraction, respectively. Conclusions This study provides an efficient, non-invasive and useful tool for dissecting barley spike architecture, which will contribute to high-throughput phenotyping and breeding for high yield in barley and other crops.",
+    "subjects": [
+      "Life Sciences",
+      "Plant Sciences",
+      "Biological Techniques"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s13007-023-01096-w.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-42616-5",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-42616-5"
+      }
+    ],
+    "title": "Rheological engineering of perovskite suspension toward high-resolution X-ray flat-panel detector",
+    "creators": [
+      {
+        "creator": "Song, Zihao"
+      },
+      {
+        "creator": "Du, Xinyuan"
+      },
+      {
+        "creator": "He, Xin"
+      },
+      {
+        "creator": "Wang, Hanqi"
+      },
+      {
+        "creator": "Liu, Zhiqiang"
+      },
+      {
+        "creator": "Wu, Haodi"
+      },
+      {
+        "creator": "Luo, Hongde"
+      },
+      {
+        "creator": "Jin, Libo"
+      },
+      {
+        "ORCID": "0000-0001-9676-5769",
+        "creator": "Xu, Ling"
+      },
+      {
+        "creator": "Zheng, Zhiping"
+      },
+      {
+        "ORCID": "0000-0002-9285-4147",
+        "creator": "Niu, Guangda"
+      },
+      {
+        "ORCID": "0000-0003-2574-2943",
+        "creator": "Tang, Jiang"
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-42616-5",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-27",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "8",
+    "journalId": "41467",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Solution-processed polycrystalline perovskite film is promising for the next generation X-ray imaging. However, the spatial resolution of current perovskite X-ray panel detectors is far lower than the theoretical limit. Herein we find that the pixel level non-uniformity, also known as fixed pattern noise, is the chief culprit affecting the signal-to-noise ratio and reducing the resolution of perovskite detectors. We report a synergistic strategy of rheological engineering the perovskite suspensions to achieve X-ray flat panel detectors with pixel-level high uniformity and near-to-limit spatial resolution. Our approach includes the addition of methylammonium iodide and polyacrylonitrile to the perovskite suspension, to synergistically enhance the flowability and particle stability of the oversaturated solution. The obtained suspension perfectly suits for the blade-coating process, avoiding the uneven distribution of solutes and particles within perovskite films. The assembled perovskite panel detector exhibits greatly improved fixed pattern noise value (1.39%), high sensitivity (2.24 × 10 4 μC Gy air −1 cm −2 ), low detection limit (28.57 nGy air ·s −1 ) as well as good working stability, close to the performance of single crystal detectors. Moreover, the detector achieves a near-to-limit resolution of 0.51 lp/pix. The film uniformity is essential to the fixed pattern noise (FPN) and resolution of X-ray detectors. Here the authors demonstrate the rheological engineering of the perovskite suspension to achieve low FPN of 1.39% and high resolution of 0.51 lp/pix.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44196-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44196-2"
+      }
+    ],
+    "title": "Single-shot X-ray absorption spectroscopy at X-ray free electron lasers",
+    "creators": [
+      {
+        "creator": "Harmand, Marion"
+      },
+      {
+        "creator": "Cammarata, Marco"
+      },
+      {
+        "creator": "Chollet, Matthieu"
+      },
+      {
+        "creator": "Krygier, Andrew G."
+      },
+      {
+        "creator": "Lemke, Henrik T."
+      },
+      {
+        "creator": "Zhu, Diling"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44196-2",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-24",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "X-ray Absorption Spectroscopy (XAS) is a widely used X-ray diagnostic method for studying electronic and structural properties of matter. At first glance, the relatively narrow bandwidth and the highly fluctuating spectral structure of X-ray Free Electron Lasers (XFEL) sources seem to require accumulation over many shots to achieve high data quality. To date the best approach to implementing XAS at XFEL facilities has been using monochromators to scan the photon energy across the desired spectral range. While this is possible for easily reproducible samples such as liquids, it is incompatible with many important systems. Here, we demonstrate collection of single-shot XAS spectra over 10s of eV using an XFEL source, with error bars of only a few percent. We additionally show how to extend this technique over wider spectral ranges towards Extended X-ray Absorption Fine Structure measurements, by concatenating a few tens of single-shot measurements. Our results pave the way for future XAS studies at XFELs, in particular those in the femtosecond regime. This advance is envisioned to be especially important for many transient processes that can only be initiated at lower repetition rates, for difficult to reproduce excitation conditions, or for rare samples, such as those encountered in high-energy density physics.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-44196-2.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-39324-5",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-39324-5"
+      }
+    ],
+    "title": "Reassessing the existence of soft X-ray correlated plasmons",
+    "creators": [
+      {
+        "ORCID": "0000-0001-7134-6082",
+        "creator": "Moazzami Gudarzi, Mohsen"
+      },
+      {
+        "ORCID": "0000-0002-3711-332X",
+        "creator": "Aboutalebi, Seyed Hamed"
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-39324-5",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-24",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "Letter",
+      "Matters Arising"
+    ],
+    "startingPage": "1",
+    "endingPage": "3",
+    "journalId": "41467",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-40652-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-40652-9"
+      }
+    ],
+    "title": "Reply to: Reassessing the existence of soft X-ray correlated plasmons",
+    "creators": [
+      {
+        "creator": "Whitcher, T. J."
+      },
+      {
+        "ORCID": "0000-0003-2734-3962",
+        "creator": "Fauzi, A. D."
+      },
+      {
+        "ORCID": "0000-0002-6574-9085",
+        "creator": "Diao, C."
+      },
+      {
+        "creator": "Chi, X."
+      },
+      {
+        "creator": "Syahroni, A."
+      },
+      {
+        "ORCID": "0000-0002-1359-734X",
+        "creator": "Asmara, T. C."
+      },
+      {
+        "creator": "Breese, M. B. H."
+      },
+      {
+        "ORCID": "0000-0003-0613-4010",
+        "creator": "Castro Neto, A. H."
+      },
+      {
+        "ORCID": "0000-0002-5828-4312",
+        "creator": "Wee, A. T. S."
+      },
+      {
+        "ORCID": "0000-0002-0613-1293",
+        "creator": "Majidi, M. A."
+      },
+      {
+        "ORCID": "0000-0001-8054-3934",
+        "creator": "Rusydi, A."
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-40652-9",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-24",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "Letter",
+      "Matters Arising"
+    ],
+    "startingPage": "1",
+    "endingPage": "4",
+    "journalId": "41467",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s42005-023-01435-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s42005-023-01435-2"
+      }
+    ],
+    "title": "Author Correction: Femtosecond multimodal imaging with a laser-driven X-ray source",
+    "creators": [
+      {
+        "creator": "Doherty, Adam"
+      },
+      {
+        "creator": "Fourmaux, Sylvain"
+      },
+      {
+        "creator": "Astolfo, Alberto"
+      },
+      {
+        "ORCID": "0000-0001-7955-6893",
+        "creator": "Ziesche, Ralf"
+      },
+      {
+        "ORCID": "0000-0003-4413-7044",
+        "creator": "Wood, Jonathan"
+      },
+      {
+        "creator": "Finlay, Oliver"
+      },
+      {
+        "ORCID": "0000-0003-0282-4401",
+        "creator": "Stolp, Wiebe"
+      },
+      {
+        "creator": "Batey, Darren"
+      },
+      {
+        "ORCID": "0000-0001-9795-5345",
+        "creator": "Manke, Ingo"
+      },
+      {
+        "creator": "Légaré, François"
+      },
+      {
+        "ORCID": "0000-0002-5478-4141",
+        "creator": "Boone, Matthieu"
+      },
+      {
+        "creator": "Symes, Dan"
+      },
+      {
+        "ORCID": "0000-0001-6323-4005",
+        "creator": "Najmudin, Zulfikar"
+      },
+      {
+        "creator": "Endrizzi, Marco"
+      },
+      {
+        "ORCID": "0000-0002-7150-2951",
+        "creator": "Olivo, Alessandro"
+      },
+      {
+        "ORCID": "0000-0002-3485-2856",
+        "creator": "Cipiccia, Silvia"
+      }
+    ],
+    "publicationName": "Communications Physics",
+    "openaccess": "true",
+    "doi": "10.1038/s42005-023-01435-2",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-23",
+    "publicationType": "Journal",
+    "issn": "2399-3650",
+    "volume": "6",
+    "number": "1",
+    "genre": [
+      "Erratum",
+      "Author Correction"
+    ],
+    "startingPage": "1",
+    "endingPage": "1",
+    "journalId": "42005",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "",
+    "subjects": [
+      "Physics",
+      "Physics, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44653-y",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44653-y"
+      }
+    ],
+    "title": "Challenges of AI driven diagnosis of chest X-rays transmitted through smart phones: a case study in COVID-19",
+    "creators": [
+      {
+        "creator": "Antony, Mariamma"
+      },
+      {
+        "creator": "Kakileti, Siva Teja"
+      },
+      {
+        "creator": "Shah, Rachit"
+      },
+      {
+        "creator": "Sahoo, Sabyasachi"
+      },
+      {
+        "creator": "Bhattacharyya, Chiranjib"
+      },
+      {
+        "creator": "Manjunath, Geetha"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44653-y",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-23",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "16",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "Healthcare delivery during the initial days of outbreak of COVID-19 pandemic was badly impacted due to large number of severely infected patients posing an unprecedented global challenge. Although the importance of Chest X-rays (CXRs) in meeting this challenge has now been widely recognized, speedy diagnosis of CXRs remains an outstanding challenge because of fewer Radiologists. The exponential increase in Smart Phone ownership globally, including LMICs, provides an opportunity for exploring AI-driven diagnostic tools when provided with large volumes of CXRs transmitted through Smart Phones. However, the challenges associated with such systems have not been studied to the best of our knowledge. In this paper, we show that the predictions of AI-driven models on CXR images transmitted through Smart Phones via applications, such as WhatsApp , suffer both in terms of Predictability and Explainability, two key aspects of any automated Medical Diagnosis system. We find that several existing Deep learning based models exhibit prediction instability –disagreement between the prediction outcome of the original image and the transmitted image. Concomitantly we find that the explainability of the models deteriorate substantially, prediction on the transmitted CXR is often driven by features present outside the lung region, clearly a manifestation of Spurious Correlations. Our study reveals that there is significant compression of high-resolution CXR images, sometimes as high as 95%, and this could be the reason behind these two problems. Apart from demonstrating these problems, our main contribution is to show that Multi-Task learning (MTL) can serve as an effective bulwark against the aforementioned problems. We show that MTL models exhibit substantially more robustness, 40% over existing baselines. Explainability of such models, when measured by a saliency score dependent on out-of-lung features, also show a 35% improvement. The study is conducted on WaCXR dataset, a curated dataset of 6562 image pairs corresponding to original uncompressed and WhatsApp compressed CXR images. Keeping in mind that there are no previous datasets to study such problems, we open-source this data along with all implementations.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-43154-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-43154-2"
+      }
+    ],
+    "title": "A single probe for solvent dependent optical recognition of iron(II/III) and arsenite: discrimination between iron redox states with single crystal X-ray structure evidence",
+    "creators": [
+      {
+        "creator": "Das, Jayanta"
+      },
+      {
+        "creator": "Ghosh, Milan"
+      },
+      {
+        "creator": "Ghosh, Biplab"
+      },
+      {
+        "creator": "Mandal, Prasenjit"
+      },
+      {
+        "creator": "Maji, Sangita"
+      },
+      {
+        "creator": "Das, Debasis"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-43154-2",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-21",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "15",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "The detection and discrimination of Fe 2+ and Fe 3+ ions have been investigated using a simple probe (L), produced by the condensation of ethylenediamine and 3-ethoxysalicyaldehyde. Single crystal X-ray structures demonstrate that L interacts with Fe 2+ and Fe 3+ . In aqueous-DMSO media, the L recognises AsO 2 − by fluorescence and colorimetry techniques. The AsO 2 − aided PET inhibition and H-bond assisted chelation enhanced fluorescence (CHEF) boost fluorescence by 91-fold. The L can detect 0.354 ppb Fe 2+ , 0.22 ppb Fe 3+ and 0.235 ppt AsO 2 − .",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-43154-2.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s12957-023-03228-x",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s12957-023-03228-x"
+      }
+    ],
+    "title": "Application of metal stent implantation with endoscope and X-ray fluoroscopy combined laparoscopic surgery in the treatment of acute left hemicolon cancer obstruction",
+    "creators": [
+      {
+        "creator": "Zhou, Xiao-Cong"
+      },
+      {
+        "creator": "Ke, Fei-Yue"
+      },
+      {
+        "creator": "Dhamija, Gaurav"
+      },
+      {
+        "creator": "Viroja, Ruchi D."
+      },
+      {
+        "creator": "Huang, Chun-Wei"
+      }
+    ],
+    "publicationName": "World Journal of Surgical Oncology",
+    "openaccess": "true",
+    "doi": "10.1186/s12957-023-03228-x",
+    "publisher": "BioMed Central",
+    "publicationDate": "2023-10-21",
+    "publicationType": "Journal",
+    "issn": "1477-7819",
+    "volume": "21",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Research"
+    ],
+    "startingPage": "1",
+    "endingPage": "10",
+    "journalId": "12957",
+    "copyright": "©2023 BioMed Central Ltd., part of Springer Nature",
+    "abstract": "Background This study aimed to conduct a case–control study of endoscopic and fluoroscopic metal stent placement combined with laparoscopic surgery versus conventional open Hartmann’s procedure in treating acute left-sided colon cancer obstruction. Additionally, the study aims to discuss the application value of endoscopic and X-ray-guided metal stent placement combined with laparoscopic surgery in the treatment of acute left-sided colon cancer obstruction. Methods From June 2011 to December 2019, 23 patients with acute left-sided colon cancer obstruction who underwent metal stent implantation combined with laparoscopic surgery under endoscopy and X-ray fluoroscopy in Wenzhou Central Hospital were collected, and 20 patients with acute left-sided colon cancer obstruction who underwent traditional emergency open Hartmann’s surgery during the same period were selected as a control group. All patients were diagnosed with left colon obstruction by plain abdominal film and/or CT before the operation and colon adenocarcinoma by colonoscopic biopsy and/or postoperative pathology. The operation time, intraoperative blood loss, postoperative anal exhaust time, the success rate of one-stage anastomosis, postoperative hospital stay, and postoperative complications were compared between the two groups. Results This study showed a significant difference in the therapeutic effect between the two groups. Compared with the traditional Hartmann’s operation group, the success rate of one-stage anastomosis in endoscopic and X-ray-guided metal stent placement combined with the laparoscopic operation group was significantly higher than that in the Hartmann’s operation group ( P  < 0.05). The overall incidence of postoperative complications and hospital stay were significantly lower in the observation group than in the Hartmann’s group ( P  < 0.05). Further subgroup analysis of the overall postoperative complication rate of the two groups showed that the traditional Hartmann’s operation group was more likely to have an incomplete intestinal obstruction ( P  < 0.05). This study also showed no significant differences between the two groups in operation time, intraoperative blood loss, number of harvested lymph nodes, and postoperative anal exhaust time (all P  > 0.05). This study also found no significant differences between the two groups in overall survival rates or recurrence-free survival rates (all P  > 0.05). Conclusions The comparison of the therapeutic effects of the two groups verified the feasibility of endoscopy combined with X-ray fluoroscopy metal stent placement in combination with laparoscopic surgery in the treatment of acute left-sided colon cancer obstruction. Compared with the traditional emergency open Hartmann’s procedure, metal stent implantation under endoscopy and X-ray fluoroscopy combined with laparoscopic surgery is more minimally invasive, safe, and effective. It avoids the traditional second or even third surgical trauma to effectively improve the quality of life of patients, so that patients can recover quickly after surgery.",
+    "subjects": [
+      "Medicine & Public Health",
+      "Surgical Oncology"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s12957-023-03228-x.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s42005-023-01414-7",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s42005-023-01414-7"
+      }
+    ],
+    "title": "X-ray induced Coulomb explosion imaging of transient excited-state structural rearrangements in CS2",
+    "creators": [
+      {
+        "ORCID": "0000-0001-6009-6735",
+        "creator": "Unwin, James"
+      },
+      {
+        "ORCID": "0000-0002-8044-8969",
+        "creator": "Allum, Felix"
+      },
+      {
+        "creator": "Britton, Mathew"
+      },
+      {
+        "creator": "Gabalski, Ian"
+      },
+      {
+        "ORCID": "0000-0001-5873-0290",
+        "creator": "Bromberger, Hubertus"
+      },
+      {
+        "ORCID": "0000-0003-3421-0850",
+        "creator": "Brouard, Mark"
+      },
+      {
+        "creator": "Bucksbaum, Philip H."
+      },
+      {
+        "creator": "Driver, Taran"
+      },
+      {
+        "ORCID": "0000-0002-2236-8696",
+        "creator": "Ekanayake, Nagitha"
+      },
+      {
+        "creator": "Garg, Diksha"
+      },
+      {
+        "creator": "Gougoula, Eva"
+      },
+      {
+        "ORCID": "0000-0003-0611-8555",
+        "creator": "Heathcote, David"
+      },
+      {
+        "ORCID": "0000-0003-0303-3222",
+        "creator": "Howard, Andrew J."
+      },
+      {
+        "ORCID": "0000-0001-9561-8433",
+        "creator": "Hockett, Paul"
+      },
+      {
+        "ORCID": "0000-0003-1351-605X",
+        "creator": "Holland, David M. P."
+      },
+      {
+        "ORCID": "0009-0008-4892-2561",
+        "creator": "Kumar, Sonu"
+      },
+      {
+        "creator": "Lam, Chow-shing"
+      },
+      {
+        "ORCID": "0000-0002-1261-6246",
+        "creator": "Lee, Jason W. L."
+      },
+      {
+        "creator": "McManus, Joseph"
+      },
+      {
+        "creator": "Mikosch, Jochen"
+      },
+      {
+        "creator": "Milesevic, Dennis"
+      },
+      {
+        "ORCID": "0000-0001-6775-2977",
+        "creator": "Minns, Russell S."
+      },
+      {
+        "ORCID": "0000-0002-3343-6981",
+        "creator": "Papadopoulou, Christina C."
+      },
+      {
+        "ORCID": "0000-0002-0621-2026",
+        "creator": "Passow, Christopher"
+      },
+      {
+        "creator": "Razmus, Weronika O."
+      },
+      {
+        "creator": "Röder, Anja"
+      },
+      {
+        "ORCID": "0000-0002-2425-4027",
+        "creator": "Rouzée, Arnaud"
+      },
+      {
+        "creator": "Schuurman, Michael"
+      },
+      {
+        "creator": "Simao, Alcides"
+      },
+      {
+        "ORCID": "0000-0002-8447-3678",
+        "creator": "Stolow, Albert"
+      },
+      {
+        "ORCID": "0000-0001-6614-3256",
+        "creator": "Tul-Noor, Atia"
+      },
+      {
+        "ORCID": "0000-0003-3880-8614",
+        "creator": "Vallance, Claire"
+      },
+      {
+        "ORCID": "0000-0002-1446-5904",
+        "creator": "Walmsley, Tiffany"
+      },
+      {
+        "ORCID": "0000-0002-3965-3477",
+        "creator": "Rolles, Daniel"
+      },
+      {
+        "ORCID": "0000-0001-8413-3588",
+        "creator": "Erk, Benjamin"
+      },
+      {
+        "ORCID": "0000-0002-7317-8649",
+        "creator": "Burt, Michael"
+      },
+      {
+        "ORCID": "0000-0003-2097-5991",
+        "creator": "Forbes, Ruaridh"
+      }
+    ],
+    "publicationName": "Communications Physics",
+    "openaccess": "true",
+    "doi": "10.1038/s42005-023-01414-7",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-20",
+    "publicationType": "Journal",
+    "issn": "2399-3650",
+    "volume": "6",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "42005",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "Structural imaging of transient excited-state species is a key goal of molecular physics, promising to unveil rich information about the dynamics underpinning photochemical transformations. However, separating the electronic and nuclear contributions to the spectroscopic observables is challenging, and typically requires the application of high-level theory. Here, we employ site-selective ionisation via ultrashort soft X-ray pulses and time-resolved Coulomb explosion imaging to interrogate structural dynamics of the ultraviolet photochemistry of carbon disulfide. This prototypical system exhibits the complex motifs of polyatomic photochemistry, including strong non-adiabatic couplings, vibrational mode couplings, and intersystem crossing. Immediately following photoexcitation, we observe Coulomb explosion signatures of highly bent and stretched excited-state geometries involved in the photodissociation. Aided by a model to interpret such changes, we build a comprehensive picture of the photoinduced nuclear dynamics that follows initial bending and stretching motions, as the reaction proceeds towards photodissociation. Coulomb Explosion imaging is a promising technique to study the ultrafast nuclear dynamics which underpin molecular photochemistry. By initiating Coulomb explosion through soft X-ray ionization, the authors are able to image ultrafast nuclear dynamics of a prototypical photoreaction.",
+    "subjects": [
+      "Physics",
+      "Physics, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s10443-023-10167-z",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s10443-023-10167-z"
+      }
+    ],
+    "title": "Three-Dimensional Analysis of Porosity in As-Manufactured Glass Fiber/Vinyl Ester Filament Winded Composites Using X-Ray Micro-Computed Tomography",
+    "creators": [
+      {
+        "ORCID": "0000-0003-2527-3294",
+        "creator": "Srivastava, Chaman"
+      },
+      {
+        "creator": "Agostino, Pietro"
+      },
+      {
+        "creator": "Stamopoulos, Antonios G."
+      },
+      {
+        "creator": "Alcock, Ben"
+      },
+      {
+        "creator": "Strandlie, Are"
+      },
+      {
+        "creator": "Grammatikos, Sotirios"
+      }
+    ],
+    "publicationName": "Applied Composite Materials",
+    "openaccess": "true",
+    "doi": "10.1007/s10443-023-10167-z",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-19",
+    "publicationType": "Journal",
+    "issn": "1573-4897",
+    "volume": "",
+    "number": "",
+    "genre": "OriginalPaper",
+    "startingPage": "1",
+    "endingPage": "30",
+    "journalId": "10443",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Filament winding is a technique to manufacture tubular composite structures and, therefore, is among the most appealing techniques for fabricating critical structures such as hollow tubes. Despite the recent advances, these structures are prone to a varying degree of porosity that may affect their mechanical performance. Therefore, the accurate detection and quantification of the manufacturing porosity is crucial. Micro-CT is most suitable for performing this activity at various scales. This work employs micro-CT for studying porosity inside an as-manufactured filament-winded composite structure. Void characteristics like volume, orientation, size, and relative volume fraction inside the hoop and helical layers are quantified inside a representative curved panel extracted from a glass fiber-vinyl ester tubular composite structure, which has not been studied in detail previously. It was observed that most voids are present in the matrix region. The voids are elliptical rod-like and spherical, with the latter present in the helical layers, which also host the majority of voids and the highest void volume fractions. The voids are highly aligned along the fiber orientation direction with higher misorientations for helical layers than the hoop layer. Large voids in base layers were created due to gaps formed during the winding process. Hence, the main goal of this study is to measure the voids' characteristics and the volumetric fraction during the stacking of filament wound hoop and helical layers during a generic filament winding pattern. The data can be further exploited as input for modeling filament winded composites in the presence of voids by researchers.",
+    "subjects": [
+      "Materials Science",
+      "Characterization and Evaluation of Materials",
+      "Classical Mechanics",
+      "Polymer Sciences",
+      "Industrial Chemistry/Chemical Engineering"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s10443-023-10167-z.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44734-y",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44734-y"
+      }
+    ],
+    "title": "A physicochemical model of X-ray induced photodynamic therapy (X-PDT) with an emphasis on tissue oxygen concentration and oxygenation",
+    "creators": [
+      {
+        "creator": "Hosseini, Farideh. S."
+      },
+      {
+        "creator": "Naghavi, Nadia"
+      },
+      {
+        "creator": "Sazgarnia, Ameneh"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44734-y",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-19",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "16",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "X-PDT is one of the novel cancer treatment approaches that uses high penetration X-ray radiation to activate photosensitizers (PSs) placed in deep seated tumors. After PS activation, some reactive oxygen species (ROS) like singlet oxygen ( 1 O 2 ) are produced that are very toxic for adjacent cells. Efficiency of X-PDT depends on 1 O 2 quantum yield as well as X-ray mortality rate. Despite many studies have been modeled X-PDT, little is known about the investigation of tissue oxygen content in treatment outcome. In the present study, we predicted X-PDT efficiency through a feedback of physiological parameters of tumor microenvironment includes tissue oxygen and oxygenation properties. The introduced physicochemical model of X-PDT estimates 1 O 2 production in a vascularized and non-vascularized tumor under different tissue oxygen levels to predict cell death probability in tumor and adjacent normal tissue. The results emphasized the importance of molecular oxygen and the presence of a vascular network in predicting X-PDT efficiency.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-44734-y.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s12938-023-01163-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s12938-023-01163-2"
+      }
+    ],
+    "title": "A framework of myocardial bridge detection with x-ray angiography sequence",
+    "creators": [
+      {
+        "creator": "Zhou, Peng"
+      },
+      {
+        "creator": "Wang, Guangpu"
+      },
+      {
+        "creator": "Wang, Shuo"
+      },
+      {
+        "creator": "Li, Huanming"
+      },
+      {
+        "creator": "Liu, Chong"
+      },
+      {
+        "creator": "Sun, Jinglai"
+      },
+      {
+        "creator": "Yu, Hui"
+      }
+    ],
+    "publicationName": "BioMedical Engineering OnLine",
+    "openaccess": "true",
+    "doi": "10.1186/s12938-023-01163-2",
+    "publisher": "BioMed Central",
+    "publicationDate": "2023-10-19",
+    "publicationType": "Journal",
+    "issn": "1475-925X",
+    "volume": "22",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Research"
+    ],
+    "startingPage": "1",
+    "endingPage": "19",
+    "journalId": "12938",
+    "copyright": "©2023 BioMed Central Ltd., part of Springer Nature",
+    "abstract": "Background Myocardial bridges are congenital anatomical abnormalities in which myocardium covers a segment of coronary arteries, leading to stenocardia, myocardial ischemia, and sudden cardiac death in severe cases. However, automatic diagnosis of myocardial bridge presents significant challenges. Method A novel framework of myocardial bridge detection with x-ray angiography sequence is proposed, which can realize automatic detection of vessel stenosis and myocardial bridge. Firstly, we employ a novel neural network model for coronary vessel segmentation, which consists of both CNNs and transformer structures to effectively extract both local and global information of the vessels. Secondly, we describe the vessel segment information, establish the vessel tree in the image, and fuse the vessel tree information between sequences. Finally, based on vessel stenosis detection, we realize automatic detection of the myocardial bridge by querying the blood vessels between the image sequence information. Results In experiment, we evaluate the segmentation results using two metrics, Dice and ASD, and achieve scores of 0.917 and 1.39, respectively. In the stenosis detection, we achieve an average accuracy rate of 92.7% in stenosis detection among 262 stenoses. In multi-frame image processing, vessels in different frames can be well-matched, and the accuracy of myocardial bridge detection achieves 75%. Conclusions Our experimental results demonstrate that the algorithm can automatically detect stenosis and myocardial bridge, providing a new idea for subsequent automatic diagnosis of coronary vessels.",
+    "subjects": [
+      "Engineering",
+      "Biomedical Engineering and Bioengineering",
+      "Biomaterials",
+      "Biotechnology",
+      "Biomedical Engineering/Biotechnology"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s12938-023-01163-2.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41586-023-06491-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41586-023-06491-w"
+      }
+    ],
+    "title": "Resonant X-ray excitation of the nuclear clock isomer 45Sc",
+    "creators": [
+      {
+        "ORCID": "0000-0002-9558-1500",
+        "creator": "Shvyd’ko, Yuri"
+      },
+      {
+        "creator": "Röhlsberger, Ralf"
+      },
+      {
+        "ORCID": "0000-0003-3078-2317",
+        "creator": "Kocharovskaya, Olga"
+      },
+      {
+        "ORCID": "0000-0001-7864-6029",
+        "creator": "Evers, Jörg"
+      },
+      {
+        "ORCID": "0000-0003-4764-1115",
+        "creator": "Geloni, Gianluca Aldo"
+      },
+      {
+        "ORCID": "0000-0002-7381-6153",
+        "creator": "Liu, Peifan"
+      },
+      {
+        "creator": "Shu, Deming"
+      },
+      {
+        "ORCID": "0000-0001-5994-5402",
+        "creator": "Miceli, Antonino"
+      },
+      {
+        "ORCID": "0000-0003-4289-7533",
+        "creator": "Stone, Brandon"
+      },
+      {
+        "ORCID": "0009-0007-9144-6268",
+        "creator": "Hippler, Willi"
+      },
+      {
+        "creator": "Marx-Glowna, Berit"
+      },
+      {
+        "creator": "Uschmann, Ingo"
+      },
+      {
+        "ORCID": "0009-0001-4663-7563",
+        "creator": "Loetzsch, Robert"
+      },
+      {
+        "creator": "Leupold, Olaf"
+      },
+      {
+        "ORCID": "0000-0003-0851-3831",
+        "creator": "Wille, Hans-Christian"
+      },
+      {
+        "ORCID": "0000-0002-7614-2238",
+        "creator": "Sergeev, Ilya"
+      },
+      {
+        "ORCID": "0000-0002-7503-0699",
+        "creator": "Gerharz, Miriam"
+      },
+      {
+        "ORCID": "0000-0003-3084-7504",
+        "creator": "Zhang, Xiwen"
+      },
+      {
+        "ORCID": "0000-0003-3046-401X",
+        "creator": "Grech, Christian"
+      },
+      {
+        "ORCID": "0000-0001-9723-0467",
+        "creator": "Guetg, Marc"
+      },
+      {
+        "creator": "Kocharyan, Vitali"
+      },
+      {
+        "creator": "Kujala, Naresh"
+      },
+      {
+        "ORCID": "0000-0002-6178-051X",
+        "creator": "Liu, Shan"
+      },
+      {
+        "ORCID": "0000-0001-9383-2612",
+        "creator": "Qin, Weilun"
+      },
+      {
+        "ORCID": "0000-0003-1048-3432",
+        "creator": "Zozulya, Alexey"
+      },
+      {
+        "ORCID": "0000-0002-1996-397X",
+        "creator": "Hallmann, Jörg"
+      },
+      {
+        "creator": "Boesenberg, Ulrike"
+      },
+      {
+        "creator": "Jo, Wonhyuk"
+      },
+      {
+        "ORCID": "0000-0001-8363-9077",
+        "creator": "Möller, Johannes"
+      },
+      {
+        "creator": "Rodriguez-Fernandez, Angel"
+      },
+      {
+        "ORCID": "0000-0002-3194-7411",
+        "creator": "Youssef, Mohamed"
+      },
+      {
+        "ORCID": "0000-0001-6594-1029",
+        "creator": "Madsen, Anders"
+      },
+      {
+        "ORCID": "0000-0002-1543-7868",
+        "creator": "Kolodziej, Tomasz"
+      }
+    ],
+    "publicationName": "Nature",
+    "openaccess": "true",
+    "doi": "10.1038/s41586-023-06491-w",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-19",
+    "publicationType": "Journal",
+    "issn": "1476-4687",
+    "volume": "622",
+    "number": "7983",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "471",
+    "endingPage": "475",
+    "journalId": "41586",
+    "copyright": "©2023 UChicago Argonne, LLC, Operator of Argonne National Laboratory",
+    "abstract": "Resonant oscillators with stable frequencies and large quality factors help us to keep track of time with high precision. Examples range from quartz crystal oscillators in wristwatches to atomic oscillators in atomic clocks, which are, at present, our most precise time measurement devices 1 . The search for more stable and convenient reference oscillators is continuing 2 – 6 . Nuclear oscillators are better than atomic oscillators because of their naturally higher quality factors and higher resilience against external perturbations 7 – 9 . One of the most promising cases is an ultra-narrow nuclear resonance transition in 45 Sc between the ground state and the 12.4-keV isomeric state with a long lifetime of 0.47 s (ref.  10 ). The scientific potential of 45 Sc was realized long ago, but applications require 45 Sc resonant excitation, which in turn requires accelerator-driven, high-brightness X-ray sources 11 that have become available only recently. Here we report on resonant X-ray excitation of the 45 Sc isomeric state by irradiation of Sc-metal foil with 12.4-keV photon pulses from a state-of-the-art X-ray free-electron laser and subsequent detection of nuclear decay products. Simultaneously, the transition energy was determined as $${\\mathrm{12,389.59}}_{+0.12\\left({\\rm{syst}}\\right)}^{\\pm 0.15\\left({\\rm{stat}}\\right)}\\,{\\rm{eV}}$$ 12,389.59 + 0.12 syst ± 0.15 stat eV with an uncertainty that is two orders of magnitude smaller than the previously known values. These advancements enable the application of this isomer in extreme metrology, nuclear clock technology, ultra-high-precision spectroscopy and similar applications. Resonant X-ray excitation of the  45 Sc nuclear isomeric state was achieved by irradiation of a Sc-metal foil with 12.4-keV photon pulses from a state-of-the-art X-ray free-electron laser, allowing a high-precision determination of the transition energy.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-42370-8",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-42370-8"
+      }
+    ],
+    "title": "In situ X-ray spectroscopies beyond conventional X-ray absorption spectroscopy on deciphering dynamic configuration of electrocatalysts",
+    "creators": [
+      {
+        "creator": "Wang, Jiali"
+      },
+      {
+        "ORCID": "0000-0002-7767-8413",
+        "creator": "Hsu, Chia-Shuo"
+      },
+      {
+        "creator": "Wu, Tai-Sing"
+      },
+      {
+        "ORCID": "0000-0001-5220-1611",
+        "creator": "Chan, Ting-Shan"
+      },
+      {
+        "creator": "Suen, Nian-Tzu"
+      },
+      {
+        "creator": "Lee, Jyh-Fu"
+      },
+      {
+        "ORCID": "0000-0002-7480-9940",
+        "creator": "Chen, Hao Ming"
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-42370-8",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-18",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "ReviewPaper",
+      "Perspective"
+    ],
+    "startingPage": "1",
+    "endingPage": "23",
+    "journalId": "41467",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "Realizing viable electrocatalytic processes for energy conversion/storage strongly relies on an atomic-level understanding of dynamic configurations on catalyst-electrolyte interface. X-ray absorption spectroscopy (XAS) has become an indispensable tool to in situ investigate dynamic natures of electrocatalysts but still suffers from limited energy resolution, leading to significant electronic transitions poorly resolved. Herein, we highlight advanced X-ray spectroscopies beyond conventional XAS, with emphasis on their unprecedented capabilities of deciphering key configurations of electrocatalysts. The profound complementarities of X-ray spectroscopies from various aspects are established in a probing energy-dependent “in situ spectroscopy map” for comprehensively understanding the solid-liquid interface. This perspective establishes an indispensable in situ research model for future studies and offers exciting research prospects for scientists and spectroscopists. X-ray absorption spectroscopy (XAS) has become an indispensable tool to investigate dynamic natures of electrocatalysts. In this perspective, advanced X-ray spectroscopies are highlighted in a complementary way, providing a promising research model for solid-liquid interface and (electro)catalysis studies.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s42003-023-05416-7",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s42003-023-05416-7"
+      }
+    ],
+    "title": "Form factor determination of biological molecules with X-ray free electron laser small-angle scattering (XFEL-SAS)",
+    "creators": [
+      {
+        "ORCID": "0000-0003-3432-8496",
+        "creator": "Blanchet, Clement E."
+      },
+      {
+        "ORCID": "0000-0002-0723-8228",
+        "creator": "Round, Adam"
+      },
+      {
+        "ORCID": "0000-0002-5664-744X",
+        "creator": "Mertens, Haydyn D. T."
+      },
+      {
+        "ORCID": "0000-0002-6881-564X",
+        "creator": "Ayyer, Kartik"
+      },
+      {
+        "ORCID": "0000-0001-7547-636X",
+        "creator": "Graewert, Melissa"
+      },
+      {
+        "creator": "Awel, Salah"
+      },
+      {
+        "creator": "Franke, Daniel"
+      },
+      {
+        "creator": "Dörner, Katerina"
+      },
+      {
+        "ORCID": "0000-0002-7163-7602",
+        "creator": "Bajt, Saša"
+      },
+      {
+        "creator": "Bean, Richard"
+      },
+      {
+        "creator": "Custódio, Tânia F."
+      },
+      {
+        "ORCID": "0000-0002-8342-1008",
+        "creator": "Wijn, Raphael"
+      },
+      {
+        "ORCID": "0000-0001-6061-5734",
+        "creator": "Juncheng, E."
+      },
+      {
+        "creator": "Henkel, Alessandra"
+      },
+      {
+        "creator": "Gruzinov, Andrey"
+      },
+      {
+        "ORCID": "0000-0002-8718-7343",
+        "creator": "Jeffries, Cy M."
+      },
+      {
+        "creator": "Kim, Yoonhee"
+      },
+      {
+        "ORCID": "0000-0001-6792-3844",
+        "creator": "Kirkwood, Henry"
+      },
+      {
+        "ORCID": "0000-0002-8745-9740",
+        "creator": "Kloos, Marco"
+      },
+      {
+        "creator": "Knoška, Juraj"
+      },
+      {
+        "ORCID": "0000-0002-0245-3842",
+        "creator": "Koliyadu, Jayanath"
+      },
+      {
+        "ORCID": "0000-0002-0569-5193",
+        "creator": "Letrun, Romain"
+      },
+      {
+        "ORCID": "0000-0003-0764-7483",
+        "creator": "Löw, Christian"
+      },
+      {
+        "creator": "Makroczyova, Jana"
+      },
+      {
+        "creator": "Mall, Abhishek"
+      },
+      {
+        "creator": "Meijers, Rob"
+      },
+      {
+        "ORCID": "0000-0001-7842-4987",
+        "creator": "Pena Murillo, Gisel Esperanza"
+      },
+      {
+        "ORCID": "0000-0002-0894-9590",
+        "creator": "Oberthür, Dominik"
+      },
+      {
+        "creator": "Round, Ekaterina"
+      },
+      {
+        "ORCID": "0000-0003-1000-0859",
+        "creator": "Seuring, Carolin"
+      },
+      {
+        "creator": "Sikorski, Marcin"
+      },
+      {
+        "creator": "Vagovic, Patrik"
+      },
+      {
+        "creator": "Valerio, Joana"
+      },
+      {
+        "creator": "Wollweber, Tamme"
+      },
+      {
+        "creator": "Zhuang, Yulong"
+      },
+      {
+        "ORCID": "0000-0002-9310-8832",
+        "creator": "Schulz, Joachim"
+      },
+      {
+        "ORCID": "0000-0002-5517-5970",
+        "creator": "Haas, Heinrich"
+      },
+      {
+        "ORCID": "0000-0002-4655-1743",
+        "creator": "Chapman, Henry N."
+      },
+      {
+        "creator": "Mancuso, Adrian P."
+      },
+      {
+        "ORCID": "0000-0003-0830-5696",
+        "creator": "Svergun, Dmitri"
+      }
+    ],
+    "publicationName": "Communications Biology",
+    "openaccess": "true",
+    "doi": "10.1038/s42003-023-05416-7",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-18",
+    "publicationType": "Journal",
+    "issn": "2399-3642",
+    "volume": "6",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "42003",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "Free-electron lasers (FEL) are revolutionizing X-ray-based structural biology methods. While protein crystallography is already routinely performed at FELs, Small Angle X-ray Scattering (SAXS) studies of biological macromolecules are not as prevalent. SAXS allows the study of the shape and overall structure of proteins and nucleic acids in solution, in a quasi-native environment. In solution, chemical and biophysical parameters that have an influence on the structure and dynamics of molecules can be varied and their effect on conformational changes can be monitored in time-resolved XFEL and SAXS experiments. We report here the collection of scattering form factors of proteins in solution using FEL X-rays. The form factors correspond to the scattering signal of the protein ensemble alone; the scattering contributions from the solvent and the instrument are separately measured and accurately subtracted. The experiment was done using a liquid jet for sample delivery. These results pave the way for time-resolved studies and measurements from dilute samples, capitalizing on the intense and short FEL X-ray pulses. The use of free-electron laser (FEL) X-rays to collect SAXS form factors of proteins in solution is demonstrated.",
+    "subjects": [
+      "Life Sciences",
+      "Life Sciences, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s40562-023-00303-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s40562-023-00303-9"
+      }
+    ],
+    "title": "Active sediment transport along trench axis: insights from X-ray fluorescence core scanning and magnetic analysis of marine sediments in the southwestern Ryukyu Trench",
+    "creators": [
+      {
+        "ORCID": "0000-0002-6575-954X",
+        "creator": "Hsiung, Kan-Hsi"
+      },
+      {
+        "creator": "Kanamatsu, Toshiya"
+      },
+      {
+        "creator": "Ikehara, Ken"
+      },
+      {
+        "creator": "Murayama, Masafumi"
+      },
+      {
+        "creator": "Yamamoto, Yuhji"
+      }
+    ],
+    "publicationName": "Geoscience Letters",
+    "openaccess": "true",
+    "doi": "10.1186/s40562-023-00303-9",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-18",
+    "publicationType": "Journal",
+    "issn": "2196-4092",
+    "volume": "10",
+    "number": "1",
+    "genre": [
+      "Letter",
+      "Research Letter"
+    ],
+    "startingPage": "1",
+    "endingPage": "12",
+    "journalId": "40562",
+    "copyright": "©2023 Asia Oceania Geosciences Society (AOGS)",
+    "abstract": "The southwestern Ryukyu Trench is an ideal place for investigating sediment transport from the Taiwan mountain belt to the Ryukyu Trench floor. To study the characteristics of trench turbidites and sediment transport along the trench, we utilize two piston cores: KR1518-PC04/PL04 at the southwestern end of Ryukyu Trench and YK1501-PC14/PL14 in the trench floor. We also collect two push cores, YK1611-6K1467MG and 6K1467MR, from undisturbed seabed surface to observe lithology. Our analysis reveals that the lithology of the cores shows homogeneous gray mud layers intercalated with very-thin fine sand layers, which we interpret as hemipelagites intercalated with very-thin turbidites. We identify 60 turbidites (0.3–4.0 cm thick) from YK1501-PC14 and 36 turbidites (0.9–4.2 cm thick) from KR1518-PC04. Based on observation from YK1501-PC14, most turbidites, which were less than 1 cm in thickness, displayed planar and sharp bottom contacts. The turbidite thickness of YK1501-PC14 (6448 m water depth) is thinner than that of KR1518-PC04 (6147 m water depth) in general. Through X-ray fluorescence core scans (ITRAX), we distinguished trench turbidites by elemental patterns and accurately determined the depths of every very-thin turbidite. Most hemipelagites from YK1501-PC14 and KR1518-PC04 show similar ITRAX profiles, indicating a similar source of the sediments. ITRAX analysis also revealed five intervals in high-Ca mud in YK1501-PC14, suggesting another potential source from the Ryukyu forearc. Anisotropy of Magnetic Susceptibility (AMS) results show that both YK1501-PC14/PL14 and KR1518-PC04/PL04 exhibit an oblate fabric indicating a normal sedimentary condition. Magnetic signatures showed the presence of pyrrhotite, supporting evidence that Taiwan-sourced sediments can be transported up to ~ 250 km by turbidity currents and spread from the Taiwan Island to the Ryukyu Trench floor. This study improves our understanding of Ryukyu Trench turbidites and provides valuable insights into active sediment transport along the southwestern Ryukyu Trench.",
+    "subjects": [
+      "Earth Sciences",
+      "Earth Sciences, general",
+      "Atmospheric Sciences",
+      "Geophysics/Geodesy",
+      "Oceanography",
+      "Planetology",
+      "Biogeosciences"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s40562-023-00303-9.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44479-8",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44479-8"
+      }
+    ],
+    "title": "X-rays are as effective as gamma-rays for the sterilization of Glossina palpalis gambiensis Vanderplank, 1911 (Diptera: Glossinidae) for use in the sterile insect technique",
+    "creators": [
+      {
+        "ORCID": "0000-0001-6181-8883",
+        "creator": "Kaboré, Bénéwendé Aristide"
+      },
+      {
+        "creator": "Nawaj, Arooj"
+      },
+      {
+        "creator": "Maiga, Hamidou"
+      },
+      {
+        "creator": "Soukia, Olga"
+      },
+      {
+        "creator": "Pagabeleguem, Soumaïla"
+      },
+      {
+        "creator": "Ouédraogo/Sanon, Marie Sophie Gisèle"
+      },
+      {
+        "creator": "Vreysen, Marc J. B."
+      },
+      {
+        "creator": "Mach, Robert L."
+      },
+      {
+        "creator": "de Beer, Chantel J."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44479-8",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-17",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "15",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "An area-wide integrated pest management strategy with a sterile insect technique (SIT) component requires a radiation source for the sterilisation of male insects. Self-contained gamma irradiators, which were exclusively used in past SIT programmes, are now facing increasing constraints and challenges due to stringent regulations. As a potential alternative, new generation high output X-ray irradiators have been proposed. The feasibility of using X-ray irradiators was assessed by comparing the effects of both gamma- and X-ray irradiators on biological parameters of Glossina palpalis gambiensis (Vanderplank, 1911), that are important for SIT applications. The gamma irradiator Foss Model 812 and two X-ray irradiators, the Rad Source 2400 and the blood irradiator Raycell Mk2 were used. Glossina palpalis gambiensis males were exposed to radiation as pupae. A radiation dose of 110 Gy or above induced more than 97% sterility in females that mated with the irradiated males for all the irradiators. Adult emergence rate, flight propensity, survival and mating performance did not differ between gamma- and X-rays irradiators. These results suggest that irradiating pupae with a dose of 110 Gy is optimal for both gamma-and X-ray irradiators used in this study, to achieve a sterility of approximately 99%. Similar research on other tsetse species could gradually phase out the use of gamma-ray irradiators in favour of X-rays irradiators, especially for smaller SIT programmes.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-35526-5",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-35526-5"
+      }
+    ],
+    "title": "Simultaneous bright- and dark-field X-ray microscopy at X-ray free electron lasers",
+    "creators": [
+      {
+        "creator": "Dresselhaus-Marais, Leora E."
+      },
+      {
+        "creator": "Kozioziemski, Bernard"
+      },
+      {
+        "creator": "Holstad, Theodor S."
+      },
+      {
+        "creator": "Ræder, Trygve Magnus"
+      },
+      {
+        "creator": "Seaberg, Matthew"
+      },
+      {
+        "creator": "Nam, Daewoong"
+      },
+      {
+        "creator": "Kim, Sangsoo"
+      },
+      {
+        "creator": "Breckling, Sean"
+      },
+      {
+        "creator": "Choi, Sungwook"
+      },
+      {
+        "creator": "Chollet, Matthieu"
+      },
+      {
+        "creator": "Cook, Philip K."
+      },
+      {
+        "creator": "Folsom, Eric"
+      },
+      {
+        "creator": "Galtier, Eric"
+      },
+      {
+        "creator": "Gonzalez, Arnulfo"
+      },
+      {
+        "creator": "Gorkhover, Tais"
+      },
+      {
+        "creator": "Guillet, Serge"
+      },
+      {
+        "creator": "Haldrup, Kristoffer"
+      },
+      {
+        "creator": "Howard, Marylesa"
+      },
+      {
+        "creator": "Katagiri, Kento"
+      },
+      {
+        "creator": "Kim, Seonghan"
+      },
+      {
+        "creator": "Kim, Sunam"
+      },
+      {
+        "creator": "Kim, Sungwon"
+      },
+      {
+        "creator": "Kim, Hyunjung"
+      },
+      {
+        "creator": "Knudsen, Erik Bergbäck"
+      },
+      {
+        "creator": "Kuschel, Stephan"
+      },
+      {
+        "creator": "Lee, Hae Ja"
+      },
+      {
+        "creator": "Lin, Chuanlong"
+      },
+      {
+        "creator": "McWilliams, R. Stewart"
+      },
+      {
+        "creator": "Nagler, Bob"
+      },
+      {
+        "creator": "Nielsen, Martin Meedom"
+      },
+      {
+        "creator": "Ozaki, Norimasa"
+      },
+      {
+        "creator": "Pal, Dayeeta"
+      },
+      {
+        "creator": "Pablo Pedro, Ricardo"
+      },
+      {
+        "creator": "Saunders, Alison M."
+      },
+      {
+        "creator": "Schoofs, Frank"
+      },
+      {
+        "creator": "Sekine, Toshimori"
+      },
+      {
+        "creator": "Simons, Hugh"
+      },
+      {
+        "creator": "van Driel, Tim"
+      },
+      {
+        "creator": "Wang, Bihan"
+      },
+      {
+        "creator": "Yang, Wenge"
+      },
+      {
+        "creator": "Yildirim, Can"
+      },
+      {
+        "creator": "Poulsen, Henning Friis"
+      },
+      {
+        "creator": "Eggert, Jon H."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-35526-5",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-16",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "19",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "The structures, strain fields, and defect distributions in solid materials underlie the mechanical and physical properties across numerous applications. Many modern microstructural microscopy tools characterize crystal grains, domains and defects required to map lattice distortions or deformation, but are limited to studies of the (near) surface. Generally speaking, such tools cannot probe the structural dynamics in a way that is representative of bulk behavior. Synchrotron X-ray diffraction based imaging has long mapped the deeply embedded structural elements, and with enhanced resolution, dark field X-ray microscopy (DFXM) can now map those features with the requisite nm-resolution. However, these techniques still suffer from the required integration times due to limitations from the source and optics. This work extends DFXM to X-ray free electron lasers, showing how the $$10^{12}$$ 10 12 photons per pulse available at these sources offer structural characterization down to 100 fs resolution (orders of magnitude faster than current synchrotron images). We introduce the XFEL DFXM setup with simultaneous bright field microscopy to probe density changes within the same volume. This work presents a comprehensive guide to the multi-modal ultrafast high-resolution X-ray microscope that we constructed and tested at two XFELs, and shows initial data demonstrating two timing strategies to study associated reversible or irreversible lattice dynamics.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-35526-5.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44633-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44633-2"
+      }
+    ],
+    "title": "A multi-stage neural network approach for coronary 3D reconstruction from uncalibrated X-ray angiography images",
+    "creators": [
+      {
+        "creator": "Iyer, Kritika"
+      },
+      {
+        "creator": "Nallamothu, Brahmajee K."
+      },
+      {
+        "creator": "Figueroa, C. Alberto"
+      },
+      {
+        "creator": "Nadakuditi, Raj R."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44633-2",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-16",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "17",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "We present a multi-stage neural network approach for 3D reconstruction of coronary artery trees from uncalibrated 2D X-ray angiography images. This method uses several binarized images from different angles to reconstruct a 3D coronary tree without any knowledge of image acquisition parameters. The method consists of a single backbone network and separate stages for vessel centerline and radius reconstruction. The output is an analytical matrix representation of the coronary tree suitable for downstream applications such as hemodynamic modeling of local vessel narrowing (i.e., stenosis). The network was trained using a dataset of synthetic coronary trees from a vessel generator informed by both clinical image data and literature values on coronary anatomy. Our multi-stage network achieved sub-pixel accuracy in reconstructing vessel radius (RMSE = 0.16 ± 0.07 mm) and stenosis radius (MAE = 0.27 ± 0.18 mm), the most important feature used to inform diagnostic decisions. The network also led to 52% and 38% reduction in vessel centerline reconstruction errors compared to a single-stage network and projective geometry-based methods, respectively. Our method demonstrated robustness to overcome challenges such as vessel foreshortening or overlap in the input images. This work is an important step towards automated analysis of anatomic and functional disease severity in the coronary arteries.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1140/epjd/s10053-023-00763-w",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1140/epjd/s10053-023-00763-w"
+      }
+    ],
+    "title": "A comparative laboratory study of soft X-ray-induced ionization and fragmentation of five small PAH cations",
+    "creators": [
+      {
+        "creator": "Huo, Yining"
+      },
+      {
+        "creator": "Cangahuala, Mónica K. Espinoza"
+      },
+      {
+        "ORCID": "0000-0002-4038-0584",
+        "creator": "Zamudio-Bayer, Vicente"
+      },
+      {
+        "creator": "Goulart, Marcelo"
+      },
+      {
+        "creator": "Kubin, Markus"
+      },
+      {
+        "creator": "Timm, Martin"
+      },
+      {
+        "creator": "Lau, J. Tobias"
+      },
+      {
+        "creator": "Issendorff, Bernd von"
+      },
+      {
+        "creator": "Hoekstra, Ronnie"
+      },
+      {
+        "creator": "Faraji, Shirin"
+      },
+      {
+        "ORCID": "0000-0001-9923-172X",
+        "creator": "Schlathölter, Thomas"
+      }
+    ],
+    "publicationName": "The European Physical Journal D",
+    "openaccess": "true",
+    "doi": "10.1140/epjd/s10053-023-00763-w",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-16",
+    "publicationType": "Journal",
+    "issn": "1434-6079",
+    "volume": "77",
+    "number": "10",
+    "genre": [
+      "OriginalPaper",
+      "Regular Article - Atomic and Molecular Collisions"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "10053",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Abstract The interaction between polycyclic aromatic hydrocarbon (PAH) radical cations and X-rays predominantly leads to photofragmentation, a process that strongly depends on PAH size and geometry. In our experiments, five prototypical PAHs were exposed to monochromatic soft X-ray photons with energies in the C K-edge regime. As a function of soft X-ray photon energy, photoion yields were obtained by means of time-of-flight mass spectrometry. The resulting near-edge X-ray absorption mass spectra were interpreted using time-dependent density functional theory (TD-DFT) with a short-range corrected functional. We found that the carbon backbone of anthracene $$^+$$ + (C $$_{14}$$ 14 H $$_{10}^+$$ 10 + ), pyrene $$^+$$ + (C $$_{16}$$ 16 H $$_{10}^+$$ 10 + ) and coronene $$^+$$ + (C $$_{24}$$ 24 H $$_{12}^+$$ 12 + ) can survive soft X-ray absorption, even though mostly intermediate size fragments are formed. In contrast, for hexahydropyrene $$^+$$ + (C $$_{16}$$ 16 H $$_{16}^+$$ 16 + ) and triphenylene $$^+$$ + (C $$_{18}$$ 18 H $$_{12}^+$$ 12 + ) molecular survival is not observed and the fragmentation pattern is dominated by small fragments. For a given excitation energy, molecular survival evidently does not simply correlate with PAH size but strongly depends on other PAH properties. Graphic abstract ",
+    "subjects": [
+      "Physics",
+      "Atomic, Molecular, Optical and Plasma Physics",
+      "Physical Chemistry",
+      "Quantum Physics",
+      "Quantum Information Technology, Spintronics",
+      "Spectroscopy/Spectrometry",
+      "Applications of Nonlinear Dynamics and Chaos Theory"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s10053-023-00763-w.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44818-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44818-9"
+      }
+    ],
+    "title": "Computer-aided diagnosis of chest X-ray for COVID-19 diagnosis in external validation study by radiologists with and without deep learning system",
+    "creators": [
+      {
+        "creator": "Miyazaki, Aki"
+      },
+      {
+        "creator": "Ikejima, Kengo"
+      },
+      {
+        "creator": "Nishio, Mizuho"
+      },
+      {
+        "creator": "Yabuta, Minoru"
+      },
+      {
+        "creator": "Matsuo, Hidetoshi"
+      },
+      {
+        "creator": "Onoue, Koji"
+      },
+      {
+        "creator": "Matsunaga, Takaaki"
+      },
+      {
+        "creator": "Nishioka, Eiko"
+      },
+      {
+        "creator": "Kono, Atsushi"
+      },
+      {
+        "creator": "Yamada, Daisuke"
+      },
+      {
+        "creator": "Oba, Ken"
+      },
+      {
+        "creator": "Ishikura, Reiichi"
+      },
+      {
+        "creator": "Murakami, Takamichi"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44818-9",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-16",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "12",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "To evaluate the diagnostic performance of our deep learning (DL) model of COVID-19 and investigate whether the diagnostic performance of radiologists was improved by referring to our model. Our datasets contained chest X-rays (CXRs) for the following three categories: normal (NORMAL), non-COVID-19 pneumonia (PNEUMONIA), and COVID-19 pneumonia (COVID). We used two public datasets and private dataset collected from eight hospitals for the development and external validation of our DL model (26,393 CXRs). Eight radiologists performed two reading sessions: one session was performed with reference to CXRs only, and the other was performed with reference to both CXRs and the results of the DL model. The evaluation metrics for the reading session were accuracy, sensitivity, specificity, and area under the curve (AUC). The accuracy of our DL model was 0.733, and that of the eight radiologists without DL was 0.696 ± 0.031. There was a significant difference in AUC between the radiologists with and without DL for COVID versus NORMAL or PNEUMONIA ( p  = 0.0038). Our DL model alone showed better diagnostic performance than that of most radiologists. In addition, our model significantly improved the diagnostic performance of radiologists for COVID versus NORMAL or PNEUMONIA.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-44818-9.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-44217-0",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-44217-0"
+      }
+    ],
+    "title": "Similarities and discrepancies between commercially available bioelectrical impedance analysis system and dual-energy X-ray absorptiometry for body composition assessment in 10–14-year-old children",
+    "creators": [
+      {
+        "creator": "Ohara, Kumiko"
+      },
+      {
+        "creator": "Nakamura, Harunobu"
+      },
+      {
+        "creator": "Kouda, Katsuyasu"
+      },
+      {
+        "creator": "Fujita, Yuki"
+      },
+      {
+        "creator": "Mase, Tomoki"
+      },
+      {
+        "creator": "Momoi, Katsumasa"
+      },
+      {
+        "creator": "Nishiyama, Toshimasa"
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-44217-0",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-13",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "14",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "A variety of easy-to-use commercial bioelectrical impedance appliances are available. The aim of this study was to examine the usefulness of a commercially available body composition meter using bioelectrical impedance analysis (BIA) by comparing its measurement results with those obtained from dual-energy X-ray absorptiometry (DXA). The participants were 443 children aged from 10 to 14 years (226 boys and 217 girls). Fat mass, fat-free mass, lean body mass, percentage of body fat, and bone mineral contents were evaluated for all participants using BIA and DXA. The agreement in the anthropometric data obtained from both devices was analyzed using correlation analysis, intraclass correlation coefficient (ICC), Lin’s concordance correlation coefficient (CCC), Bland–Altman plots, and ordinary least products regression analysis. Equivalence between both devices was tested by two one-sided t -test. All measured indicators showed strong linear correlations between the two measurement systems (r, 0.853–1.000). Fat mass, fat-free mass, and lean body mass showed absolute concordance (ICC, 0.902–0.972; Lin’s CCC, 0.902–0.972). BIA overestimated bone mineral content (62.7–66.5%) and underestimated percentage of body fat (− 8.9 to − 0.8%), lean body mass (− 3.5 to − 1.8%), and body mass (− 0.8 to − 0.5%). For fat mass and fat-free mass, the overestimate or underestimate varied according to the sex and statistical analysis test. Bland–Altman analysis and ordinary least products analysis showed fixed bias and proportional bias in all indicators. Results according to quartiles of body mass index showed poor agreement for fat mass and percentage of body fat in both boys and girls in the lowest body mass index quartile. The present results revealed strong linear correlations between BIA and DXA, which confirmed the validity of the present single-frequency BIA-derived parameters. Our results suggest that BIA cannot provide the exact same values as DXA for some body composition parameters, but that performance is sufficient for longitudinal use within an individual for daily health management and monitoring.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-43924-y",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-43924-y"
+      }
+    ],
+    "title": "X-ray spectroscopy station for sample characterization at ELI Beamlines",
+    "creators": [
+      {
+        "creator": "Zymaková, A."
+      },
+      {
+        "creator": "Precek, M."
+      },
+      {
+        "creator": "Picchiotti, A."
+      },
+      {
+        "creator": "Błachucki, W."
+      },
+      {
+        "creator": "Zymak, I."
+      },
+      {
+        "creator": "Szlachetko, J."
+      },
+      {
+        "creator": "Vankó, G."
+      },
+      {
+        "creator": "Németh, Z."
+      },
+      {
+        "creator": "Sá, J."
+      },
+      {
+        "creator": "Wiste, T."
+      },
+      {
+        "creator": "Andreasson, J."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-43924-y",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-12",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "9",
+    "journalId": "41598",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "X-ray spectroscopy is a demanded tool across multiple user communities. Here we report on a new station for X-ray emission spectroscopy at the Extreme Light Infrastructure Beamlines Facility. The instrument utilizes the von Hamos geometry and works with a number of different sample types, notably including liquid systems. We demonstrate a simple and reliable method for source position control using two cameras. This approach addresses energy calibration dependence on sample position, which is a characteristic source of measurement uncertainty for wavelength dispersive spectrometers in XES arrangement. We also present a straightforward procedure for energy calibration of liquid and powder samples to a thin film reference. The developed instrumentation enabled us to perform the first experimental determination of the Kα lines of liquidized K 3 Fe(CN) 6 as well as powdered and liquidized FeNH 4 (SO 4 ) 2 . Finally, we report on proof-of-principle use of a colliding jet liquid sample delivery system in an XES experiment.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s41598-023-43924-y.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s40618-023-02211-3",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s40618-023-02211-3"
+      }
+    ],
+    "title": "Role of active and environmental tobacco smoke on susceptibility to osteoporosis in women undergoing dual-X-ray absorptiometry",
+    "creators": [
+      {
+        "ORCID": "0009-0009-6574-9120",
+        "creator": "Vergatti, A."
+      },
+      {
+        "ORCID": "0000-0003-0085-0067",
+        "creator": "Abate, V."
+      },
+      {
+        "ORCID": "0000-0001-7229-3605",
+        "creator": "Giaquinto, A."
+      },
+      {
+        "creator": "Altavilla, N."
+      },
+      {
+        "ORCID": "0000-0002-1782-0211",
+        "creator": "D’Elia, L."
+      },
+      {
+        "ORCID": "0000-0002-7821-4768",
+        "creator": "Evangelista, M."
+      },
+      {
+        "ORCID": "0000-0003-1313-5599",
+        "creator": "Filippo, G."
+      },
+      {
+        "creator": "Piccinocchi, G."
+      },
+      {
+        "ORCID": "0000-0001-6833-4232",
+        "creator": "Gennari, L."
+      },
+      {
+        "ORCID": "0000-0002-3338-6339",
+        "creator": "Merlotti, D."
+      },
+      {
+        "ORCID": "0000-0001-7556-0254",
+        "creator": "Galletti, F."
+      },
+      {
+        "ORCID": "0000-0001-8400-6458",
+        "creator": "Strazzullo, P."
+      },
+      {
+        "ORCID": "0000-0002-0331-0392",
+        "creator": "Rendina, D."
+      }
+    ],
+    "publicationName": "Journal of Endocrinological Investigation",
+    "openaccess": "true",
+    "doi": "10.1007/s40618-023-02211-3",
+    "publisher": "Springer",
+    "publicationDate": "2023-10-11",
+    "publicationType": "Journal",
+    "issn": "1720-8386",
+    "volume": "",
+    "number": "",
+    "genre": [
+      "OriginalPaper",
+      "Original Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "10",
+    "journalId": "40618",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Purpose Current smoking is a risk factor for osteoporosis (Op), but few data are available regarding the passive smoke impact on Op susceptibility. This cross-sectional study aimed to evaluate the association between the smoking habits and Op in community-dwelling women undergoing dual-energy X-ray absorptiometry (DXA). Methods On 01/06/2018, general practitioners from “COMEGEN” Medical Cooperative, Naples, Italy, selected the medical records from the last 10 years of women who had a measurement of bone mineral density performed and simultaneously completed a questionnaire about their smoking behaviour and their cohabiters’. The binary logistic regression analysis was used to estimate the role of passive smoke on the risk of Op, adjusting for age and body mass index (BMI). Results Among 10,616 subjects, 3942 were currently smokers [CS; mean age 69.4 ± 10.4 years; BMI 27.0 ± 4.9 kg/m 2 ], 873 were passive smokers (PS; mean age 67.8 ± 11.6 years; BMI 27.0 ± 4.9 kg/m 2 ) and 5781 were never smokers (NS; mean age 67.8 ± 11.6 years; body mass index (BMI) 27.0 ± 4.9 kg/m 2 ). Of all, 8562 women (mean age 70.3 ± 10.2 yrs; BMI 27.0 ± 4.9 kg/m 2 ) received the Op diagnosis. PS showed an increased Op risk compared to NS [odds ratio (OR) 1.38 (1.14–1.67)] and comparable to CS [OR 1.02 (0.84–1.24)]. Conclusion The study results demonstrate an association between passive smoke and Op in community-dwelling women already presenting with susceptibility to Op according to Italian essential assistance levels, suggesting that passive and active smoke are equivalent Op risk factors in women.",
+    "subjects": [
+      "Medicine & Public Health",
+      "Medicine/Public Health, general",
+      "Endocrinology",
+      "Metabolic Diseases",
+      "Internal Medicine"
+    ],
+    "FullText": "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/s40618-023-02211-3.pdf"
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s42005-023-01412-9",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s42005-023-01412-9"
+      }
+    ],
+    "title": "Femtosecond multimodal imaging with a laser-driven X-ray source",
+    "creators": [
+      {
+        "creator": "Doherty, Adam"
+      },
+      {
+        "creator": "Fourmaux, Sylvain"
+      },
+      {
+        "creator": "Astolfo, Alberto"
+      },
+      {
+        "ORCID": "0000-0001-7955-6893",
+        "creator": "Ziesche, Ralf"
+      },
+      {
+        "ORCID": "0000-0003-4413-7044",
+        "creator": "Wood, Jonathan"
+      },
+      {
+        "creator": "Finlay, Oliver"
+      },
+      {
+        "ORCID": "0000-0003-0282-4401",
+        "creator": "Stolp, Wiebe"
+      },
+      {
+        "creator": "Batey, Darren"
+      },
+      {
+        "ORCID": "0000-0001-9795-5345",
+        "creator": "Manke, Ingo"
+      },
+      {
+        "creator": "Légaré, François"
+      },
+      {
+        "ORCID": "0000-0002-5478-4141",
+        "creator": "Boone, Matthieu"
+      },
+      {
+        "creator": "Symes, Dan"
+      },
+      {
+        "ORCID": "0000-0001-6323-4005",
+        "creator": "Najmudin, Zulfikar"
+      },
+      {
+        "creator": "Endrizzi, Marco"
+      },
+      {
+        "ORCID": "0000-0002-7150-2951",
+        "creator": "Olivo, Alessandro"
+      },
+      {
+        "ORCID": "0000-0002-3485-2856",
+        "creator": "Cipiccia, Silvia"
+      }
+    ],
+    "publicationName": "Communications Physics",
+    "openaccess": "true",
+    "doi": "10.1038/s42005-023-01412-9",
+    "publisher": "Nature",
+    "publicationDate": "2023-10-11",
+    "publicationType": "Journal",
+    "issn": "2399-3650",
+    "volume": "6",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "8",
+    "journalId": "42005",
+    "copyright": "©2023 Springer Nature Limited",
+    "abstract": "Laser-plasma accelerators are compact linear accelerators based on the interaction of high-power lasers with plasma to form accelerating structures up to 1000 times smaller than standard radiofrequency cavities, and they come with an embedded X-ray source, namely betatron source, with unique properties: small source size and femtosecond pulse duration. A still unexplored possibility to exploit the betatron source comes from combining it with imaging methods able to encode multiple information like transmission and phase into a single-shot acquisition approach. In this work, we combine edge illumination-beam tracking (EI-BT) with a betatron X-ray source and present the demonstration of multimodal imaging (transmission, refraction, and scattering) with a compact light source down to the femtosecond timescale. The advantage of EI-BT is that it allows multimodal X-ray imaging technique, granting access to transmission, refraction and scattering signals from standard low-coherence laboratory X-ray sources in a single shot. Laser-plasma electron accelerators are ultracompact and come with an embedded betatron X-ray source with small source size and ultrashort pulse length. The authors combine the edge illumination-beam tracking technique with a compact plasma X-ray source and present a demonstration of multimodal imaging down to the femtosecond timescale.",
+    "subjects": [
+      "Physics",
+      "Physics, general"
     ],
     "FullText": null
   }
