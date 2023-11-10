@@ -1,0 +1,741 @@
+[
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s41127-023-00064-4",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s41127-023-00064-4"
+      }
+    ],
+    "title": "Revealing enhanced X-Ray radiation shielding of 2D layered materials and their laminar heterostructures",
+    "creators": [
+      {
+        "creator": "Yu, Le"
+      },
+      {
+        "creator": "Nine, Md J."
+      },
+      {
+        "creator": "Tung, Tran T."
+      },
+      {
+        "creator": "Pereira, Ana L. C."
+      },
+      {
+        "creator": "Hassan, Kamrul"
+      },
+      {
+        "creator": "Tran, Diana"
+      },
+      {
+        "creator": "Santos, Alexandre"
+      },
+      {
+        "creator": "Losic, Dusan"
+      }
+    ],
+    "publicationName": "Graphene and 2D Materials",
+    "openaccess": "true",
+    "doi": "10.1007/s41127-023-00064-4",
+    "publisher": "Springer",
+    "publicationDate": "2023-12-01",
+    "publicationType": "Journal",
+    "issn": "2731-6513",
+    "volume": "8",
+    "number": "3-4",
+    "genre": [
+      "OriginalPaper",
+      "Original Article"
+    ],
+    "startingPage": "151",
+    "endingPage": "159",
+    "journalId": "41127",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "This paper demonstrates a new concept of using two-dimensional (2D) layered materials and their heterostructures for enhanced X-ray radiation shielding. This phenomenon is revealed by characterization on the X-ray shielding performances of several 2D materials with high atomic numbers (Z), including MoS 2 , antimonene (Sb), and MXene prepared as multi-layered and heterostructure films by assembly their few-layer sheets. Results showed considerable X-ray shielding enhancement of (40–50%) at 30 kVp for individual 2D multi-layered films compared with their bulk structures of these materials. Furthermore, when these multi-layered films were combined into laminar heterostructures structures (e.g., MoS 2  + MXene), further enhancement of 60% was achieved. The mechanism of the observed X-ray shielding enhancement by these multi-layered 2D structures is not clear at this stage. It is postulated to be the result of an additional multiple scattering and reflections of photons between multiple layers of 2D crystals inside the film, which does not occur in their uniform bulk materials. The presented results suggest that multi-layered 2D materials with high atomic numbers (Z) and their laminar heterostructures could offer a new and promising strategy for designing of a new generation of Pb-free radiation-shielding materials, which is urgently needed across broad sectors. Graphical abstract ",
+    "subjects": [
+      "Materials Science",
+      "Nanotechnology",
+      "Nanotechnology and Microengineering",
+      "Nanoscale Science and Technology"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s40494-023-01073-5",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s40494-023-01073-5"
+      }
+    ],
+    "title": "X-ray-based examination of artworks by Cy Twombly: art technology and condition of the ‘Original Sculptures’",
+    "creators": [
+      {
+        "ORCID": "0000-0001-5863-360X",
+        "creator": "Reinhardt, Juliana"
+      },
+      {
+        "creator": "Tischer, Michaela"
+      },
+      {
+        "creator": "Schmid, Simon"
+      },
+      {
+        "creator": "Kollofrath, Jochen"
+      },
+      {
+        "creator": "Burger, Ruben"
+      },
+      {
+        "creator": "Jatzlau, Philipp"
+      },
+      {
+        "creator": "Bushart, Elisabeth"
+      },
+      {
+        "creator": "Goldammer, Matthias"
+      },
+      {
+        "creator": "Grosse, Christian U."
+      }
+    ],
+    "publicationName": "Heritage Science",
+    "openaccess": "true",
+    "doi": "10.1186/s40494-023-01073-5",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-10",
+    "publicationType": "Journal",
+    "issn": "2050-7445",
+    "volume": "11",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Research"
+    ],
+    "startingPage": "1",
+    "endingPage": "11",
+    "journalId": "40494",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "What are Cy Twombly’s sculptures made of? This article presents an overview of a non-destructive examination conducted on three sculptures by American artist Cy Twombly (1928–2011) as part of an art-technological research project at the Doerner Institut in Munich. The artworks are part of the collection of the Brandhorst Museum and belong to Twombly’s series of so-called ‘Original Sculptures’: assemblages of individual found objects, which the artist covered and modified with layers of plaster and white paint. To develop a long-term preservation strategy, the research focused on understanding the materials and construction methods used in Twombly's sculptures. In collaboration with the Chair of Non-Destructive Testing at the Technical University of Munich, the artworks were inspected using X-ray radiography and computed tomography. The results showed that Cy Twombly used various everyday objects made from wood, plastics, metal, and paper/cardboard to build the assemblages. Unexpectedly, the examinations revealed that the individual parts are solely held together by the coating of plaster and paint, lacking additional mechanical connections. The overall structure thus proved to be very fragile and highly sensitive to physical stresses, whether due to handling, transport, or strains in the microstructure caused by climatic fluctuations. Since little was known about Cy Twombly´s choice of materials and manufacturing details, the results offer valuable insights into the overall artistic process and decision-making of one of the most influential artists of the 20th/twenty-first centuries. Conservators can use the art-technological findings to monitor the sculptures ‘condition and develop or adapt long-term preservation strategies, including aspects such as ambient climatic conditions and handling storage and transport specifications. In addition, the knowledge generated can be used for further research on the specific materials and transferred to other artworks by Cy Twombly.",
+    "subjects": [
+      "Materials Science",
+      "Materials Science, general"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-42684-7",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-42684-7"
+      }
+    ],
+    "title": "Extended X-ray absorption fine structure of dynamically-compressed copper up to 1 terapascal",
+    "creators": [
+      {
+        "ORCID": "0000-0001-7274-236X",
+        "creator": "Sio, H."
+      },
+      {
+        "ORCID": "0000-0001-6178-1195",
+        "creator": "Krygier, A."
+      },
+      {
+        "creator": "Braun, D. G."
+      },
+      {
+        "ORCID": "0000-0002-6632-2681",
+        "creator": "Rudd, R. E."
+      },
+      {
+        "creator": "Bonev, S. A."
+      },
+      {
+        "ORCID": "0000-0003-1592-3898",
+        "creator": "Coppari, F."
+      },
+      {
+        "ORCID": "0000-0003-4414-3532",
+        "creator": "Millot, M."
+      },
+      {
+        "creator": "Fratanduono, D. E."
+      },
+      {
+        "ORCID": "0000-0003-0539-4216",
+        "creator": "Bhandarkar, N."
+      },
+      {
+        "creator": "Bitter, M."
+      },
+      {
+        "creator": "Bradley, D. K."
+      },
+      {
+        "creator": "Efthimion, P. C."
+      },
+      {
+        "ORCID": "0000-0001-5730-7108",
+        "creator": "Eggert, J. H."
+      },
+      {
+        "ORCID": "0000-0002-4119-2825",
+        "creator": "Gao, L."
+      },
+      {
+        "creator": "Hill, K. W."
+      },
+      {
+        "creator": "Hood, R."
+      },
+      {
+        "creator": "Hsing, W."
+      },
+      {
+        "ORCID": "0000-0003-1114-597X",
+        "creator": "Izumi, N."
+      },
+      {
+        "creator": "Kemp, G."
+      },
+      {
+        "creator": "Kozioziemski, B."
+      },
+      {
+        "ORCID": "0000-0002-1499-8217",
+        "creator": "Landen, O. L."
+      },
+      {
+        "creator": "Le Galloudec, K."
+      },
+      {
+        "creator": "Lockard, T. E."
+      },
+      {
+        "creator": "Mackinnon, A."
+      },
+      {
+        "ORCID": "0000-0003-3526-9379",
+        "creator": "McNaney, J. M."
+      },
+      {
+        "creator": "Ose, N."
+      },
+      {
+        "ORCID": "0000-0002-8285-8275",
+        "creator": "Park, H.-S."
+      },
+      {
+        "creator": "Remington, B. A."
+      },
+      {
+        "creator": "Schneider, M. B."
+      },
+      {
+        "creator": "Stoupin, S."
+      },
+      {
+        "creator": "Thorn, D. B."
+      },
+      {
+        "creator": "Vonhof, S."
+      },
+      {
+        "creator": "Wu, C. J."
+      },
+      {
+        "ORCID": "0000-0002-4879-9072",
+        "creator": "Ping, Y."
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-42684-7",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-10",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "8",
+    "journalId": "41467",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Large laser facilities have recently enabled material characterization at the pressures of Earth and Super-Earth cores. However, the temperature of the compressed materials has been largely unknown, or solely relied on models and simulations, due to lack of diagnostics under these challenging conditions. Here, we report on temperature, density, pressure, and local structure of copper determined from extended x-ray absorption fine structure and velocimetry up to 1 Terapascal. These results nearly double the highest pressure at which extended x-ray absorption fine structure has been reported in any material. In this work, the copper temperature is unexpectedly found to be much higher than predicted when adjacent to diamond layer(s), demonstrating the important influence of the sample environment on the thermal state of materials; this effect may introduce additional temperature uncertainties in some previous experiments using diamond and provides new guidance for future experimental design. Dynamic compression experiments enable material studies in regimes relevant for planetary science, but temperature is difficult to measure in these challenging conditions. Here, the authors report on temperature, density, pressure, and structure of dynamically compressed Cu up to 1 TPa determined from extended x-ray absorption fine structure and velocimetry.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-46493-2",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-46493-2"
+      }
+    ],
+    "title": "Improving explainable AI with patch perturbation-based evaluation pipeline: a COVID-19 X-ray image analysis case study",
+    "creators": [
+      {
+        "creator": "Sun, Jimin"
+      },
+      {
+        "ORCID": "0000-0001-8972-7342",
+        "creator": "Shi, Wenqi"
+      },
+      {
+        "ORCID": "0000-0002-8355-3705",
+        "creator": "Giuste, Felipe O."
+      },
+      {
+        "creator": "Vaghani, Yog S."
+      },
+      {
+        "creator": "Tang, Lingzi"
+      },
+      {
+        "creator": "Wang, May D."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-46493-2",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-09",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "18",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Recent advances in artificial intelligence (AI) have sparked interest in developing explainable AI (XAI) methods for clinical decision support systems, especially in translational research. Although using XAI methods may enhance trust in black-box models, evaluating their effectiveness has been challenging, primarily due to the absence of human (expert) intervention, additional annotations, and automated strategies. In order to conduct a thorough assessment, we propose a patch perturbation-based approach to automatically evaluate the quality of explanations in medical imaging analysis. To eliminate the need for human efforts in conventional evaluation methods, our approach executes poisoning attacks during model retraining by generating both static and dynamic triggers. We then propose a comprehensive set of evaluation metrics during the model inference stage to facilitate the evaluation from multiple perspectives, covering a wide range of correctness, completeness, consistency, and complexity. In addition, we include an extensive case study to showcase the proposed evaluation strategy by applying widely-used XAI methods on COVID-19 X-ray imaging classification tasks, as well as a thorough review of existing XAI methods in medical imaging analysis with evaluation availability. The proposed patch perturbation-based workflow offers model developers an automated and generalizable evaluation strategy to identify potential pitfalls and optimize their proposed explainable solutions, while also aiding end-users in comparing and selecting appropriate XAI methods that meet specific clinical needs in real-world clinical research and practice.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-45533-1",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-45533-1"
+      }
+    ],
+    "title": "Synthesis, X-ray crystallography and antimicrobial activity of 2-cyanoguanidinophenytoin",
+    "creators": [
+      {
+        "creator": "Mabied, Ahmed F."
+      },
+      {
+        "creator": "Moustafa, Amr H."
+      },
+      {
+        "creator": "Abdelhamid, Antar A."
+      },
+      {
+        "creator": "Tiama, Taha M."
+      },
+      {
+        "creator": "Amer, Amer A."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-45533-1",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-09",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "12",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "The optimized synthesis of [5-oxo-4,4-diphenylimidazolidin-2-ylidene]cyanamide, which is known as 2-cyanoguanidinophenytoin (CNG-DPH) (3), and (imidazo[4,5-d]imidazole-2,5-diylidine)dicyanamide (4) has been reported in the present work. Furthermore, new Mannich bases derived from CNG-DPH were synthesized via its reaction with formaldehyde and using the corresponding amines, piperidine (base 5), and morpholine (base 6). Also, the antimicrobial activity and X-ray crystal structures for CNG-DPH and their Mannich bases were studied. The bases 3 and 6 crystallized in a monoclinic system; the crystal structure of 3 containing four molecules in the unit cell with a P 2 1 / c space group. The unit cell of 6 has eight molecules with a C 2/ c space group. The inter and intra hydrogen bond contacts packed and stabilized both of the structures. The morpholine ring of base 6 demonstrated a distinctive chair configuration. Mannich bases 5 and 6 showed promising antimicrobial effects. base 4 has a greater percentage for in vitro cytotoxicity (IC 50 ) against normal cells, whereas 3 has the lowest ratio.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1186/s41747-023-00386-1",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1186/s41747-023-00386-1"
+      }
+    ],
+    "title": "Pulmonary abnormality screening on chest x-rays from different machine specifications: a generalized AI-based image manipulation pipeline",
+    "creators": [
+      {
+        "ORCID": "0009-0005-7437-7278",
+        "creator": "Shin, Heejun"
+      },
+      {
+        "creator": "Kim, Taehee"
+      },
+      {
+        "creator": "Park, Juhyung"
+      },
+      {
+        "creator": "Raj, Hruthvik"
+      },
+      {
+        "creator": "Jabbar, Muhammad Shahid"
+      },
+      {
+        "creator": "Abebaw, Zeleke Desalegn"
+      },
+      {
+        "creator": "Lee, Jongho"
+      },
+      {
+        "creator": "Van, Cong Cung"
+      },
+      {
+        "creator": "Kim, Hyungjin"
+      },
+      {
+        "ORCID": "0000-0002-2549-0136",
+        "creator": "Shin, Dongmyung"
+      }
+    ],
+    "publicationName": "European Radiology Experimental",
+    "openaccess": "true",
+    "doi": "10.1186/s41747-023-00386-1",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-09",
+    "publicationType": "Journal",
+    "issn": "2509-9280",
+    "volume": "7",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Original article"
+    ],
+    "startingPage": "1",
+    "endingPage": "13",
+    "journalId": "41747",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Background Chest x-ray is commonly used for pulmonary abnormality screening. However, since the image characteristics of x-rays highly depend on the machine specifications, an artificial intelligence (AI) model developed for specific equipment usually fails when clinically applied to various machines. To overcome this problem, we propose an image manipulation pipeline. Methods A total of 15,010 chest x-rays from systems with different generators/detectors were retrospectively collected from five institutions from May 2020 to February 2021. We developed an AI model to classify pulmonary abnormalities using x-rays from a single system. Then, we externally tested its performance on chest x-rays from various machine specifications. We compared the area under the receiver operating characteristics curve (AUC) of AI models developed using conventional image processing pipelines (histogram equalization [HE], contrast-limited histogram equalization [CLAHE], and unsharp masking [UM] with common data augmentations) with that of the proposed manipulation pipeline (XM-pipeline). Results The XM-pipeline model showed the highest performance for all the datasets of different machine specifications, such as chest x-rays acquired from a computed radiography system ( n  = 356, AUC 0.944 for XM-pipeline versus 0.917 for HE, 0.705 for CLAHE, 0.544 for UM, p $$\\le$$ ≤ 0.001, for all) and from a mobile x-ray generator ( n  = 204, AUC 0.949 for XM-pipeline versus 0.933 for HE, p  = 0.042, 0.932 for CLAHE ( p  = 0.009), 0.925 for UM ( p  = 0.001). Conclusions Applying the XM-pipeline to AI training increased the diagnostic performance of the AI model on the chest x-rays of different machine configurations. Relevance statement The proposed training pipeline would successfully promote a wide application of the AI model for abnormality screening when chest x-rays are acquired using various x-ray machines. Key points • AI models developed using x-rays of a specific machine suffer from generalization. • We proposed a new image processing pipeline to address the generalization problem. • AI models were tested using multicenter external x-ray datasets of various machines. • AI with our pipeline achieved the highest diagnostic performance than conventional methods. Graphical Abstract ",
+    "subjects": [
+      "Medicine & Public Health",
+      "Imaging / Radiology",
+      "Diagnostic Radiology",
+      "Interventional Radiology",
+      "Neuroradiology",
+      "Ultrasound",
+      "Internal Medicine"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1140/epjp/s13360-023-04635-5",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1140/epjp/s13360-023-04635-5"
+      }
+    ],
+    "title": "Deterioration effects of X-ray irradiation in artificially aged parchment",
+    "creators": [
+      {
+        "creator": "Mercuri, Fulvio"
+      },
+      {
+        "ORCID": "0000-0003-3396-7982",
+        "creator": "Cicero, Cristina"
+      },
+      {
+        "creator": "Paoloni, Stefano"
+      },
+      {
+        "creator": "Zammit, Ugo"
+      },
+      {
+        "creator": "Orazi, Noemi"
+      },
+      {
+        "creator": "Vadrucci, Monia"
+      },
+      {
+        "creator": "Severini, Leonardo"
+      },
+      {
+        "creator": "Mazzuca, Claudia"
+      }
+    ],
+    "publicationName": "The European Physical Journal Plus",
+    "openaccess": "true",
+    "doi": "10.1140/epjp/s13360-023-04635-5",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-08",
+    "publicationType": "Journal",
+    "issn": "2190-5444",
+    "volume": "138",
+    "number": "11",
+    "genre": [
+      "OriginalPaper",
+      "Regular Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "10",
+    "journalId": "13360",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "The effects of X-ray irradiation, a potential disinfection method, produced in parchment samples with different extent of artificial ageing have been investigated to analyse the possible superposition effects of the irradiation-induced damage with the existing ageing associated deterioration. The study was carried out in modern parchment samples in which different degrees of artificial ageing were induced by exposing them to severe hygro-thermal conditions for various durations. The aged samples were subsequently irradiated with increasing X-ray doses (350–4000 Gy). The consequent deterioration effects were analysed using light transmission analysis (LTA), attenuated total reflectance-Fourier transform infrared spectroscopy (ATR-FTIR) and fibre optic reflectance spectroscopy (FORS) in order to evaluate possible changes in, respectively, the hydro-thermal stability, the collagen protein structure (hydrolysis/denaturation) and the optical absorption/reflectance properties of the collagen protein. The results show increasing additional deterioration with irradiation dose for non-aged and moderately aged parchment, until damage saturation occurs for more intensively aged samples where no substantial additional deterioration is induced by the irradiation. The combined results indicate that the ageing produces the more substantial deterioration with respect to that induced by the irradiation treatment employed for disinfection purpose.",
+    "subjects": [
+      "Physics",
+      "Applied and Technical Physics",
+      "Theoretical, Mathematical and Computational Physics",
+      "Complex Systems",
+      "Condensed Matter Physics",
+      "Atomic, Molecular, Optical and Plasma Physics"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41467-023-42573-z",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41467-023-42573-z"
+      }
+    ],
+    "title": "Prediction on X-ray output of free electron laser based on artificial neural networks",
+    "creators": [
+      {
+        "ORCID": "0000-0002-5311-930X",
+        "creator": "Li, Kenan"
+      },
+      {
+        "creator": "Zhou, Guanqun"
+      },
+      {
+        "creator": "Liu, Yanwei"
+      },
+      {
+        "ORCID": "0000-0003-1542-5688",
+        "creator": "Wu, Juhao"
+      },
+      {
+        "ORCID": "0000-0001-8086-2484",
+        "creator": "Lin, Ming-fu"
+      },
+      {
+        "ORCID": "0000-0001-7586-8240",
+        "creator": "Cheng, Xinxin"
+      },
+      {
+        "ORCID": "0000-0001-5791-9198",
+        "creator": "Lutman, Alberto A."
+      },
+      {
+        "ORCID": "0000-0002-4560-4698",
+        "creator": "Seaberg, Matthew"
+      },
+      {
+        "creator": "Smith, Howard"
+      },
+      {
+        "ORCID": "0000-0001-6617-8061",
+        "creator": "Kakhandiki, Pranav A."
+      },
+      {
+        "ORCID": "0009-0000-2357-7628",
+        "creator": "Sakdinawat, Anne"
+      }
+    ],
+    "publicationName": "Nature Communications",
+    "openaccess": "true",
+    "doi": "10.1038/s41467-023-42573-z",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-08",
+    "publicationType": "Journal",
+    "issn": "2041-1723",
+    "volume": "14",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "9",
+    "journalId": "41467",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Knowledge of x-ray free electron lasers’ (XFELs) pulse characteristics delivered to a sample is crucial for ensuring high-quality x-rays for scientific experiments. XFELs’ self-amplified spontaneous emission process causes spatial and spectral variations in x-ray pulses entering a sample, which leads to measurement uncertainties for experiments relying on multiple XFEL pulses. Accurate in-situ measurements of x-ray wavefront and energy spectrum incident upon a sample poses challenges. Here we address this by developing a virtual diagnostics framework using an artificial neural network (ANN) to predict x-ray photon beam properties from electron beam properties. We recorded XFEL electron parameters while adjusting the accelerator’s configurations and measured the resulting x-ray wavefront and energy spectrum shot-to-shot. Training the ANN with this data enables effective prediction of single-shot or average x-ray beam output based on XFEL undulator and electron parameters. This demonstrates the potential of utilizing ANNs for virtual diagnostics linking XFEL electron and photon beam properties. Methods to characterize the free-electron laser pulses are evolving and their performances are also improving. Here the authors demonstrate a method based on the artificial neural networks to predict the output pulses of the X-ray free-electron laser by considering the electron beam parameters as input.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1007/s10443-023-10171-3",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1007/s10443-023-10171-3"
+      }
+    ],
+    "title": "Comparison of X-ray Computed Tomography and Ultrasonic C-Scan Techniques and Numerical Modelling of Impact Damage in a CFRP Composite Laminate",
+    "creators": [
+      {
+        "creator": "Evans, E. E."
+      },
+      {
+        "creator": "Brooks, R. A."
+      },
+      {
+        "creator": "Liu, J."
+      },
+      {
+        "creator": "Hall, Z. E. C."
+      },
+      {
+        "creator": "Liu, H."
+      },
+      {
+        "creator": "Lowe, T. J. E."
+      },
+      {
+        "creator": "Withers, P. J."
+      },
+      {
+        "creator": "Kinloch, A. J."
+      },
+      {
+        "ORCID": "0000-0001-5717-0914",
+        "creator": "Dear, J. P."
+      }
+    ],
+    "publicationName": "Applied Composite Materials",
+    "openaccess": "true",
+    "doi": "10.1007/s10443-023-10171-3",
+    "publisher": "Springer",
+    "publicationDate": "2023-11-08",
+    "publicationType": "Journal",
+    "issn": "1573-4897",
+    "volume": "",
+    "number": "",
+    "genre": "OriginalPaper",
+    "startingPage": "1",
+    "endingPage": "16",
+    "journalId": "10443",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Two different experimental techniques are employed to visualize the impact damage generated by a low-velocity impact on a carbon-fibre reinforced-polymer (CFRP) composite laminate. At the relatively low impact-velocity of 1.69 m.s −1 , and a corresponding impact energy of 7.5 J, used in the present work the damage induced in the CFRP panel is barely visible to the naked eye but the techniques of ultrasonic C-scan and X-ray computed tomography (CT) can detect the damage that has occurred. This damage is mostly interlaminar damage, i.e. delaminations, between the plies due to a change in modulus from one ply to the next in the laminate. This interlaminar damage is usually accompanied by intralaminar damage, e.g. matrix cracking, in the ply itself. The type and extent of damage detected from using these two techniques is discussed and the relative merits of these techniques are compared. In general, the CT gave the better resolved picture of damage but the lateral extent of the damage was underestimated relative to C-scan which was more sensitive to very fine delamination cracks. In addition, a numerical approach, based on a finite-element analysis model, is employed to predict the type, location and extent of damage generated by the impact event and the modelling predictions are compared to the experimental results.",
+    "subjects": [
+      "Materials Science",
+      "Characterization and Evaluation of Materials",
+      "Classical Mechanics",
+      "Polymer Sciences",
+      "Industrial Chemistry/Chemical Engineering"
+    ],
+    "FullText": null
+  },
+  {
+    "contentType": "Article",
+    "identifier": "doi:10.1038/s41598-023-46147-3",
+    "language": "en",
+    "url": [
+      {
+        "format": "",
+        "platform": "",
+        "value": "http://dx.doi.org/10.1038/s41598-023-46147-3"
+      }
+    ],
+    "title": "Multi-class deep learning architecture for classifying lung diseases from chest X-Ray and CT images",
+    "creators": [
+      {
+        "creator": "Al-Sheikh, Mona Hmoud"
+      },
+      {
+        "creator": "Al Dandan, Omran"
+      },
+      {
+        "creator": "Al-Shamayleh, Ahmad Sami"
+      },
+      {
+        "creator": "Jalab, Hamid A."
+      },
+      {
+        "creator": "Ibrahim, Rabha W."
+      }
+    ],
+    "publicationName": "Scientific Reports",
+    "openaccess": "true",
+    "doi": "10.1038/s41598-023-46147-3",
+    "publisher": "Nature",
+    "publicationDate": "2023-11-08",
+    "publicationType": "Journal",
+    "issn": "2045-2322",
+    "volume": "13",
+    "number": "1",
+    "genre": [
+      "OriginalPaper",
+      "Article"
+    ],
+    "startingPage": "1",
+    "endingPage": "14",
+    "journalId": "41598",
+    "copyright": "©2023 The Author(s)",
+    "abstract": "Medical imaging is considered a suitable alternative testing method for the detection of lung diseases. Many researchers have been working to develop various detection methods that have aided in the prevention of lung diseases. To better understand the condition of the lung disease infection, chest X-Ray and CT scans are utilized to check the disease’s spread throughout the lungs. This study proposes an automated system for the detection multi lung diseases in X-Ray and CT scans. A customized convolutional neural network (CNN) and two pre-trained deep learning models with a new image enhancement model are proposed for image classification. The proposed lung disease detection comprises two main steps: pre-processing, and deep learning classification. The new image enhancement algorithm is developed in the pre-processing step using k-symbol Lerch transcendent functions model which enhancement images based on image pixel probability. While, in the classification step, the customized CNN architecture and two pre-trained CNN models Alex Net, and VGG16Net are developed. The proposed approach was tested on publicly available image datasets (CT, and X-Ray image dataset), and the results showed classification accuracy, sensitivity, and specificity of 98.60%, 98.40%, and 98.50% for the X-Ray image dataset, respectively, and 98.80%, 98.50%, 98.40% for the CT scans dataset, respectively. Overall, the obtained results highlight the advantages of the image enhancement model as a first step in processing.",
+    "subjects": [
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, Humanities and Social Sciences, multidisciplinary",
+      "Science, multidisciplinary"
+    ],
+    "FullText": null
+  }
+]
