@@ -1,6 +1,14 @@
+from dotenv import load_dotenv
+import os
 from Bio import Entrez
 import requests
 import json
+load_dotenv()
+
+""""
+Must cite for using the pubmed bioc_url:
+Comeau DC, Wei CH, Islamaj Doğan R, and Lu Z. PMC text mining subset in BioC: about 3 million full text articles and growing, Bioinformatics, btz070, 2019.
+"""
 
 class PubMedXrayScraper:
     """
@@ -8,7 +16,6 @@ class PubMedXrayScraper:
     """
     def __init__(self, email):
         self.email = email
-        self.api_key = None  # Set your API key here if needed
         Entrez.email = email
 
     def search_xray_articles(self, query, max_results=10):
@@ -92,8 +99,12 @@ class PubMedXrayScraper:
         try:
             bioC_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/{pmid}/unicode"
             response = requests.get(bioC_url)
+            response_data = response.json()
+            response_text_mod = []
             if response.status_code == 200:
-                return response.text
+                passages = response_data['documents'][0]['passages']
+                response_text_mod = [passage['text'] for passage in passages]
+                return response_text_mod
             else:
                 print(f"Error fetching full article for PMID {pmid}: {response.status_code}")
         except Exception as e:
@@ -107,8 +118,10 @@ class PubMedXrayScraper:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=2)
 
+
+#Testing:
 if __name__ == "__main__":
-    email = "msspam132@gmail.com"  # Replace with your email address (this is my spam email address... I think the email address has to be associated with a pubmed account)
+    email = os.environ.get("PUBMED_EMAIL")  # I think the email address has to be associated with a pubmed account
     xray_scraper = PubMedXrayScraper(email)
     xray_articles = xray_scraper.search_xray_articles("X-ray AND open access", max_results=10)
     xray_scraper.save_to_json(xray_articles, "xray_articles.json")
