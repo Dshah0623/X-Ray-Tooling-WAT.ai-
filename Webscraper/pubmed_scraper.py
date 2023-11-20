@@ -26,7 +26,8 @@ class PubMedXrayScraper:
         search_results = self._perform_search(query, max_results)
         articles = self._fetch_articles_metadata(search_results)
         self._fetch_full_articles(articles)
-        return articles
+        articles_filtered = [i for i in articles if i['FullText'] is not None]
+        return articles_filtered
 
     def _perform_search(self, query, max_results):
         """
@@ -73,12 +74,13 @@ class PubMedXrayScraper:
         record must be the return of a call to the pubmed api for metadata
         returns a dictionary of the metadata
         """
+        date = record['PubmedArticle'][0]['PubmedData']['History'][0]
         article_data = {
             "Title": record['PubmedArticle'][0]['MedlineCitation']['Article']['ArticleTitle'],
             "Authors": [author['LastName'] + ' ' + author['Initials'] for author in record['PubmedArticle'][0]['MedlineCitation']['Article']['AuthorList']],
-            "Abstract": record['PubmedArticle'][0]['MedlineCitation']['Article']['Abstract']['AbstractText'],
             "PMID": record['PubmedArticle'][0]['PubmedData']['ArticleIdList'][0],
-            "PublicationDate": record['PubmedArticle'][0]['PubmedData']['History'][0]['Year'],
+            # "PublicationDate": record['PubmedArticle'][0]['PubmedData']['History'][0]['Year'],
+            "PublicationDate": f"{date['Year']}/{date['Month'].zfill(2)}/{date['Day'].zfill(2)}",
         }
         return article_data
 
@@ -103,7 +105,7 @@ class PubMedXrayScraper:
             response_text_mod = []
             if response.status_code == 200:
                 passages = response_data['documents'][0]['passages']
-                response_text_mod = [passage['text'] for passage in passages]
+                response_text_mod = [passage['text'] for passage in passages if passage['infons']]
                 return response_text_mod
             else:
                 print(f"Error fetching full article for PMID {pmid}: {response.status_code}")
@@ -122,6 +124,11 @@ class PubMedXrayScraper:
 #Testing:
 if __name__ == "__main__":
     email = os.environ.get("PUBMED_EMAIL")  # I think the email address has to be associated with a pubmed account
+    search_terms = """Fracture AND This is an open access article
+    or Fracture healing AND This is an open access article
+    or Broken bone AND This is an open access article
+    or x-ray AND This is an open access article
+    or xray AND This is an open access article"""
     xray_scraper = PubMedXrayScraper(email)
-    xray_articles = xray_scraper.search_xray_articles("X-ray AND open access", max_results=10)
+    xray_articles = xray_scraper.search_xray_articles(search_terms, max_results=20000)
     xray_scraper.save_to_json(xray_articles, "xray_articles.json")
