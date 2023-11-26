@@ -3,6 +3,9 @@ import os
 import requests
 import json
 from bs4 import BeautifulSoup
+from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader, TextLoader, PyPDFLoader, JSONLoader, UnstructuredExcelLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+
 load_dotenv()
 
 
@@ -112,7 +115,7 @@ class SpringerXrayScraper:
                 relative_pdf_url = doi + ".pdf"
 
                 # Correctly concatenate the base URL and the relative URL
-                base_url = 'https://link.springer.com'  # Assuming this is the correct base URL
+                base_url = 'https://link.springer.com'
                 if relative_pdf_url.startswith('/'):
                     return base_url + relative_pdf_url
                 else:
@@ -125,18 +128,54 @@ class SpringerXrayScraper:
 
     def save_to_json(self, data, filename):
         """
-        save the list of dictionaries to a json file
+        Save the list of dictionaries to a json file after removing dictionaries where 'FullText' is None.
         """
+        # Filter out dictionaries where 'FullText' is None
+        filtered_data = [item for item in data if item.get(
+            'FullText') is not None]
+
+        # Saving the filtered data to a file
         with open(filename, 'w', encoding='utf-8') as file:
-            json.dump(data, file, ensure_ascii=False, indent=2)
+            json.dump(filtered_data, file, ensure_ascii=False, indent=2)
+
+    def chunk_pdf(self, file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+            for journal in data:
+                pdf_path = journal["FullText"]
+                if pdf_path is None:
+                    continue
+                docs = self._open_and_chunk_pdf(pdf_path)
+                # print(docs)
+                journal["FullText"] = docs
+        self.save_to_json(data, file_path)
+
+    def _open_and_chunk_pdf(self, pdf_path):
+        loader = PyPDFLoader(pdf_path)
+        docs = loader.load()
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000, chunk_overlap=0)
+        docs = text_splitter.split_documents(docs)
+        print(docs)
+
+        # Convert Document objects to a JSON-serializable format, such as extracting text
+        # Assuming each Document has a 'text' attribute
+        serialized_docs = [{"content": doc.page_content, "page": doc.metadata["page"], "document_name": doc.metadata["source"].replace(
+            "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/", "")}for doc in docs]
+
+        print(serialized_docs)
+        return serialized_docs
 
 
 # Testing
 
-# if __name__ == "__main__":
-#     api_key = os.environ.get("SPRINGER_API_KEY")
-#     springer_scraper = SpringerXrayScraper(api_key)
-#     springer_articles = springer_scraper.search_springer_articles(
-#         'title:"X-ray" AND openaccess:"true"', max_results=200)
-#     springer_scraper.save_to_json(
-#         springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
+if __name__ == "__main__":
+    api_key = os.environ.get("SPRINGER_API_KEY")
+    springer_scraper = SpringerXrayScraper(api_key)
+    # springer_articles = springer_scraper.search_springer_articles(
+    #     'title:"X-ray" AND openaccess:"true"', max_results=200)
+    # springer_scraper.save_to_json(
+    #     springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
+    springer_scraper.chunk_pdf(
+        "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
