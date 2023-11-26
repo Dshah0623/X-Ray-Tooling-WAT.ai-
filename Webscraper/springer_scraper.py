@@ -138,7 +138,7 @@ class SpringerXrayScraper:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(filtered_data, file, ensure_ascii=False, indent=2)
 
-    def chunk_pdf(self, file_path):
+    def chunk_abstract_and_pdf(self, file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
@@ -146,26 +146,67 @@ class SpringerXrayScraper:
                 pdf_path = journal["FullText"]
                 if pdf_path is None:
                     continue
-                docs = self._open_and_chunk_pdf(pdf_path)
-                # print(docs)
-                journal["FullText"] = docs
+                docs_pdf = self._open_and_chunk_pdf(pdf_path)
+                journal["FullText"] = docs_pdf
+                abstract = journal["abstract"]
+                texts_abstract = self._chunk_abstract(abstract)
+                journal["abstract"] = texts_abstract
+
         self.save_to_json(data, file_path)
+
+    def _chunk_abstract(self, abstract):
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=100, chunk_overlap=0)
+        # Create a dummy Document object with the abstract as its text
+        texts = text_splitter.create_documents([abstract])
+        # Extract text from Document objects
+        serialized_texts = [text.page_content for text in texts]
+        return serialized_texts
 
     def _open_and_chunk_pdf(self, pdf_path):
         loader = PyPDFLoader(pdf_path)
         docs = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1000, chunk_overlap=0)
+            chunk_size=500, chunk_overlap=0)
         docs = text_splitter.split_documents(docs)
-        print(docs)
 
         # Convert Document objects to a JSON-serializable format, such as extracting text
         # Assuming each Document has a 'text' attribute
         serialized_docs = [{"content": doc.page_content, "page": doc.metadata["page"], "document_name": doc.metadata["source"].replace(
             "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/Springer_PDF/", "")}for doc in docs]
-
-        print(serialized_docs)
         return serialized_docs
+
+    def reformat_json(self, json_path, output_path):
+        # Open and read the JSON file
+        with open(json_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        # New list to hold reformatted data
+        reformatted_data = []
+
+        for entry in data:
+            # Extracting required fields
+            title = entry.get('title', '')
+            authors = [creator['creator']
+                       for creator in entry.get('creators', [])]
+            abstract = entry.get('abstract', [])
+            journal_id = entry.get('journalId', '')
+            publication_date = entry.get('publicationDate', '')
+            full_text = entry.get('FullText', [])
+
+            # Constructing the new dictionary format
+            reformatted_entry = {
+                "Title": title,
+                "Authors": authors,
+                "Abstract": abstract,
+                "journalId": journal_id,
+                "PublicationDate": publication_date,
+                "FullText": full_text
+            }
+
+            reformatted_data.append(reformatted_entry)
+
+            self.save_to_json(reformatted_data, output_path)
 
 
 # Testing
@@ -177,5 +218,7 @@ if __name__ == "__main__":
         'title:"X-ray" AND openaccess:"true"', max_results=200)
     springer_scraper.save_to_json(
         springer_articles, "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
-    springer_scraper.chunk_pdf(
+    springer_scraper.chunk_abstract_and_pdf(
         "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json")
+    springer_scraper.reformat_json("/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/springer_articles.json",
+                                   "/Users/jeevanparmar/Desktop/co_ops/WAT.ai/X-Ray-Tooling/Webscraper/reformated_springer_articles.json")
