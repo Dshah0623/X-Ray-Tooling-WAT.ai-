@@ -1,2 +1,3 @@
 cohere
-dotenv
+python-dotenv
+pandas
