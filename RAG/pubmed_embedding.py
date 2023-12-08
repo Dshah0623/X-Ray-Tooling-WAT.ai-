@@ -14,7 +14,7 @@ class PubmedEmbedding:
         dotenv.load_dotenv()
         self.co = Client(os.getenv('COHERE_API_KEY'))
         self.xray_articles = self.load_xray_articles()
-        self.embedding_model = HuggingFaceEmbeddings("all-MiniLM-L6-v2")
+        self.embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
     def load_xray_articles(self):
         with open("datasets/xray_articles.json", "r") as f:
@@ -92,10 +92,9 @@ class PubmedEmbedding:
         # do one call per pub_id'
         embeddings_as_lists = []
         for pub_id in pub_id_to_chunks:
-            embedding_result = self.co.embed(pub_id_to_chunks[pub_id], model="embed-english-v3.0", input_type="search_query")
-            embeddings_as_lists.extend([list(embedding) for embedding in embedding_result.embeddings])
-            # sleep for 1 second to avoid rate limiting
-            time.sleep(1)
+            # embedding_result = self.co.embed(pub_id_to_chunks[pub_id], model="embed-english-v3.0", input_type="search_query")
+            embedding_result = self.embedding_model.embed_documents(pub_id_to_chunks[pub_id])
+            embeddings_as_lists.extend([list(embedding) for embedding in embedding_result])
             print("Finished embedding pub_id: ", pub_id)
         
         new_df['embedding'] = embeddings_as_lists
@@ -114,6 +113,7 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--retrieve_embeddings", action="store_true", help="Retrieve embeddings")
     parser.add_argument("-p", "--print_metadata", action="store_true", help="Print metadata")
     parser.add_argument("-c", "--create_chunked_dataset", action="store_true", help="Create chunked dataset")
+    parser.add_argument("-s", "--similarity_search", action="store_true", help="Run similarity search")
     args = parser.parse_args()
 
     pe = PubmedEmbedding()
