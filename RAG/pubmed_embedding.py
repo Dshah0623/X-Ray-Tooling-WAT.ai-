@@ -8,6 +8,9 @@ import argparse
 import langchain
 from langchain.embeddings import HuggingFaceEmbeddings
 import time
+import numpy as np
+import pickle 
+from scipy import spatial
 
 class PubmedEmbedding:
     def __init__(self):
@@ -98,19 +101,54 @@ class PubmedEmbedding:
             print("Finished embedding pub_id: ", pub_id)
         
         new_df['embedding'] = embeddings_as_lists
-        new_df.to_csv("datasets/xray_articles_with_embeddings.csv")
+        new_df.to_csv("datasets/xray_articles_with_embeddings.csv", index=True)
         
-    def retrieve_embeddings(self):
-        df = pd.read_csv("datasets/xray_articles_with_embeddings.csv")
-        return df['embedding'].tolist()
-    
 
+    def build_vector_index(self):
+        df = pd.read_csv("datasets/xray_articles_with_embeddings.csv")
+        index = [(row['index'], row['embedding'], row['text']) for _, row in df.iterrows()]
+        # make embeddings into list of floats
+        index = [(row[0], [float(x) for x in row[1][1:-1].split(",")], row[2]) for row in index]
+        # save as a pickle
+        with open("datasets/xray_articles_vector_index.pkl", "wb") as f:
+            pickle.dump(index, f)
+
+
+    def retrieve_vector_index(self):
+        list_of_embeddings = []
+        start = time.time()
+        with open("datasets/xray_articles_vector_index.pkl", "rb") as f:
+            list_of_embeddings = pickle.load(f)
+        print("latency: ", time.time() - start)
+        
+        return list_of_embeddings
+    
+    def cosine_similarity(self, v1, v2):
+        return 1 - spatial.distance.cosine(v1, v2)
+    
+    def run_similarity_search(self, query, k=5):
+        embeddings = self.retrieve_vector_index()
+        query_embedding = self.embedding_model.embed_query(query)
+        similarity_scores = []
+        for (i, embedding, chunk) in embeddings:
+            similarity_scores.append((self.cosine_similarity(query_embedding, embedding), i, chunk))
+        
+        sorted_similarity_scores = sorted(similarity_scores, key=lambda x: x[0], reverse=True)
+        print("Top ", k, " results: ")
+        for score, i, chunk in sorted_similarity_scores[:k]:
+            print("Score: ", score)
+            print("Chunk: ", chunk)
+        return sorted_similarity_scores[:k]
+
+        
+        
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
     parser.add_argument("-r", "--run_batch", action="store_true", help="Run batch embeddings ingestion")
-    parser.add_argument("-e", "--retrieve_embeddings", action="store_true", help="Retrieve embeddings")
+    parser.add_argument("-b", "--build_index", action="store_true", help="Build vector index")
+    parser.add_argument("-e", "--retrieve_index", action="store_true", help="Retrieve embeddings")
     parser.add_argument("-p", "--print_metadata", action="store_true", help="Print metadata")
     parser.add_argument("-c", "--create_chunked_dataset", action="store_true", help="Create chunked dataset")
     parser.add_argument("-s", "--similarity_search", action="store_true", help="Run similarity search")
@@ -119,16 +157,17 @@ if __name__ == "__main__":
     pe = PubmedEmbedding()
     if args.run_batch:
         pe.run_batch_embeddings_ingestion()
-    if args.retrieve_embeddings:
-        embeddings = pe.retrieve_embeddings()
-        print(embeddings)
+    if args.build_index:
+        pe.build_vector_index()
+    if args.retrieve_index:
+        embeddings = pe.retrieve_vector_index()
+        # print(embeddings)
     if args.print_metadata:
         pe.print_metadata()
     if args.create_chunked_dataset:
         pe.create_chunked_dataset()
     if args.similarity_search:
-        pass
-
+        pe.run_similarity_search("chest issues")
     # If no arguments are provided, display the help message
     if not any(vars(args).values()):
         parser.print_help()
