@@ -27,4 +27,14 @@ professional, C. C. medical. (n.d.). Bruises (ecchymosis): Symptoms, causes, tre
 
 `python pubmed_embeddings.py --run_batch`
 
-More options and details will be finalized once integrated and v0 is completed.
+This should take around 10-20 minutes.
+
+# To build vector index:
+
+`python pubmed_embeddings.py --build_index`
+
+This should be under a minute
+
+# To run similarity search:
+
+`python pubmed_embeddings.py --similarity_search`
