@@ -23,9 +23,13 @@ class PubmedEmbedding:
         with open("datasets/xray_articles.json", "r") as f:
             return json.load(f)
     
-    def load_chunked_xray_articles(self):
+    def load_chunked_xray_articles_json(self):
         with open("datasets/xray_articles_chunked.json", "r") as f:
             return json.load(f)
+    
+    def load_chunked_xray_articles_csv(self):
+        return pd.read_csv("datasets/xray_article_chunked.csv")
+            
     
     def convert_json_to_df(self, json_data=None):
         if json_data is None:
@@ -77,11 +81,10 @@ class PubmedEmbedding:
         df.to_csv("datasets/xray_articles.csv")
 
     def run_batch_embeddings_ingestion(self):
-        json_data = self.load_chunked_xray_articles()
-        df = self.convert_json_to_df(json_data)
-        new_df = df.copy()
+        df = self.load_chunked_xray_articles_csv()
+        print(df.head())
+        new_df = df.head(5).copy()
         chunks = new_df['text'].tolist()
-
         # one call per document
         pub_ids = new_df['PMID'].tolist()
 
@@ -101,11 +104,11 @@ class PubmedEmbedding:
             print("Finished embedding pub_id: ", pub_id)
         
         new_df['embedding'] = embeddings_as_lists
-        new_df.to_csv("datasets/xray_articles_with_embeddings.csv", index=True)
+        new_df.to_csv("datasets/xray_articles_with_embeddings2.csv", index=True)
         
 
     def build_vector_index(self):
-        df = pd.read_csv("datasets/xray_articles_with_embeddings.csv")
+        df = pd.read_csv("datasets/xray_articles_with_embeddings2.csv")
         index = [(row['index'], row['embedding'], row['text']) for _, row in df.iterrows()]
         # make embeddings into list of floats
         index = [(row[0], [float(x) for x in row[1][1:-1].split(",")], row[2]) for row in index]
