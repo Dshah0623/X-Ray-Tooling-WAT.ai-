@@ -22,6 +22,7 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
 
 
 class PubmedEmbedding:
@@ -32,6 +33,7 @@ class PubmedEmbedding:
         self.embedding_model = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2")
         self.open = os.getenv('OPENAI_API_KEY')
+        self.embedding_open = OpenAIEmbeddings(openai_api_key=self.open)
 
     def load_xray_articles(self):
         with open("RAG/datasets/xray_articles.json", "r") as f:
@@ -113,7 +115,13 @@ class PubmedEmbedding:
         embeddings_as_lists = []
         for pub_id in pub_id_to_chunks:
             # embedding_result = self.co.embed(pub_id_to_chunks[pub_id], model="embed-english-v3.0", input_type="search_query")
-            embedding_result = self.embedding_model.embed_documents(
+
+            # Hugging Face Embeddings
+            # embedding_result = self.embedding_model.embed_documents(
+            #     pub_id_to_chunks[pub_id])
+
+            # OpenAI Embeddings
+            embedding_result = self.embedding_open.aembed_documents(
                 pub_id_to_chunks[pub_id])
             embeddings_as_lists.extend([list(embedding)
                                        for embedding in embedding_result])
