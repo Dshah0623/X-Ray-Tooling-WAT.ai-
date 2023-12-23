@@ -36,11 +36,11 @@ class PubmedEmbedding:
         self.embedding_open = OpenAIEmbeddings(openai_api_key=self.open)
 
     def load_xray_articles(self):
-        with open("RAG/datasets/xray_articles.json", "r") as f:
+        with open("RAG/datasets/xray_articles.json", "r", encoding='utf-8') as f:
             return json.load(f)
 
     def load_chunked_xray_articles_json(self):
-        with open("RAG/datasets/xray_articles_chunked.json", "r") as f:
+        with open("RAG/datasets/xray_articles_chunked.json", "r", encoding='utf-8') as f:
             return json.load(f)
 
     def load_chunked_xray_articles_csv(self):
@@ -58,7 +58,7 @@ class PubmedEmbedding:
         print("Length of unprocessed dataset: ", len(df))
         print("Columns: ", df.columns)
         print("Sample row: ", df.iloc[0])
-        df2 = pd.DataFrame(self.load_chunked_xray_articles())
+        df2 = pd.DataFrame(self.load_chunked_xray_articles_csv())   # changed to loading the csv (before was calling load_chunked_xray_articles() that didnt exist)
         print("Length of chunked dataset: ", len(df2))
         print("Columns: ", df2.columns)
         print("Sample row: ", df2.iloc[0])
@@ -194,7 +194,15 @@ class PubmedEmbedding:
         chain = load_qa_chain(llm, chain_type="stuff")
         out = chain.run(input_documents=docs, question=query)
         return out
-
+    
+    def nlp_cohere(self, docs, query, max_tokens = 500) -> str:
+        response = self.co.chat(
+            message=query,
+            documents=docs,
+            # conversation_id=self.conversation_id,         ADD BACK WHEN WE WANT TO HAVE ONGOING CONVERSATIONS
+            max_tokens=max_tokens,
+        )
+        return response.text
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
@@ -209,7 +217,9 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--create_chunked_dataset",
                         action="store_true", help="Create chunked dataset")
     parser.add_argument("-s", "--similarity_search",
-                        action="store_true", help="Run similarity search")
+                        action="store_true", help="Run similarity search, response text from openai")
+    parser.add_argument("-co", "--cohere_response",
+                        action="store_true", help="Run similarity search, but response text will be from cohere")
     args = parser.parse_args()
 
     pe = PubmedEmbedding()
@@ -230,6 +240,20 @@ if __name__ == "__main__":
         pe.results_to_json(result)
         docs = pe.load_file()
         out = pe.nlp_openai(docs, query)
+        print(f"NLP: {out}")
+    if args.cohere_response:
+        query = "Alzheimers disease"
+        """
+        since I'm running on windows the jq loader doesn't function and I can't use the JSONloader from langchain,
+        so I just load the json normally into the form [{"snippet": text1}, {"snippet": text2}, ...]
+        """
+        with open("RAG/datasets/results.json", "r") as json_file:
+            docs = json.load(json_file)
+        docs = [{"snippet": value} for value in docs.values()]
+        # result = pe.run_similarity_search(query)
+        # pe.results_to_json(result)
+        # docs = pe.load_file()
+        out = pe.nlp_cohere(docs, query)
         print(f"NLP: {out}")
 
     # If no arguments are provided, display the help message
