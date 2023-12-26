@@ -58,7 +58,8 @@ class PubmedEmbedding:
         print("Length of unprocessed dataset: ", len(df))
         print("Columns: ", df.columns)
         print("Sample row: ", df.iloc[0])
-        df2 = pd.DataFrame(self.load_chunked_xray_articles_csv())   # changed to loading the csv (before was calling load_chunked_xray_articles() that didnt exist)
+        # changed to loading the csv (before was calling load_chunked_xray_articles() that didnt exist)
+        df2 = pd.DataFrame(self.load_chunked_xray_articles_csv())
         print("Length of chunked dataset: ", len(df2))
         print("Columns: ", df2.columns)
         print("Sample row: ", df2.iloc[0])
@@ -96,7 +97,7 @@ class PubmedEmbedding:
         df = self.convert_json_to_df(json_data)
         df.to_csv("RAG/datasets/xray_articles.csv")
 
-    def run_batch_embeddings_ingestion(self):
+    def run_batch_embeddings_ingestion(self, use_huggingface=False, use_openai=False):
         df = self.load_chunked_xray_articles_csv()
         print(df.head())
         new_df = df.head(5).copy()
@@ -115,14 +116,25 @@ class PubmedEmbedding:
         embeddings_as_lists = []
         for pub_id in pub_id_to_chunks:
             # embedding_result = self.co.embed(pub_id_to_chunks[pub_id], model="embed-english-v3.0", input_type="search_query")
-
             # Hugging Face Embeddings
             # embedding_result = self.embedding_model.embed_documents(
             #     pub_id_to_chunks[pub_id])
 
             # OpenAI Embeddings
-            embedding_result = self.embedding_open.aembed_documents(
-                pub_id_to_chunks[pub_id])
+            # embedding_result = self.embedding_open.aembed_documents(
+            #     pub_id_to_chunks[pub_id])
+
+            embedding_result = None
+            if use_huggingface:
+                # Logic for HuggingFace embeddings
+                embedding_result = self.embedding_model.embed_documents(
+                    pub_id_to_chunks[pub_id])
+            elif use_openai:
+                # Logic for OpenAI embeddings
+                embedding_result = self.embedding_open.aembed_documents(
+                    pub_id_to_chunks[pub_id])
+            else:
+                raise ValueError("No embedding model selected")
             embeddings_as_lists.extend([list(embedding)
                                        for embedding in embedding_result])
             print("Finished embedding pub_id: ", pub_id)
@@ -194,8 +206,8 @@ class PubmedEmbedding:
         chain = load_qa_chain(llm, chain_type="stuff")
         out = chain.run(input_documents=docs, question=query)
         return out
-    
-    def nlp_cohere(self, docs, query, max_tokens = 500) -> str:
+
+    def nlp_cohere(self, docs, query, max_tokens=500) -> str:
         response = self.co.chat(
             message=query,
             documents=docs,
@@ -204,10 +216,23 @@ class PubmedEmbedding:
         )
         return response.text
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
-    parser.add_argument("-r", "--run_batch", action="store_true",
-                        help="Run batch embeddings ingestion")
+    subparsers = parser.add_subparsers(
+        dest='command', help='Available commands')
+
+    # Subparser for run_batch
+    parser_run_batch = subparsers.add_parser(
+        'run_batch',
+        help='Run batch embeddings ingestion with a specified embedding model (see "run_batch -h" for more options)')
+    parser_run_batch.add_argument(
+        '-hf', '--huggingface', action='store_true',
+        help='Use HuggingFace embeddings for batch ingestion')
+    parser_run_batch.add_argument(
+        '-oi', '--openai', action='store_true',
+        help='Use OpenAI embeddings for batch ingestion')
+
     parser.add_argument("-b", "--build_index",
                         action="store_true", help="Build vector index")
     parser.add_argument("-e", "--retrieve_index",
@@ -216,15 +241,16 @@ if __name__ == "__main__":
                         action="store_true", help="Print metadata")
     parser.add_argument("-c", "--create_chunked_dataset",
                         action="store_true", help="Create chunked dataset")
-    parser.add_argument("-s", "--similarity_search",
+    parser.add_argument("-s", "--openai_response",
                         action="store_true", help="Run similarity search, response text from openai")
     parser.add_argument("-co", "--cohere_response",
                         action="store_true", help="Run similarity search, but response text will be from cohere")
     args = parser.parse_args()
 
     pe = PubmedEmbedding()
-    if args.run_batch:
-        pe.run_batch_embeddings_ingestion()
+    if args.command == 'run_batch':
+        pe.run_batch_embeddings_ingestion(
+            use_huggingface=args.huggingface, use_openai=args.openai)
     if args.build_index:
         pe.build_vector_index()
     if args.retrieve_index:
@@ -234,7 +260,7 @@ if __name__ == "__main__":
         pe.print_metadata()
     if args.create_chunked_dataset:
         pe.create_chunked_dataset()
-    if args.similarity_search:
+    if args.openai_response:
         query = "chest issues"
         result = pe.run_similarity_search(query)
         pe.results_to_json(result)
