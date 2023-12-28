@@ -71,7 +71,7 @@ const Login = () => {
 
   const handleLogin = () => {
     
-    signInWithEmailAndPassword(auth,email,password) //sends email and password to firebase to be created. Need to add hashing between this and front end
+    signInWithEmailAndPassword(auth,email,password) //sends email and password to firebase to be created
         .then((userCredential) => {
             // Signed in
             // var user = userCredential.user;

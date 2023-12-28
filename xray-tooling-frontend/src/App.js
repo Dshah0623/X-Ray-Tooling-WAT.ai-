@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import Login from './Login/Login';
 import Stepone from './Step1/Stepone';
+import Steptwo from './Steptwo';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Stepone />} />
             <Route path="/Stepone" element={<Stepone />} />
+            <Route path="/Steptwo" element={<Steptwo />} />
           </Routes>
         </header>
       </div>

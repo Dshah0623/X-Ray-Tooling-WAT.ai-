@@ -3,3 +3,5 @@ python-dotenv
 pandas
 langchain
 sentence-transformers
+torch
+fastapi
