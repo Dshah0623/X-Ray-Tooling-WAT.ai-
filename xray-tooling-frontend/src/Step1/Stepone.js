@@ -64,6 +64,41 @@ const Stepone = () => {
     }
   };
 
+  const handleRunPhaseOne = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/phase1', {
+        method: 'GET',
+        //headers: headers,
+      });
+      if(response.ok) {
+        const data = await response.json();
+        console.log('Phase 1 run:', data);
+      }
+    }
+    catch (error) {
+      console.error('Error running phase 1:', error);
+      // Handle error
+    }
+  };  
+
+
+  const handleRunPhaseTwo = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/phase2', {
+        method: 'GET',
+        //headers: headers,
+      });
+      if(response.ok) {
+        const data = await response.json();
+        console.log('Phase 2 run:', data);
+      }
+    }
+    catch (error) {
+      console.error('Error running phase 2:', error);
+      // Handle error
+    }
+  };  
+
   const toggleImageSize = () => {
     setIsImageEnlarged(!isImageEnlarged);
   };
@@ -79,6 +114,8 @@ const Stepone = () => {
         <AppBar>
           <h1>Image Uploader</h1>
           <button onClick={handleSubmit}>Go to Results!</button>
+          <button onClick={handleRunPhaseOne}>Run phase 1</button>
+          <button onClick={handleRunPhaseTwo}>Run phase 2</button>
         </AppBar>
         <main>
           {image ? (
