@@ -7,6 +7,12 @@ from torchvision.models import resnet50, efficientnet_b0, densenet121
 import torch.nn as nn
 import torchvision.transforms as transforms
 from PIL import Image
+# import os, sys
+
+# from os.path import dirname, join, abspath
+# sys.path.insert(0, abspath(join(dirname(__file__), '..')))
+from xray_tooling_apis.temp_embedding_module import PubmedEmbedding
+import json
 
 app = FastAPI()
 
@@ -64,6 +70,14 @@ file_location = ""
 phase2_model = torch.load("../models/phase2_model.pth")
 phase2_model.eval()
 
+pubmed = PubmedEmbedding()
+def run_similarity_search(query):
+    with open("RAG/datasets/results.json", "r") as json_file:
+        docs = json.load(json_file)
+    docs = [{"snippet": value} for value in docs.values()]
+    out = pubmed.nlp_cohere(docs, query)
+    return out
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     global file_location
@@ -110,3 +124,9 @@ async def phase2():
     #category_name = phase1_model.meta["categories"][class_id]
     print(f"{class_id}: {100 * score:.1f}%")
     return {"class_id": class_id, "score": score}
+
+@app.post("/RAG")
+async def RAG(query):
+    # return run_similarity_search(qu)
+    print(query)
+    return run_similarity_search(query)

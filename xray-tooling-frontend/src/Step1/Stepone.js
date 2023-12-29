@@ -99,6 +99,10 @@ const Stepone = () => {
     }
   };  
 
+  const handleRAG = () => {
+    navigate('/RAG');
+  };
+
   const toggleImageSize = () => {
     setIsImageEnlarged(!isImageEnlarged);
   };
@@ -116,6 +120,7 @@ const Stepone = () => {
           <button onClick={handleSubmit}>Go to Results!</button>
           <button onClick={handleRunPhaseOne}>Run phase 1</button>
           <button onClick={handleRunPhaseTwo}>Run phase 2</button>
+          <button onClick={handleRAG}>RAG</button>
         </AppBar>
         <main>
           {image ? (
