@@ -5,3 +5,4 @@ langchain
 sentence-transformers
 torch
 fastapi
+openai

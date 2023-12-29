@@ -7,12 +7,13 @@ from torchvision.models import resnet50, efficientnet_b0, densenet121
 import torch.nn as nn
 import torchvision.transforms as transforms
 from PIL import Image
-# import os, sys
+import os, sys
 
-# from os.path import dirname, join, abspath
-# sys.path.insert(0, abspath(join(dirname(__file__), '..')))
+from os.path import dirname, join, abspath
+sys.path.insert(0, abspath(join(dirname(__file__), '..')))
 from xray_tooling_apis.temp_embedding_module import PubmedEmbedding
 import json
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -72,7 +73,7 @@ phase2_model.eval()
 
 pubmed = PubmedEmbedding()
 def run_similarity_search(query):
-    with open("RAG/datasets/results.json", "r") as json_file:
+    with open("../RAG/datasets/results.json", "r") as json_file:
         docs = json.load(json_file)
     docs = [{"snippet": value} for value in docs.values()]
     out = pubmed.nlp_cohere(docs, query)
@@ -125,8 +126,12 @@ async def phase2():
     print(f"{class_id}: {100 * score:.1f}%")
     return {"class_id": class_id, "score": score}
 
+class Query(BaseModel):
+    text: str
+
 @app.post("/RAG")
-async def RAG(query):
+async def RAG(query: Query):
     # return run_similarity_search(qu)
-    print(query)
-    return run_similarity_search(query)
+    text = query.text
+    print(text)
+    return {"query": text, "results": run_similarity_search(text)}
