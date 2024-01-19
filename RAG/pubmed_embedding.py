@@ -21,8 +21,11 @@ from langchain.schema import HumanMessage, SystemMessage
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.document_loaders import JSONLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.chains import RetrievalQA
+from langchain.document_loaders.csv_loader import CSVLoader
 
 
 class PubmedEmbedding:
@@ -216,6 +219,15 @@ class PubmedEmbedding:
         )
         return response.text
 
+    def create_populate_chroma_db(self, input_file="RAG/datasets/xray_articles_with_embeddings2.csv"):
+        loader = CSVLoader(
+            file_path=input_file)
+        data = loader.load()
+
+        print(data)
+        for spec in data:
+            print(spec["page_content"])
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
@@ -233,6 +245,8 @@ if __name__ == "__main__":
         '-oi', '--openai', action='store_true',
         help='Use OpenAI embeddings for batch ingestion')
 
+    parser.add_argument("-cdb", "--build_vector_db", action="store_true",
+                        help="Create and populate a chroma vector db")
     parser.add_argument("-b", "--build_index",
                         action="store_true", help="Build vector index")
     parser.add_argument("-e", "--retrieve_index",
@@ -251,11 +265,12 @@ if __name__ == "__main__":
     if args.command == 'run_batch':
         pe.run_batch_embeddings_ingestion(
             use_huggingface=args.huggingface, use_openai=args.openai)
+    if args.build_vector_db:
+        pe.create_populate_chroma_db()
     if args.build_index:
         pe.build_vector_index()
     if args.retrieve_index:
         embeddings = pe.retrieve_vector_index()
-        # print(embeddings)
     if args.print_metadata:
         pe.print_metadata()
     if args.create_chunked_dataset:
