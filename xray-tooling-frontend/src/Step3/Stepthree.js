@@ -4,7 +4,7 @@ import { auth, storage } from "../firebase";
 import { ref, uploadBytes, deleteObject, listAll, getDownloadURL } from "firebase/storage";
 import { Route, useNavigate } from 'react-router-dom';
 
-const Stepone = () => {
+const Stepthree = () => {
   const [image, setImage] = useState(null);
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   let headers = new Headers();
@@ -136,4 +136,4 @@ const Stepone = () => {
   );
 }
 
-export default Stepone;
+export default Stepthree;

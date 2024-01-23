@@ -11,7 +11,7 @@ To set up:
 
 To setup backend and frontend:
 
-1. cd ./xray-tooling-apis
+1. cd ./xray_tooling_apis
 2. uvicorn app:app --reload
 3. cd ..
 4. cd ./xray-tooling-frontend
