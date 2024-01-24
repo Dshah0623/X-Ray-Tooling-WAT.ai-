@@ -39,12 +39,6 @@ class ChromaEmbedding():
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
-        # self.__xray_chunked_articles = self.__chunk_documents()
-        # self.open_key = os.getenv('OPENAI_API_KEY')
-        # self.embeddings_hugging = HuggingFaceEmbeddings(
-        #     model_name="all-MiniLM-L6-v2")
-        # self.embedding_open = OpenAIEmbeddings(openai_api_key=self.open_key)
-        # self.persist_chroma_directory = 'db'
         self.__embedding_in_use = None
         self.__chroma_db = None
 
@@ -140,3 +134,7 @@ class ChromaEmbedding():
 #     if flag == '--build':
 #         embeddings = c.create_embeddings()
 #         c.populate_embeddings(embeddings)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser
