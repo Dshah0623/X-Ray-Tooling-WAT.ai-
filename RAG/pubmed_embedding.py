@@ -219,15 +219,6 @@ class PubmedEmbedding:
         )
         return response.text
 
-    def create_populate_chroma_db(self, input_file="RAG/datasets/xray_articles_with_embeddings2.csv"):
-        loader = CSVLoader(
-            file_path=input_file)
-        data = loader.load()
-
-        print(data)
-        for spec in data:
-            print(spec["page_content"])
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
