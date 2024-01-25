@@ -182,17 +182,27 @@ if __name__ == "__main__":
     parser_set_model.add_argument(
         '-oi', '--openai', action='store_true', help='Use OpenAI embeddings')
 
-    # Other subparsers
-    parser_create_populate = subparsers.add_parser(
-        'create_populate', help='Create and populate Chroma DB')
-    parser_load = subparsers.add_parser('load_chroma', help='Load Chroma DB')
+    # Subparser for build_chroma
+    parser_build_chroma = subparsers.add_parser(
+        'build_chroma', help='Create and populate Chroma DB')
+
+    # Subparser for load_chroma
+    parser_load_chroma = subparsers.add_parser(
+        'load_chroma', help='Load Chroma DB')
+
+    # Subparser for retrieve_from_query
     parser_retrieve = subparsers.add_parser(
-        'retrieve', help='Retrieve documents from Chroma')
+        'retrieve_from_query', help='Retrieve documents from Chroma based on query')
     parser_retrieve.add_argument(
         'query', type=str, help='Query for document retrieval')
+
+    # Subparser for reupload
     parser_reupload = subparsers.add_parser(
         'reupload', help='Reupload documents to Chroma')
-    parser_clear = subparsers.add_parser('clear', help='Clear Chroma DB')
+
+    # Subparser for clear_db
+    parser_clear_db = subparsers.add_parser(
+        'clear_db', help='Clear Chroma DB')
 
     args = parser.parse_args()
 
@@ -201,15 +211,15 @@ if __name__ == "__main__":
     if args.command == 'set_model':
         chroma.set_embedding_model(
             use_hugging_face=args.huggingface, use_open_ai=args.openai)
-    elif args.command == 'create_populate':
+    elif args.command == 'build_chroma':
         chroma.create_and_populate_chroma()
     elif args.command == 'load_chroma':
         chroma.load_chroma_db()
-    elif args.command == 'retrieve':
+    elif args.command == 'retrieve_from_query':
         print(chroma.retrieve_from_chroma(args.query))
     elif args.command == 'reupload':
         chroma.reupload_to_chroma()
-    elif args.command == 'clear':
+    elif args.command == 'clear_db':
         chroma.clear_chroma()
     else:
         parser.print_help()
