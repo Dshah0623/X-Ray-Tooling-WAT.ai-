@@ -38,8 +38,8 @@ class ChromaEmbedding(Embedding):
             self,
             use_open_ai=False,
             num_matches=5,
-            dataset_path = "RAG/datasets/"
-            ) -> None:
+            dataset_path="RAG/datasets/"
+    ) -> None:
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
@@ -132,12 +132,9 @@ class ChromaEmbedding(Embedding):
         Returns:
             object: Retrieved documents from the Chroma database.
         """
-        # retriever = self.chroma_db.as_retriever()
-        # retriever = self.__chroma_db.as_retriever(
-        #     search_kwargs={"k": search_kwargs})
-        # docs = retriever.get_relevant_documents(query)
 
-        docs = self.__chroma_db.similarity_search(query)    # TODO restrict return doc amount to self.__num_matches
+        # TODO restrict return doc amount to self.__num_matches
+        docs = self.__chroma_db.similarity_search(query)
         return docs
 
     def reupload_to_chroma(self) -> None:
@@ -178,7 +175,7 @@ class ChromaEmbedding(Embedding):
 
     def get_chroma_db(self) -> object:
         return self.__chroma_db
-    
+
     def destroy(self):
         self.clear_chroma()
 
