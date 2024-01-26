@@ -284,16 +284,9 @@ if __name__ == "__main__":
         print(f"NLP: {out}")
     if args.cohere_response:
         query = "Alzheimers disease"
-        """
-        since I'm running on windows the jq loader doesn't function and I can't use the JSONloader from langchain,
-        so I just load the json normally into the form [{"snippet": text1}, {"snippet": text2}, ...]
-        """
-        with open("RAG/datasets/results.json", "r") as json_file:
-            docs = json.load(json_file)
-        docs = [{"snippet": value} for value in docs.values()]
-        # result = pe.run_similarity_search(query)
-        # pe.results_to_json(result)
-        # docs = pe.load_file()
+        result = pe.run_similarity_search(query)
+        pe.results_to_json(result)
+        docs = pe.load_file()
         out = pe.nlp_cohere(docs, query)
         print(f"NLP: {out}")
 
