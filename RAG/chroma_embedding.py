@@ -7,9 +7,10 @@ from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
+from embedding import Embedding
 
 
-class ChromaEmbedding():
+class ChromaEmbedding(Embedding):
     """
     A class for handling embedding operations and Chroma database interactions.
 
@@ -33,14 +34,25 @@ class ChromaEmbedding():
     __embedding_open = OpenAIEmbeddings(openai_api_key=__open_key)
     __persist_chroma_directory = 'db'
 
-    def __init__(self) -> None:
+    def __init__(
+            self,
+            use_open_ai=False,
+            num_matches=5,
+            dataset_path = "RAG/datasets/"
+            ) -> None:
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
         self.__embedding_in_use = None
         self.__chroma_db = None
+        self.__num_matches = num_matches
+        self.__processed_articles_path = dataset_path + "xray_articles_processed.json"
+        self.__articles_path = dataset_path + "xray_articles.json"
+        self.set_embedding_model(use_open_ai)
+        self.load_chroma_db()
+        self.create_and_populate_chroma()
 
-    def set_embedding_model(self, use_hugging_face=False, use_open_ai=False) -> None:
+    def set_embedding_model(self, use_open_ai=False) -> None:
         """
         Sets the embedding model to be used based on the user's choice.
 
@@ -51,12 +63,10 @@ class ChromaEmbedding():
         Raises:
             ValueError: If no embedding model is selected.
         """
-        if use_hugging_face:
-            self.embedding_in_use = self.__embeddings_hugging
-        elif use_open_ai:
-            self.embedding_in_use = self.__embedding_open
+        if use_open_ai:
+            self.__embedding_in_use = self.__embedding_open
         else:
-            raise ValueError("No embedding model selected")
+            self.__embedding_in_use = self.__embeddings_hugging
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -64,7 +74,7 @@ class ChromaEmbedding():
 
     def __process_json(self) -> object:
         # Load the original JSON
-        with open("datasets/xray_articles.json", "r") as file:
+        with open(self.__articles_path, "r") as file:
             data = json.load(file)
 
         # Process each document
@@ -73,12 +83,12 @@ class ChromaEmbedding():
             doc['FullText'] = ' , '.join(doc['FullText'])
 
         # Save the processed JSON
-        with open("datasets/xray_articles_processed.json", "w") as file:
+        with open(self.__processed_articles_path, "w") as file:
             json.dump(data, file, indent=4)
 
     def __load_xray_articles(self) -> object:
         loader = JSONLoader(
-            file_path="datasets/xray_articles_processed.json",
+            file_path=self.__processed_articles_path,
             jq_schema='.[].FullText',
             text_content=True)
 
@@ -111,7 +121,7 @@ class ChromaEmbedding():
 
         self.__chroma_db = vector_db
 
-    def retrieve_from_chroma(self, query, search_kwargs=2) -> object:
+    def get_similar_documents(self, query) -> object:
         """
         Retrieves documents from the Chroma database based on a given query.
 
@@ -127,7 +137,7 @@ class ChromaEmbedding():
         #     search_kwargs={"k": search_kwargs})
         # docs = retriever.get_relevant_documents(query)
 
-        docs = self.__chroma_db.similarity_search(query)
+        docs = self.__chroma_db.similarity_search(query)    # TODO restrict return doc amount to self.__num_matches
         return docs
 
     def reupload_to_chroma(self) -> None:
@@ -168,6 +178,9 @@ class ChromaEmbedding():
 
     def get_chroma_db(self) -> object:
         return self.__chroma_db
+    
+    def destroy(self):
+        self.clear_chroma()
 
 
 if __name__ == "__main__":
@@ -178,9 +191,7 @@ if __name__ == "__main__":
     parser_set_model = subparsers.add_parser(
         'set_model', help='Set the embedding model')
     parser_set_model.add_argument(
-        '-hf', '--huggingface', action='store_true', help='Use HuggingFace embeddings')
-    parser_set_model.add_argument(
-        '-oi', '--openai', action='store_true', help='Use OpenAI embeddings')
+        '-oi', '--openai', action='store_true', help='Use OpenAI embeddings instead of default huggingface')
 
     # Subparser for build_chroma
     parser_build_chroma = subparsers.add_parser(
@@ -209,14 +220,13 @@ if __name__ == "__main__":
     chroma = ChromaEmbedding()
 
     if args.command == 'set_model':
-        chroma.set_embedding_model(
-            use_hugging_face=args.huggingface, use_open_ai=args.openai)
+        chroma.set_embedding_model(use_open_ai=args.openai)
     elif args.command == 'build_chroma':
         chroma.create_and_populate_chroma()
     elif args.command == 'load_chroma':
         chroma.load_chroma_db()
-    elif args.command == 'retrieve_from_query':
-        print(chroma.retrieve_from_chroma(args.query))
+    elif args.command == 'get_similar_documents':
+        print(chroma.get_similar_documents(args.query))
     elif args.command == 'reupload':
         chroma.reupload_to_chroma()
     elif args.command == 'clear_db':

@@ -1,6 +1,7 @@
 import json
 from cohere import Client
 import os
+import errno
 import pandas as pd
 import dotenv
 import csv
@@ -26,9 +27,10 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.document_loaders.csv_loader import CSVLoader
+from embedding import Embedding
 
 
-class IndexEmbedding():
+class IndexEmbedding(Embedding):
     __open_key = os.getenv('OPENAI_API_KEY')
     __embeddings_hugging = HuggingFaceEmbeddings(
         model_name="all-MiniLM-L6-v2")
@@ -36,22 +38,20 @@ class IndexEmbedding():
 
     def __init__(
             self, 
-            use_huggingface = True,
+            use_openai = False,
             chunking_max_tokens=100,
-            embedding_path="RAG/datasets/xray_articles_with_embeddings2.csv", 
-            index_path ="RAG/datasets/xray_articles_vector_index.pkl", 
-            articles_path="RAG/datasets/xray_articles.json",
-            chunked_articles_csv_path="RAG/datasets/xray_articles_chunked.csv",
-            chunked_articles_json_path="RAG/datasets/xray_articles_chunked.json"
+            num_matches=5,
+            dataset_path="RAG/datasets/"
             ) -> None:
-        self.__articles_path = articles_path
-        self.__xray_chunked_articles = self.__load_chunked_xray_articles_csv()
+        self.__articles_path = dataset_path + "xray_articles.json"
+        self.__embedding_path = dataset_path + "xray_articles_with_embeddings2.csv"
+        self.__index_path = dataset_path + "xray_articles_vector_index.pkl"
+        self.__chunked_articles_csv_path = dataset_path + "xray_articles_chunked.csv"
+        self.__chunked_articles_json_path = dataset_path + "xray_articles_chunked.json"
         self.__chunking_max_tokens = chunking_max_tokens
-        self.__embedding_path = embedding_path
-        self.__index_path = index_path
-        self.__chunked_articles_csv_path = chunked_articles_csv_path
-        self.__chunked_articles_json_path = chunked_articles_json_path
-        self.__use_huggingface = use_huggingface
+        self.__num_matches = num_matches
+        self.__use_openai = use_openai
+        self.__xray_chunked_articles = self.__load_chunked_xray_articles_csv()
 
     def __load_xray_articles(self, path):
         if not os.path.exists(self.__index_path):
@@ -79,10 +79,10 @@ class IndexEmbedding():
             df = json.load(f)
         df.to_csv(save_path)
     
-    def __chunk_text(self, tokens, num_tokens=100):
-        return [tokens[i:i+num_tokens] for i in range(0, len(tokens), num_tokens)]
+    def __chunk_text(self, tokens):
+        return [tokens[i:i+self.__num_tokens] for i in range(0, len(tokens), self.__num_tokens)]
 
-    def __create_chunked_dataset(self, max_tokens=100):
+    def __create_chunked_dataset(self):
         df = self.__convert_json_to_df()
         chunked_dataset = []
         for _, row in df.iterrows():
@@ -91,7 +91,7 @@ class IndexEmbedding():
             full_text = " ".join(row['FullText']).split(" ")
             
             # tokenize
-            for chunk in self.__chunk_text(full_text, max_tokens):
+            for chunk in self.__chunk_text(full_text):
                 chunk_text = " ".join(chunk)
                 chunked_dataset.append({
                     "title": row['Title'],
@@ -110,7 +110,6 @@ class IndexEmbedding():
 
     def __run_batch_embeddings_ingestion(self):
         df = self.__xray_chunked_articles
-        print(df.head())
         new_df = df.head(5).copy()
         chunks = new_df['text'].tolist()
         # one call per document
@@ -127,13 +126,13 @@ class IndexEmbedding():
         embeddings_as_lists = []
         for pub_id in pub_id_to_chunks:
             embedding_result = None
-            if self.__use_huggingface:
-                # Logic for HuggingFace embeddings
-                embedding_result = self.__embeddings_hugging.embed_documents(
-                    pub_id_to_chunks[pub_id])
-            else:
+            if self.use_openai:
                 # Logic for OpenAI embeddings
                 embedding_result = self.__embedding_open.aembed_documents(
+                    pub_id_to_chunks[pub_id])
+            else:
+                # Logic for HuggingFace embeddings
+                embedding_result = self.__embeddings_hugging.embed_documents(
                     pub_id_to_chunks[pub_id])
             embeddings_as_lists.extend([list(embedding)
                                        for embedding in embedding_result])
@@ -169,30 +168,76 @@ class IndexEmbedding():
             list_of_embeddings = pickle.load(f)
 
         return list_of_embeddings, time.time() - start
+    
+    def __silent_remove(path):
+        try:
+            os.remove(path)
+        except OSError as e:
+            if e.errno != errno.ENOENT:
+                raise
 
-    def get_similar_documents(self, query, k=5, print_retreival_latency=False):
-        embeddings, latency = self.__retrieve_vector_index()
-        if print_retreival_latency:
-            print(f"retrieval latency is {latency}")
-        if self.__use_huggingface:
-            # Logic for HuggingFace embeddings
-            embedding_result = self.__embeddings_hugging.embed_query(query)
-        else:
+    def __clean_directory(self):
+        self.__silent_remove(self.__embedding_path)
+        self.__silent_remove(self.__index_path)
+        self.__silent_remove(self.__chunked_articles_csv_path)
+        self.__silent_remove(self.__chunked_articles_json_path)
+
+    def get_similar_documents(self, query):
+        embeddings, _ = self.__retrieve_vector_index()
+        if self.__use_openai:
             # Logic for OpenAI embeddings
             embedding_result = self.__embedding_open.aembed_query(query)
+        else:
+            # Logic for HuggingFace embeddings
+            embedding_result = self.__embeddings_hugging.embed_query(query)
         similarity_scores = []
         for (i, embedding, chunk) in embeddings:
             similarity_scores.append(
                 (self.__cosine_similarity(embedding_result, embedding), i, chunk))
         sorted_similarity_scores = sorted(
             similarity_scores, key=lambda x: x[0], reverse=True)
-        return sorted_similarity_scores[:k]
+        return sorted_similarity_scores[:self.__num_matches]
+    
+    def destroy(self):
+        self.__clean_directory()
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser
+# if __name__ == "__main__":
+    # parser = argparse.ArgumentParser(description="Vector Index Embedding Tool")
+    # subparsers = parser.add_subparsers(dest='command', help='Subcommands')
 
+    # # Subparser for build_chroma
+    # parser_build_index = subparsers.add_parser(
+    #     'build_index', help='Create and populate index DB')
+    # parser_build_index.add_argument(
+    #     '-oi', '--openai', action='store_true', help='Use OpenAI embeddings instead of the default huggingface')
 
-"""
-user may want to: recreate embeddings, retrieve embeddings, 
-retrieve matched emmbeddings from query
-"""
+    # # Subparser for retrieve_from_query
+    # parser_retrieve = subparsers.add_parser(
+    #     'retrieve_from_query', help='Retrieve documents from Chroma based on query')
+    # parser_retrieve.add_argument(
+    #     'query', type=str, help='Query for document retrieval')
+
+    # # Subparser for reupload
+    # parser_reumake_index = subparsers.add_parser(
+    #     'remake', help='Remake the vector index')
+
+    # # Subparser for clear_db
+    # parser_delete_index = subparsers.add_parser(
+    #     'delete_index', help='Delete the vector index')
+
+    # args = parser.parse_args()
+
+    # embedding = IndexEmbedding()
+
+    # if args.command == 'build_index':
+    #     embedding.create_and_populate_chroma(
+    #         use_openai=args.openai
+    #     )
+    # elif args.command == 'retrieve_from_query':
+    #     print(chroma.retrieve_from_chroma(args.query))
+    # elif args.command == 'reupload':
+    #     chroma.reupload_to_chroma()
+    # elif args.command == 'clear_db':
+    #     chroma.clear_chroma()
+    # else:
+    #     parser.print_help()
