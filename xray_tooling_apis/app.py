@@ -17,9 +17,10 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+origins = ["http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Update this with your allowed origins
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -103,7 +104,8 @@ async def phase1():
 
     # getting result category as predicted
     global file_location
-    img = Image.open(file_location).convert("RGB")
+    img_path = file_location  # Assuming file_location is the path to the image file
+    img = Image.open(img_path).convert("RGB")
     img = phase1_transform(img)
     img = img.unsqueeze(0)
     prediction = phase1_model(img).squeeze(0).softmax(0)
