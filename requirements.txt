@@ -1,2 +1,10 @@
 cohere
-dotenv
+python-dotenv
+pandas
+langchain
+sentence-transformers
+torch
+fastapi
+openai
+uvicorn
+python-multipart
