@@ -1,3 +1,7 @@
 .env
 venv
 .pkl
+
+*__pycache__
+
+
