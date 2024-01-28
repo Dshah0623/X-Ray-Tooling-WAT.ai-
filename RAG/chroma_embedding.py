@@ -111,6 +111,7 @@ class ChromaEmbedding(Embedding):
 
     def __create_ids(self) -> list:
         ids = [str(i) for i in range(1, len(self.__xray_chunked_articles) + 1)]
+        return ids
 
     def load_chroma_db(self) -> None:
         """
