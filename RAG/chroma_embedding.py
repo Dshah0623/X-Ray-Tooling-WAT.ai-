@@ -7,10 +7,8 @@ from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
-from embedding import Embedding
 
-
-class ChromaEmbedding(Embedding):
+class ChromaEmbedding():
     """
     A class for handling embedding operations and Chroma database interactions.
 
@@ -26,6 +24,9 @@ class ChromaEmbedding(Embedding):
         __xray_chunked_articles (list): Chunked x-ray articles.
         __embedding_in_use (object): The embedding model currently in use.
         __chroma_db (Chroma): Chroma vector database instance.
+        __num_matches (int): the number of document chunks to return upon a query
+        __processed_articles_path (str [Path]): the path to the processed (chunked) articles
+        __articles_path (str [Path]): the path to the raw xray articles
     """
     dotenv.load_dotenv()
     __open_key = os.getenv('OPENAI_API_KEY')

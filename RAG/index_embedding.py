@@ -1,36 +1,34 @@
 import json
-from cohere import Client
 import os
 import errno
 import pandas as pd
-import dotenv
-import csv
-import argparse
-import langchain
-from langchain.embeddings import HuggingFaceEmbeddings
 import time
-import numpy as np
 import pickle
 from scipy import spatial
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts.chat import (
-    ChatPromptTemplate,
-    HumanMessagePromptTemplate,
-    SystemMessagePromptTemplate,
-)
-from langchain.schema import HumanMessage, SystemMessage
-from langchain.llms import OpenAI
-from langchain.chains.question_answering import load_qa_chain
-from langchain.document_loaders import JSONLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-from langchain.document_loaders.csv_loader import CSVLoader
-from embedding import Embedding
 
+class IndexEmbedding():
+    """
+    A class for handling embedding operations for a vector index of articles.
 
-class IndexEmbedding(Embedding):
+    This class provides methods to set up embedding models, process x-ray articles,
+    create, populate, and manage an index vector database.
+
+    Attributes:
+        __open_key (str): The API key for OpenAI.
+        __embeddings_hugging (HuggingFaceEmbeddings): HuggingFace embedding model.
+        __embedding_open (OpenAIEmbeddings): OpenAI embedding model.
+        __articles_path (str [Path]): the path to the raw xray articles
+        __embedding_path (str [Path]): the path to the embedded xray articles (or the path to the file where they will be stored)
+        __index_path (str [Path]): the path to the vector index (or the path to the file where it will be stored)
+        __chunked_articles_csv_path (str [Path]): the path to the chunked articles csv (or the path to the file where it will be stored)
+        __chunked_articles_json_path (str [Path]): the path to the chunked articles json (or the path to the file where it will be stored)
+        __chunking_max_tokens (int): the number of words to be considered a chunk
+        __num_matches (int): the number of document chunks to return upon a query
+        __use_openai (bool): whether or not to use openai embeddings vs huggingface embeddings
+        __xray_chunked_articles (DataFrame): the chunked articles loaded
+    """
     __open_key = os.getenv('OPENAI_API_KEY')
     __embeddings_hugging = HuggingFaceEmbeddings(
         model_name="all-MiniLM-L6-v2")
@@ -43,6 +41,13 @@ class IndexEmbedding(Embedding):
             num_matches=5,
             dataset_path="RAG/datasets/"
             ) -> None:
+        """
+        Args:
+            use_open_ai (bool): If True, sets OpenAI embeddings.
+            chunking_max_tokens (int): the number of words to be considered a chunk
+            num_matches (int): number of matching chunks to be returned upon a query
+            dataset_path (str [Path]): path to the folder where all datasets will be stored
+        """
         self.__articles_path = dataset_path + "xray_articles.json"
         self.__embedding_path = dataset_path + "xray_articles_with_embeddings2.csv"
         self.__index_path = dataset_path + "xray_articles_vector_index.pkl"
@@ -53,36 +58,66 @@ class IndexEmbedding(Embedding):
         self.__use_openai = use_openai
         self.__xray_chunked_articles = self.__load_chunked_xray_articles_csv()
 
-    def __load_xray_articles(self, path):
-        if not os.path.exists(self.__index_path):
+    def __load_xray_articles(self):
+        """
+        Loads and returns the raw xray articles into a dictionary
+
+        Raises:
+            ValueError: If the raw article data is not found.
+        """
+        if not os.path.exists(self.__articles_path):
             raise ValueError("Articled file not found!")
-        with open(path, "r", encoding='utf-8') as f:
+        with open(self.__articles_path, "r", encoding='utf-8') as f:
             return json.load(f)
         
     def __load_chunked_xray_articles_csv(self):
+        """
+        Loads and returns the chunked xray articles from __chunked_articles_csv_path as a DataFrame
+        """
         if not os.path.exists(self.__chunked_articles_csv_path):
             self.__create_chunked_dataset(self.__chunking_max_tokens)
         return pd.read_csv(self.__chunked_articles_csv_path)
         
     def __convert_json_to_df(self, json_data=None):
+        """
+        Returns json_data (or the raw xray articles if no json_data provided) as a DataFrame
+
+        Args:
+            json_data [optional] (Dict): If not None will be converted to a DataFrame
+
+        Raises:
+            ValueError: If the raw article data is not found.
+        """
         if json_data is None:
             df = pd.DataFrame(
-                self.__load_xray_articles(self.__articles_path)
+                self.__load_xray_articles()
                 )
         else:
             df = pd.DataFrame(json_data)
         return df
     
-    def __save_json_as_csv(self, json_path, save_path):
+    def __save_json_as_csv(self):
+        """
+        Converts __chunked_articles_json_path from a JSON file into a CSV file and saves it at __chunked_articles_csv_path.
+        """
         df = None
-        with open(json_path, "r", encoding='utf-8') as f:
+        with open(self.__chunked_articles_json_path, "r", encoding='utf-8') as f:
             df = json.load(f)
-        df.to_csv(save_path)
+        df.to_csv(self.__chunked_articles_csv_path)
     
     def __chunk_text(self, tokens):
-        return [tokens[i:i+self.__num_tokens] for i in range(0, len(tokens), self.__num_tokens)]
+        """
+        Splits a list of tokens into chunks of size __chunking_max_tokens attribute, returning the list of chunks.
+
+        Args:
+            tokens (list of str): The list of tokens to be chunked.
+        """
+        return [tokens[i:i+self.__chunking_max_tokens] for i in range(0, len(tokens), self.__chunking_max_tokens)]
 
     def __create_chunked_dataset(self):
+        """
+        Creates a dataset of chunked articles from the raw xray articles, and saves it in JSON and CSV formats.
+        """
         df = self.__convert_json_to_df()
         chunked_dataset = []
         for _, row in df.iterrows():
@@ -106,9 +141,13 @@ class IndexEmbedding(Embedding):
         with open(self.__chunked_articles_json_path, "w") as f:
             json.dump(chunked_dataset, f)
 
-        self.__save_json_as_csv(self.__chunked_articles_json_path, self.__chunked_articles_csv_path)
+        self.__save_json_as_csv()
 
     def __run_batch_embeddings_ingestion(self):
+        """
+        Generates embeddings for the chunked xray articles using either OpenAI or HuggingFace models, 
+        and saves the embedded dataset as a CSV.
+        """
         df = self.__xray_chunked_articles
         new_df = df.head(5).copy()
         chunks = new_df['text'].tolist()
@@ -141,9 +180,19 @@ class IndexEmbedding(Embedding):
         new_df.to_csv(self.__embedding_path, index=True)
 
     def __cosine_similarity(self, v1, v2):
+        """
+        returns cosine similarity of vectors v1 and v2
+
+        Args:
+        v1 (list of float): The first vector.
+        v2 (list of float): The second vector.
+        """
         return 1 - spatial.distance.cosine(v1, v2)
 
     def __build_vector_index(self):
+        """
+        Builds a vector index from the embedded xray articles and saves it as a pickle file.
+        """
         if not os.path.exists(self.__embedding_path):
             self.__run_batch_embeddings_ingestion()
         df = pd.read_csv(self.__embedding_path)
@@ -158,7 +207,10 @@ class IndexEmbedding(Embedding):
 
     def __retrieve_vector_index(self):
         """
-        returns list and latency
+        Retrieves the vector index of embedded articles, building it if it doesn't exist.
+
+        Returns:
+            tuple: A tuple containing the list of embeddings and the time taken to load them.
         """
         list_of_embeddings = []
         start = time.time()
@@ -170,6 +222,12 @@ class IndexEmbedding(Embedding):
         return list_of_embeddings, time.time() - start
     
     def __silent_remove(path):
+        """
+        Removes a file silently. If the file does not exist, it does nothing.
+
+        Args:
+            path (str [Path]): The path to the file to be removed.
+        """
         try:
             os.remove(path)
         except OSError as e:
@@ -177,12 +235,24 @@ class IndexEmbedding(Embedding):
                 raise
 
     def __clean_directory(self):
+        """
+        Cleans up the data directory by removing the embeddings, index, and chunked articles.
+        """
         self.__silent_remove(self.__embedding_path)
         self.__silent_remove(self.__index_path)
         self.__silent_remove(self.__chunked_articles_csv_path)
         self.__silent_remove(self.__chunked_articles_json_path)
 
     def get_similar_documents(self, query):
+        """
+        Retrieves documents similar to a given query based on cosine similarity of embeddings.
+
+        Args:
+            query (str): The query string to find similar documents for.
+
+        Returns:
+            list: A sorted list of tuples containing similarity scores, indices, and text chunks.
+        """
         embeddings, _ = self.__retrieve_vector_index()
         if self.__use_openai:
             # Logic for OpenAI embeddings
@@ -199,45 +269,7 @@ class IndexEmbedding(Embedding):
         return sorted_similarity_scores[:self.__num_matches]
     
     def destroy(self):
+        """
+        Destroys the current instance by cleaning up all associated files and directories.
+        """
         self.__clean_directory()
-
-# if __name__ == "__main__":
-    # parser = argparse.ArgumentParser(description="Vector Index Embedding Tool")
-    # subparsers = parser.add_subparsers(dest='command', help='Subcommands')
-
-    # # Subparser for build_chroma
-    # parser_build_index = subparsers.add_parser(
-    #     'build_index', help='Create and populate index DB')
-    # parser_build_index.add_argument(
-    #     '-oi', '--openai', action='store_true', help='Use OpenAI embeddings instead of the default huggingface')
-
-    # # Subparser for retrieve_from_query
-    # parser_retrieve = subparsers.add_parser(
-    #     'retrieve_from_query', help='Retrieve documents from Chroma based on query')
-    # parser_retrieve.add_argument(
-    #     'query', type=str, help='Query for document retrieval')
-
-    # # Subparser for reupload
-    # parser_reumake_index = subparsers.add_parser(
-    #     'remake', help='Remake the vector index')
-
-    # # Subparser for clear_db
-    # parser_delete_index = subparsers.add_parser(
-    #     'delete_index', help='Delete the vector index')
-
-    # args = parser.parse_args()
-
-    # embedding = IndexEmbedding()
-
-    # if args.command == 'build_index':
-    #     embedding.create_and_populate_chroma(
-    #         use_openai=args.openai
-    #     )
-    # elif args.command == 'retrieve_from_query':
-    #     print(chroma.retrieve_from_chroma(args.query))
-    # elif args.command == 'reupload':
-    #     chroma.reupload_to_chroma()
-    # elif args.command == 'clear_db':
-    #     chroma.clear_chroma()
-    # else:
-    #     parser.print_help()
