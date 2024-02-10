@@ -2,11 +2,17 @@ import os
 import json
 import dotenv
 import argparse
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.document_loaders import JSONLoader
+# from langchain.embeddings import HuggingFaceEmbeddings
+# from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+# from langchain.embeddings import OpenAIEmbeddings
+# from langchain.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.document_loaders import JSONLoader
+# from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+
 
 class ChromaEmbedding():
     """
@@ -36,19 +42,27 @@ class ChromaEmbedding():
     __persist_chroma_directory = 'db'
 
     def __init__(
-            self,
-            use_open_ai=False,
-            num_matches=5,
-            dataset_path="RAG/datasets/"
+        self,
+        use_open_ai=False,
+        num_matches=5,
+        dataset_path="RAG/datasets/"
     ) -> None:
-        self.__xray_articles = self.__load_xray_articles()
-        self.__xray_chunked_articles = self.__chunk_documents(
-            self.__xray_articles)
-        self.__embedding_in_use = None
-        self.__chroma_db = None
+        dotenv.load_dotenv()
+        self.__open_key = os.getenv('OPENAI_API_KEY')
+        self.__embeddings_hugging = HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2")
+        self.__embedding_open = OpenAIEmbeddings(
+            openai_api_key=self.__open_key)
+        self.__persist_chroma_directory = 'db'
         self.__num_matches = num_matches
         self.__processed_articles_path = dataset_path + "xray_articles_processed.json"
         self.__articles_path = dataset_path + "xray_articles.json"
+
+        # Now, since paths are set, you can proceed with loading and processing
+        self.__process_json()  # Ensure this method is called before loading articles
+        self.__xray_articles = self.__load_xray_articles()
+        self.__xray_chunked_articles = self.__chunk_documents(
+            self.__xray_articles)
         self.set_embedding_model(use_open_ai)
         self.load_chroma_db()
         self.create_and_populate_chroma()
@@ -65,8 +79,10 @@ class ChromaEmbedding():
             ValueError: If no embedding model is selected.
         """
         if use_open_ai:
+            print("Using OpenAI Embedding")
             self.__embedding_in_use = self.__embedding_open
         else:
+            print("Using HuggingFace Embedding")
             self.__embedding_in_use = self.__embeddings_hugging
 
     def __load_and_chunk_articles(self) -> object:
@@ -118,8 +134,12 @@ class ChromaEmbedding():
         """
         Loads the Chroma database from the persistent storage.
         """
-        vector_db = Chroma(persist_directory=self.__persist_chroma_directory,
-                           embedding_function=self.embedding_in_use, ids=self.__create_ids())
+        vector_db = Chroma(
+            persist_directory=self.__persist_chroma_directory,
+            # Corrected to use the private attribute
+            embedding_function=self.__embedding_in_use,
+            # ids=self.__create_ids()
+        )
 
         self.__chroma_db = vector_db
 
@@ -146,7 +166,7 @@ class ChromaEmbedding():
         self.clear_chroma()
         self.__load_and_chunk_articles()
         self.__chroma_db = Chroma.from_documents(
-            self.__xray_chunked_articles, ids=self.__create_ids())
+            self.__xray_chunked_articles)
 
     def clear_chroma(self) -> None:
         """
