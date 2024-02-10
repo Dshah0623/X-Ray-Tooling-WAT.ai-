@@ -7,8 +7,9 @@ import pickle
 from scipy import spatial
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.embeddings import OpenAIEmbeddings
+from embedding import Embedding
 
-class IndexEmbedding():
+class IndexEmbedding(Embedding):
     """
     A class for handling embedding operations for a vector index of articles.
 
@@ -58,7 +59,7 @@ class IndexEmbedding():
         self.__use_openai = use_openai
         self.__xray_chunked_articles = self.__load_chunked_xray_articles_csv()
 
-    def __load_xray_articles(self):
+    def __load_xray_articles(self) -> dict:
         """
         Loads and returns the raw xray articles into a dictionary
 
@@ -70,7 +71,7 @@ class IndexEmbedding():
         with open(self.__articles_path, "r", encoding='utf-8') as f:
             return json.load(f)
         
-    def __load_chunked_xray_articles_csv(self):
+    def __load_chunked_xray_articles_csv(self) -> pd.DataFrame:
         """
         Loads and returns the chunked xray articles from __chunked_articles_csv_path as a DataFrame
         """
@@ -78,7 +79,7 @@ class IndexEmbedding():
             self.__create_chunked_dataset(self.__chunking_max_tokens)
         return pd.read_csv(self.__chunked_articles_csv_path)
         
-    def __convert_json_to_df(self, json_data=None):
+    def __convert_json_to_df(self, json_data=None) -> pd.DataFrame:
         """
         Returns json_data (or the raw xray articles if no json_data provided) as a DataFrame
 
@@ -96,7 +97,7 @@ class IndexEmbedding():
             df = pd.DataFrame(json_data)
         return df
     
-    def __save_json_as_csv(self):
+    def __save_json_as_csv(self) -> None:
         """
         Converts __chunked_articles_json_path from a JSON file into a CSV file and saves it at __chunked_articles_csv_path.
         """
@@ -105,7 +106,7 @@ class IndexEmbedding():
             df = json.load(f)
         df.to_csv(self.__chunked_articles_csv_path)
     
-    def __chunk_text(self, tokens):
+    def __chunk_text(self, tokens) -> list:
         """
         Splits a list of tokens into chunks of size __chunking_max_tokens attribute, returning the list of chunks.
 
@@ -114,7 +115,7 @@ class IndexEmbedding():
         """
         return [tokens[i:i+self.__chunking_max_tokens] for i in range(0, len(tokens), self.__chunking_max_tokens)]
 
-    def __create_chunked_dataset(self):
+    def __create_chunked_dataset(self) -> None:
         """
         Creates a dataset of chunked articles from the raw xray articles, and saves it in JSON and CSV formats.
         """
@@ -143,7 +144,7 @@ class IndexEmbedding():
 
         self.__save_json_as_csv()
 
-    def __run_batch_embeddings_ingestion(self):
+    def __run_batch_embeddings_ingestion(self) -> None:
         """
         Generates embeddings for the chunked xray articles using either OpenAI or HuggingFace models, 
         and saves the embedded dataset as a CSV.
@@ -179,7 +180,7 @@ class IndexEmbedding():
         new_df['embedding'] = embeddings_as_lists
         new_df.to_csv(self.__embedding_path, index=True)
 
-    def __cosine_similarity(self, v1, v2):
+    def __cosine_similarity(self, v1, v2) -> float:
         """
         returns cosine similarity of vectors v1 and v2
 
@@ -189,7 +190,7 @@ class IndexEmbedding():
         """
         return 1 - spatial.distance.cosine(v1, v2)
 
-    def __build_vector_index(self):
+    def __build_vector_index(self) -> None:
         """
         Builds a vector index from the embedded xray articles and saves it as a pickle file.
         """
@@ -205,7 +206,7 @@ class IndexEmbedding():
         with open(self.__index_path, "wb") as f:
             pickle.dump(index, f)
 
-    def __retrieve_vector_index(self):
+    def __retrieve_vector_index(self) -> (list, time):
         """
         Retrieves the vector index of embedded articles, building it if it doesn't exist.
 
@@ -221,7 +222,7 @@ class IndexEmbedding():
 
         return list_of_embeddings, time.time() - start
     
-    def __silent_remove(path):
+    def __silent_remove(self, path) -> None:
         """
         Removes a file silently. If the file does not exist, it does nothing.
 
@@ -234,7 +235,7 @@ class IndexEmbedding():
             if e.errno != errno.ENOENT:
                 raise
 
-    def __clean_directory(self):
+    def __clean_directory(self) -> None:
         """
         Cleans up the data directory by removing the embeddings, index, and chunked articles.
         """
@@ -243,7 +244,7 @@ class IndexEmbedding():
         self.__silent_remove(self.__chunked_articles_csv_path)
         self.__silent_remove(self.__chunked_articles_json_path)
 
-    def get_similar_documents(self, query):
+    def get_similar_documents(self, query) -> object:
         """
         Retrieves documents similar to a given query based on cosine similarity of embeddings.
 
@@ -268,7 +269,7 @@ class IndexEmbedding():
             similarity_scores, key=lambda x: x[0], reverse=True)
         return sorted_similarity_scores[:self.__num_matches]
     
-    def destroy(self):
+    def destroy(self) -> None:
         """
         Destroys the current instance by cleaning up all associated files and directories.
         """
