@@ -7,8 +7,9 @@ from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
+from embedding import Embedding
 
-class ChromaEmbedding():
+class ChromaEmbedding(Embedding):
     """
     A class for handling embedding operations and Chroma database interactions.
 

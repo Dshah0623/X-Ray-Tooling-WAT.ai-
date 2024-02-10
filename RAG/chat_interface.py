@@ -6,8 +6,24 @@ import uuid
 import argparse
 from chroma_embedding import ChromaEmbedding
 from index_embedding import IndexEmbedding
+from abc import ABC, abstractmethod
 
-class Cohere():
+class Chat(ABC):
+    @abstractmethod
+    def query(self, query) -> object:
+        """
+        run query through the chat to get a response with rag
+        """
+        pass
+
+    @abstractmethod
+    def end_chat(self) -> None:
+        """
+        Cleans up resources
+        """
+        pass
+
+class Cohere(Chat):
     """
     A class that integrates with the Cohere API for conversational AI purposes.
 
@@ -49,7 +65,7 @@ class Cohere():
                  dataset_path=dataset_path
             )
 
-    def query(self, query):
+    def query(self, query) -> str:
         """
         Processes a query.
 
@@ -69,13 +85,13 @@ class Cohere():
         )
         return response.text
     
-    def end_chat(self):
+    def end_chat(self) -> None:
         """
         Cleans up resources
         """
         self.__embedding.destroy()
     
-class OpenAI():
+class OpenAI(Chat):
     """
     A class that integrates with OpenAI's language models for question answering purposes.
 
@@ -87,7 +103,7 @@ class OpenAI():
     __open_api_key = os.getenv('OPENAI_API_KEY')
     __open_llm = OpenAI(temperature=0, openai_api_key=__open_api_key)
 
-    def __init__(self, chroma_embedding=True, use_openai=False, chunking_max_tokens=100, num_matches=5, dataset_path="RAG/datasets/"):
+    def __init__(self, chroma_embedding=True, use_openai=False, chunking_max_tokens=100, num_matches=5, dataset_path="RAG/datasets/") -> None:
         """
         Initializes the OpenAI class, setting up the embedding model used for queries.
 
@@ -113,7 +129,7 @@ class OpenAI():
                  dataset_path=dataset_path
             )
 
-    def query(self, query):
+    def query(self, query) -> object:
         """
         Processes a query using OpenAI's language model.
 
@@ -129,7 +145,7 @@ class OpenAI():
         out = chain.run(input_documents=rag_docs, question=query)
         return out
     
-    def end_chat(self):
+    def end_chat(self -> None):
         """
         Cleans up resources.
         """
