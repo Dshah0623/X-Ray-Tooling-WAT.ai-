@@ -145,7 +145,7 @@ class OpenAI(Chat):
         out = chain.run(input_documents=rag_docs, question=query)
         return out
     
-    def end_chat(self -> None):
+    def end_chat(self) -> None:
         """
         Cleans up resources.
         """
