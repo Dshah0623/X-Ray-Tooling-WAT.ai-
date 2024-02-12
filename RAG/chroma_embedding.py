@@ -2,18 +2,14 @@ import os
 import json
 import dotenv
 import argparse
-# from langchain.embeddings import HuggingFaceEmbeddings
-# from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from langchain.embeddings import OpenAIEmbeddings
-# from langchain.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import JSONLoader
-# from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 
 from embedding import Embedding
+
 
 class ChromaEmbedding(Embedding):
     """
@@ -64,27 +60,29 @@ class ChromaEmbedding(Embedding):
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
-        self.set_embedding_model(use_open_ai)
+        self.__embedding_in_use = self.__embedding_open if use_open_ai else self.__embeddings_hugging
+        print(f"Using {'OpenAI' if use_open_ai else 'HuggingFace'} Embedding")
         self.load_chroma_db()
         self.create_and_populate_chroma()
 
-    def set_embedding_model(self, use_open_ai=False) -> None:
-        """
-        Sets the embedding model to be used based on the user's choice.
+    # def set_embedding_model(self, use_open_ai=False) -> None:
+    #     """
+    #     Sets the embedding model to be used based on the user's choice.
 
-        Args:
-            use_hugging_face (bool): If True, sets HuggingFace embeddings.
-            use_open_ai (bool): If True, sets OpenAI embeddings.
+    #     Args:
+    #         use_hugging_face (bool): If True, sets HuggingFace embeddings.
+    #         use_open_ai (bool): If True, sets OpenAI embeddings.
 
-        Raises:
-            ValueError: If no embedding model is selected.
-        """
-        if use_open_ai:
-            print("Using OpenAI Embedding")
-            self.__embedding_in_use = self.__embedding_open
-        else:
-            print("Using HuggingFace Embedding")
-            self.__embedding_in_use = self.__embeddings_hugging
+    #     Raises:
+    #         ValueError: If no embedding model is selected.
+    #     """
+    #     print(f"Setting embedding model, use_open_ai={use_open_ai}")
+    #     if use_open_ai:
+    #         print("Using OpenAI Embedding")
+    #         self.__embedding_in_use = self.__embedding_open
+    #     else:
+    #         print("Using HuggingFace Embedding")
+    #         self.__embedding_in_use = self.__embeddings_hugging
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -205,51 +203,37 @@ class ChromaEmbedding(Embedding):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
-    subparsers = parser.add_subparsers(dest='command', help='Subcommands')
 
-    # Subparser for set_embedding_model
-    parser_set_model = subparsers.add_parser(
-        'set_model', help='Set the embedding model')
-    parser_set_model.add_argument(
-        '-oi', '--openai', action='store_true', help='Use OpenAI embeddings instead of default huggingface')
+    # Option to choose between OpenAI and HuggingFace embeddings
+    parser.add_argument('--use_open_ai', action='store_true',
+                        help="Use OpenAI embeddings instead of HuggingFace's")
 
-    # Subparser for build_chroma
-    parser_build_chroma = subparsers.add_parser(
-        'build_chroma', help='Create and populate Chroma DB')
+    # Commands for different operations
+    subparsers = parser.add_subparsers(dest='operation', help='Operations')
 
-    # Subparser for load_chroma
-    parser_load_chroma = subparsers.add_parser(
-        'load_chroma', help='Load Chroma DB')
-
-    # Subparser for retrieve_from_query
-    parser_retrieve = subparsers.add_parser(
-        'retrieve_from_query', help='Retrieve documents from Chroma based on query')
-    parser_retrieve.add_argument(
+    # Add subparsers for each operation
+    subparsers.add_parser('build', help='Create and populate Chroma DB')
+    subparsers.add_parser('load', help='Load Chroma DB')
+    subparsers.add_parser('retrieve', help='Retrieve documents based on query').add_argument(
         'query', type=str, help='Query for document retrieval')
-
-    # Subparser for reupload
-    parser_reupload = subparsers.add_parser(
-        'reupload', help='Reupload documents to Chroma')
-
-    # Subparser for clear_db
-    parser_clear_db = subparsers.add_parser(
-        'clear_db', help='Clear Chroma DB')
+    subparsers.add_parser('reupload', help='Reupload documents to Chroma')
+    subparsers.add_parser('clear', help='Clear Chroma DB')
 
     args = parser.parse_args()
 
-    chroma = ChromaEmbedding()
+    # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
+    chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
 
-    if args.command == 'set_model':
-        chroma.set_embedding_model(use_open_ai=args.openai)
-    elif args.command == 'build_chroma':
+    # Handle operations
+    if args.operation == 'build':
         chroma.create_and_populate_chroma()
-    elif args.command == 'load_chroma':
+    elif args.operation == 'load':
         chroma.load_chroma_db()
-    elif args.command == 'get_similar_documents':
+    elif args.operation == 'retrieve':
         print(chroma.get_similar_documents(args.query))
-    elif args.command == 'reupload':
+    elif args.operation == 'reupload':
         chroma.reupload_to_chroma()
-    elif args.command == 'clear_db':
+    elif args.operation == 'clear':
         chroma.clear_chroma()
     else:
         parser.print_help()

@@ -3,6 +3,6 @@
 # Check if the sqlite file exists
 if [ ! -f "./sqlite" ]; then
     # If the file does not exist, execute the Python commands
-    python RAG/chroma_embedding.py set_model --openai
-    python RAG/chroma_embedding.py build_chroma
+    python chroma_embedding.py --use_open_ai build
+
 fi
