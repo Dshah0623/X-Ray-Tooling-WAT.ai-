@@ -9,6 +9,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.embeddings import OpenAIEmbeddings
 from embedding import Embedding
 
+
 class IndexEmbedding(Embedding):
     """
     A class for handling embedding operations for a vector index of articles.
@@ -36,12 +37,12 @@ class IndexEmbedding(Embedding):
     __embedding_open = OpenAIEmbeddings(openai_api_key=__open_key)
 
     def __init__(
-            self, 
-            use_openai = False,
+            self,
+            use_openai=False,
             chunking_max_tokens=100,
             num_matches=5,
             dataset_path="RAG/datasets/"
-            ) -> None:
+    ) -> None:
         """
         Args:
             use_open_ai (bool): If True, sets OpenAI embeddings.
@@ -70,7 +71,7 @@ class IndexEmbedding(Embedding):
             raise ValueError("Articled file not found!")
         with open(self.__articles_path, "r", encoding='utf-8') as f:
             return json.load(f)
-        
+
     def __load_chunked_xray_articles_csv(self) -> pd.DataFrame:
         """
         Loads and returns the chunked xray articles from __chunked_articles_csv_path as a DataFrame
@@ -78,7 +79,7 @@ class IndexEmbedding(Embedding):
         if not os.path.exists(self.__chunked_articles_csv_path):
             self.__create_chunked_dataset(self.__chunking_max_tokens)
         return pd.read_csv(self.__chunked_articles_csv_path)
-        
+
     def __convert_json_to_df(self, json_data=None) -> pd.DataFrame:
         """
         Returns json_data (or the raw xray articles if no json_data provided) as a DataFrame
@@ -92,11 +93,11 @@ class IndexEmbedding(Embedding):
         if json_data is None:
             df = pd.DataFrame(
                 self.__load_xray_articles()
-                )
+            )
         else:
             df = pd.DataFrame(json_data)
         return df
-    
+
     def __save_json_as_csv(self) -> None:
         """
         Converts __chunked_articles_json_path from a JSON file into a CSV file and saves it at __chunked_articles_csv_path.
@@ -105,7 +106,7 @@ class IndexEmbedding(Embedding):
         with open(self.__chunked_articles_json_path, "r", encoding='utf-8') as f:
             df = json.load(f)
         df.to_csv(self.__chunked_articles_csv_path)
-    
+
     def __chunk_text(self, tokens) -> list:
         """
         Splits a list of tokens into chunks of size __chunking_max_tokens attribute, returning the list of chunks.
@@ -125,7 +126,7 @@ class IndexEmbedding(Embedding):
             j = 0
             # fulltext is an array of strings
             full_text = " ".join(row['FullText']).split(" ")
-            
+
             # tokenize
             for chunk in self.__chunk_text(full_text):
                 chunk_text = " ".join(chunk)
@@ -221,7 +222,7 @@ class IndexEmbedding(Embedding):
             list_of_embeddings = pickle.load(f)
 
         return list_of_embeddings, time.time() - start
-    
+
     def __silent_remove(self, path) -> None:
         """
         Removes a file silently. If the file does not exist, it does nothing.
@@ -268,8 +269,8 @@ class IndexEmbedding(Embedding):
         sorted_similarity_scores = sorted(
             similarity_scores, key=lambda x: x[0], reverse=True)
         return sorted_similarity_scores[:self.__num_matches]
-    
-    def destroy(self) -> None:
+
+    def clear(self) -> None:
         """
         Destroys the current instance by cleaning up all associated files and directories.
         """

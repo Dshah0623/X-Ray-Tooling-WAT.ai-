@@ -202,50 +202,42 @@ class ChromaEmbedding(Embedding):
             print(f"An error occurred: {e}")
 
 
-# if __name__ == "__main__":
-#     parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
 
-#     # Option to choose between OpenAI and HuggingFace embeddings
-#     parser.add_argument('--use_open_ai', action='store_true',
-#                         help="Use OpenAI embeddings instead of HuggingFace's")
+    # Option to choose between OpenAI and HuggingFace embeddings
+    parser.add_argument('--use_open_ai', action='store_true',
+                        help="Use OpenAI embeddings instead of HuggingFace's")
 
-#     # Commands for different operations
-#     subparsers = parser.add_subparsers(dest='operation', help='Operations')
+    # Commands for different operations
+    subparsers = parser.add_subparsers(dest='operation', help='Operations')
 
-#     # Add subparsers for each operation
-#     subparsers.add_parser('build', help='Create and populate Chroma DB')
-#     subparsers.add_parser('load', help='Load Chroma DB')
-#     subparsers.add_parser('retrieve', help='Retrieve documents based on query').add_argument(
-#         'query', type=str, help='Query for document retrieval')
-#     subparsers.add_parser('reupload', help='Reupload documents to Chroma')
-#     subparsers.add_parser('clear', help='Clear Chroma DB')
+    # Add subparsers for each operation
+    subparsers.add_parser('build', help='Create and populate Chroma DB')
+    subparsers.add_parser('load', help='Load Chroma DB')
+    subparsers.add_parser('retrieve', help='Retrieve documents based on query').add_argument(
+        'query', type=str, help='Query for document retrieval')
+    subparsers.add_parser('reupload', help='Reupload documents to Chroma')
+    subparsers.add_parser('clear', help='Clear Chroma DB')
+    subparsers.add_parser('destroy', help='Destroy Chroma DB')
 
-#     args = parser.parse_args()
+    args = parser.parse_args()
 
-#     # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
-#     chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
+    # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
+    chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
 
-#     # Handle operations
-#     if args.operation == 'build':
-#         chroma.create_and_populate_chroma()
-#     elif args.operation == 'load':
-#         chroma.load_chroma_db()
-#     elif args.operation == 'retrieve':
-#         print(chroma.get_similar_documents(args.query))
-#     elif args.operation == 'reupload':
-#         chroma.reupload_to_chroma()
-#     elif args.operation == 'clear':
-#         chroma.clear_chroma()
-#     else:
-#         parser.print_help()
-
-chroma = ChromaEmbedding(use_open_ai=True)  # or however you initialize it
-print("creating chroma db")
-chroma.create_and_populate_chroma()  # This should create and populate the DB
-print("loading chroma db")
-chroma.load_chroma_db()  # Make sure the database is loaded
-print("checking if db is populated")
-chroma.check_db_populated()  # This should print out whether the DB is populated
-# This should print out the documents
-print("testing")
-print(chroma.get_similar_documents("xray"))
+    # Handle operations
+    if args.operation == 'build':
+        chroma.create_and_populate_chroma()
+    elif args.operation == 'load':
+        chroma.load_chroma_db()
+    elif args.operation == 'retrieve':
+        print(chroma.get_similar_documents(args.query))
+    elif args.operation == 'reupload':
+        chroma.reupload_to_chroma()
+    elif args.operation == 'clear':
+        chroma.clear_chroma()
+    elif args.operation == 'destroy':
+        chroma.destroy()
+    else:
+        parser.print_help()
