@@ -7,7 +7,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
-
+import shutil
 from embedding import Embedding
 
 
@@ -31,12 +31,6 @@ class ChromaEmbedding(Embedding):
         __processed_articles_path (str [Path]): the path to the processed (chunked) articles
         __articles_path (str [Path]): the path to the raw xray articles
     """
-    dotenv.load_dotenv()
-    __open_key = os.getenv('OPENAI_API_KEY')
-    __embeddings_hugging = HuggingFaceEmbeddings(
-        model_name="all-MiniLM-L6-v2")
-    __embedding_open = OpenAIEmbeddings(openai_api_key=__open_key)
-    __persist_chroma_directory = 'db'
 
     def __init__(
         self,
@@ -62,27 +56,7 @@ class ChromaEmbedding(Embedding):
             self.__xray_articles)
         self.__embedding_in_use = self.__embedding_open if use_open_ai else self.__embeddings_hugging
         print(f"Using {'OpenAI' if use_open_ai else 'HuggingFace'} Embedding")
-        self.load_chroma_db()
-        self.create_and_populate_chroma()
-
-    # def set_embedding_model(self, use_open_ai=False) -> None:
-    #     """
-    #     Sets the embedding model to be used based on the user's choice.
-
-    #     Args:
-    #         use_hugging_face (bool): If True, sets HuggingFace embeddings.
-    #         use_open_ai (bool): If True, sets OpenAI embeddings.
-
-    #     Raises:
-    #         ValueError: If no embedding model is selected.
-    #     """
-    #     print(f"Setting embedding model, use_open_ai={use_open_ai}")
-    #     if use_open_ai:
-    #         print("Using OpenAI Embedding")
-    #         self.__embedding_in_use = self.__embedding_open
-    #     else:
-    #         print("Using HuggingFace Embedding")
-    #         self.__embedding_in_use = self.__embeddings_hugging
+        self.__chroma_db = None
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -119,28 +93,33 @@ class ChromaEmbedding(Embedding):
         """
         Creates a Chroma database from chunked x-ray articles and populates it with embeddings.
         """
-        vector_db = Chroma.from_documents(documents=self.__xray_chunked_articles,
-                                          embedding=self.__embedding_in_use,
-                                          persist_directory=self.__persist_chroma_directory)
 
-        vector_db.persist()
+        if "db/chroma.sqlite3" in os.listdir():
+            print("Chroma DB already exists. Skipping creation.")
+        else:
+            print("Creating Chroma DB...")
+            vector_db = Chroma.from_documents(self.__xray_chunked_articles,
+                                              self.__embedding_in_use,
+                                              persist_directory=self.__persist_chroma_directory)
 
-    def __create_ids(self) -> list:
-        ids = [str(i) for i in range(1, len(self.__xray_chunked_articles) + 1)]
-        return ids
+            self.__chroma_db = vector_db.persist()
+            print("Chroma DB created and populated.")
+            return
 
     def load_chroma_db(self) -> None:
         """
         Loads the Chroma database from the persistent storage.
         """
-        vector_db = Chroma(
-            persist_directory=self.__persist_chroma_directory,
-            # Corrected to use the private attribute
-            embedding_function=self.__embedding_in_use,
-            # ids=self.__create_ids()
-        )
+        if self.__chroma_db:
+            print("Chroma DB already loaded.")
+        else:
+            vector_db = Chroma(
+                persist_directory=self.__persist_chroma_directory,
+                # Corrected to use the private attribute
+                embedding_function=self.__embedding_in_use,
+            )
 
-        self.__chroma_db = vector_db
+            self.__chroma_db = vector_db
 
     def get_similar_documents(self, query) -> object:
         """
@@ -166,6 +145,21 @@ class ChromaEmbedding(Embedding):
         self.__load_and_chunk_articles()
         self.__chroma_db = Chroma.from_documents(
             self.__xray_chunked_articles)
+
+    def check_db_populated(self):
+        try:
+            # Attempt to fetch a small number of documents as a test
+            sample_query = "xray"  # This can be any string if you're just checking for presence
+            results = self.__chroma_db.similarity_search(sample_query)
+            if results:
+                print("Chroma DB is populated.")
+                return True
+            else:
+                print("Chroma DB is empty.")
+                return False
+        except Exception as e:
+            print(f"Error checking Chroma DB: {e}")
+            return False
 
     def clear_chroma(self) -> None:
         """
@@ -198,42 +192,60 @@ class ChromaEmbedding(Embedding):
         return self.__chroma_db
 
     def destroy(self):
-        self.clear_chroma()
+        folder_path = 'db'  # Path to the Chroma DB folder
+        try:
+            shutil.rmtree(folder_path)
+            print("Chroma DB folder deleted successfully.")
+        except FileNotFoundError:
+            print("The folder does not exist.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
 
-    # Option to choose between OpenAI and HuggingFace embeddings
-    parser.add_argument('--use_open_ai', action='store_true',
-                        help="Use OpenAI embeddings instead of HuggingFace's")
+#     # Option to choose between OpenAI and HuggingFace embeddings
+#     parser.add_argument('--use_open_ai', action='store_true',
+#                         help="Use OpenAI embeddings instead of HuggingFace's")
 
-    # Commands for different operations
-    subparsers = parser.add_subparsers(dest='operation', help='Operations')
+#     # Commands for different operations
+#     subparsers = parser.add_subparsers(dest='operation', help='Operations')
 
-    # Add subparsers for each operation
-    subparsers.add_parser('build', help='Create and populate Chroma DB')
-    subparsers.add_parser('load', help='Load Chroma DB')
-    subparsers.add_parser('retrieve', help='Retrieve documents based on query').add_argument(
-        'query', type=str, help='Query for document retrieval')
-    subparsers.add_parser('reupload', help='Reupload documents to Chroma')
-    subparsers.add_parser('clear', help='Clear Chroma DB')
+#     # Add subparsers for each operation
+#     subparsers.add_parser('build', help='Create and populate Chroma DB')
+#     subparsers.add_parser('load', help='Load Chroma DB')
+#     subparsers.add_parser('retrieve', help='Retrieve documents based on query').add_argument(
+#         'query', type=str, help='Query for document retrieval')
+#     subparsers.add_parser('reupload', help='Reupload documents to Chroma')
+#     subparsers.add_parser('clear', help='Clear Chroma DB')
 
-    args = parser.parse_args()
+#     args = parser.parse_args()
 
-    # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
-    chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
+#     # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
+#     chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
 
-    # Handle operations
-    if args.operation == 'build':
-        chroma.create_and_populate_chroma()
-    elif args.operation == 'load':
-        chroma.load_chroma_db()
-    elif args.operation == 'retrieve':
-        print(chroma.get_similar_documents(args.query))
-    elif args.operation == 'reupload':
-        chroma.reupload_to_chroma()
-    elif args.operation == 'clear':
-        chroma.clear_chroma()
-    else:
-        parser.print_help()
+#     # Handle operations
+#     if args.operation == 'build':
+#         chroma.create_and_populate_chroma()
+#     elif args.operation == 'load':
+#         chroma.load_chroma_db()
+#     elif args.operation == 'retrieve':
+#         print(chroma.get_similar_documents(args.query))
+#     elif args.operation == 'reupload':
+#         chroma.reupload_to_chroma()
+#     elif args.operation == 'clear':
+#         chroma.clear_chroma()
+#     else:
+#         parser.print_help()
+
+chroma = ChromaEmbedding(use_open_ai=True)  # or however you initialize it
+print("creating chroma db")
+chroma.create_and_populate_chroma()  # This should create and populate the DB
+print("loading chroma db")
+chroma.load_chroma_db()  # Make sure the database is loaded
+print("checking if db is populated")
+chroma.check_db_populated()  # This should print out whether the DB is populated
+# This should print out the documents
+print("testing")
+print(chroma.get_similar_documents("xray"))
