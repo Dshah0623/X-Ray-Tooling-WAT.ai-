@@ -94,7 +94,7 @@ class ChromaEmbedding(Embedding):
         Creates a Chroma database from chunked x-ray articles and populates it with embeddings.
         """
 
-        if "db/chroma.sqlite3" in os.listdir():
+        if os.path.isdir("db/chroma.sqlite3"):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
