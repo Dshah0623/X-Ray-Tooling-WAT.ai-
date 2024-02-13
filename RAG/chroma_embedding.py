@@ -141,7 +141,7 @@ class ChromaEmbedding(Embedding):
         """
         Clears the current Chroma database and re-uploads chunked articles.
         """
-        self.clear_chroma()
+        self.clear()
         self.__load_and_chunk_articles()
         self.__chroma_db = Chroma.from_documents(
             self.__xray_chunked_articles)
@@ -161,7 +161,7 @@ class ChromaEmbedding(Embedding):
             print(f"Error checking Chroma DB: {e}")
             return False
 
-    def clear_chroma(self) -> None:
+    def clear(self) -> None:
         """
         Clears documents from the Chroma database.
         """
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     elif args.operation == 'reupload':
         chroma.reupload_to_chroma()
     elif args.operation == 'clear':
-        chroma.clear_chroma()
+        chroma.clear()
     elif args.operation == 'destroy':
         chroma.destroy()
     else:

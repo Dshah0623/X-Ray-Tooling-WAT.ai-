@@ -4,9 +4,10 @@ import errno
 import pandas as pd
 import time
 import pickle
+import dotenv
 from scipy import spatial
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import OpenAIEmbeddings
 from embedding import Embedding
 
 
@@ -31,6 +32,7 @@ class IndexEmbedding(Embedding):
         __use_openai (bool): whether or not to use openai embeddings vs huggingface embeddings
         __xray_chunked_articles (DataFrame): the chunked articles loaded
     """
+    dotenv.load_dotenv()
     __open_key = os.getenv('OPENAI_API_KEY')
     __embeddings_hugging = HuggingFaceEmbeddings(
         model_name="all-MiniLM-L6-v2")
@@ -245,7 +247,7 @@ class IndexEmbedding(Embedding):
         self.__silent_remove(self.__chunked_articles_csv_path)
         self.__silent_remove(self.__chunked_articles_json_path)
 
-    def get_similar_documents(self, query) -> object:
+    def get_similar_documents(self, query) -> list[tuple[float, int, str]]:
         """
         Retrieves documents similar to a given query based on cosine similarity of embeddings.
 
@@ -268,7 +270,8 @@ class IndexEmbedding(Embedding):
                 (self.__cosine_similarity(embedding_result, embedding), i, chunk))
         sorted_similarity_scores = sorted(
             similarity_scores, key=lambda x: x[0], reverse=True)
-        return sorted_similarity_scores[:self.__num_matches]
+        results = sorted_similarity_scores[:self.__num_matches]
+        return results
 
     def clear(self) -> None:
         """

@@ -1,9 +1,11 @@
 from cohere import Client
 import os
-from langchain.llms import OpenAI
+from langchain_community.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
+from langchain.docstore.document import Document
 import uuid
 import argparse
+import dotenv
 from chroma_embedding import ChromaEmbedding
 from index_embedding import IndexEmbedding
 from abc import ABC, abstractmethod
@@ -34,6 +36,7 @@ class Cohere(Chat):
         __embedding Union(IndexEmbedding, ChromaEmbedding): an embedding system for the RAG to use
         __max_tokens int: max number of tokns a response to a query can be
     """
+    dotenv.load_dotenv()
     __cohere_key = os.getenv('COHERE_API_KEY')
     __co = Client(__cohere_key)
     __conversation_id = str(uuid.uuid4())
@@ -75,8 +78,8 @@ class Cohere(Chat):
         Returns:
             str: The text response from the Cohere API.
         """
-        rag_docs = self.__embedding.get_similar_documents(query, self.__max_docs)
-
+        rag_docs = self.__embedding.get_similar_documents(query)
+        rag_docs = [{i[1]: i[2]} for i in rag_docs]
         response = self.__co.chat(
             message=query,
             documents=rag_docs,
@@ -91,7 +94,7 @@ class Cohere(Chat):
         """
         self.__embedding.destroy()
     
-class OpenAI(Chat):
+class OpenAI_LLM(Chat):
     """
     A class that integrates with OpenAI's language models for question answering purposes.
 
@@ -100,6 +103,7 @@ class OpenAI(Chat):
         __open_llm (OpenAI): OpenAI language model initialized with the API key.
         __embedding Union(IndexEmbedding, ChromaEmbedding): an embedding system for the RAG to use
     """
+    dotenv.load_dotenv()
     __open_api_key = os.getenv('OPENAI_API_KEY')
     __open_llm = OpenAI(temperature=0, openai_api_key=__open_api_key)
 
@@ -141,8 +145,9 @@ class OpenAI(Chat):
         """
         rag_docs = self.__embedding.get_similar_documents(query)
 
+        docs = [Document(page_content=doc[2], metadata={"chunk": doc[1], "source": "local"}) for doc in rag_docs]
         chain = load_qa_chain(self.__open_llm, chain_type="stuff")
-        out = chain.run(input_documents=rag_docs, question=query)
+        out = chain.run(input_documents=docs, question=query)
         return out
     
     def end_chat(self) -> None:
@@ -152,5 +157,37 @@ class OpenAI(Chat):
         self.__embedding.destroy()
 
 if __name__=="__main__":
-    # TODO - implement the argparse and actual driver to run a chat
-    pass
+    chat = None
+    parser = argparse.ArgumentParser(description="X Ray Tooling LLM driver")
+
+    # Option to choose between OpenAI and HuggingFace embeddings
+    parser.add_argument('--use_open_ai_embeddings', action='store_true',
+                        help="Use OpenAI embeddings instead of HuggingFace's")
+    # Option to choose between vector index and chroma and HuggingFace embeddings
+    parser.add_argument('--use_chroma', action='store_true',
+                        help="Use Chroma db embeddings instead of a vector index")
+    # Option to choose between cohere and openai llm
+    parser.add_argument('--use_cohere', action='store_true',
+                        help="Use cohere llm instead of openai")
+
+    args = parser.parse_args()
+
+    # Handle operations
+    if args.use_cohere:
+        chat = Cohere(args.use_chroma, args.use_open_ai_embeddings)
+    else:
+        chat = OpenAI_LLM(args.use_chroma, args.use_open_ai_embeddings)
+
+
+    while True:
+        # Get the user message
+        message = input("User: ")
+
+        # Typing "quit" or "q" ends the conversation
+        if message.lower() == "quit" or message.lower() == "q":
+            print("Ending chat.")
+            break
+        else:
+            response = chat.query(message)
+            print(response)
+            print(type(response))

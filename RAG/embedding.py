@@ -7,5 +7,5 @@ class Embedding(ABC):
         pass
 
     @abstractmethod
-    def embedding(self) -> None:
+    def clear(self) -> None:
         pass
