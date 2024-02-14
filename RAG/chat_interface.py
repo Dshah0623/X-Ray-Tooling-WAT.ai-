@@ -1,6 +1,6 @@
 from cohere import Client
 import os
-from langchain_community.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.docstore.document import Document
 import uuid
@@ -177,7 +177,6 @@ if __name__=="__main__":
         chat = Cohere(args.use_chroma, args.use_open_ai_embeddings)
     else:
         chat = OpenAI_LLM(args.use_chroma, args.use_open_ai_embeddings)
-
 
     while True:
         # Get the user message

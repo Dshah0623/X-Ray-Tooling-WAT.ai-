@@ -7,7 +7,7 @@ import pickle
 import dotenv
 from scipy import spatial
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from embedding import Embedding
 
 
@@ -79,7 +79,7 @@ class IndexEmbedding(Embedding):
         Loads and returns the chunked xray articles from __chunked_articles_csv_path as a DataFrame
         """
         if not os.path.exists(self.__chunked_articles_csv_path):
-            self.__create_chunked_dataset(self.__chunking_max_tokens)
+            self.__create_chunked_dataset()
         return pd.read_csv(self.__chunked_articles_csv_path)
 
     def __convert_json_to_df(self, json_data=None) -> pd.DataFrame:
@@ -106,7 +106,7 @@ class IndexEmbedding(Embedding):
         """
         df = None
         with open(self.__chunked_articles_json_path, "r", encoding='utf-8') as f:
-            df = json.load(f)
+            df = pd.read_json(f)
         df.to_csv(self.__chunked_articles_csv_path)
 
     def __chunk_text(self, tokens) -> list:
@@ -169,9 +169,9 @@ class IndexEmbedding(Embedding):
         embeddings_as_lists = []
         for pub_id in pub_id_to_chunks:
             embedding_result = None
-            if self.use_openai:
+            if self.__use_openai:
                 # Logic for OpenAI embeddings
-                embedding_result = self.__embedding_open.aembed_documents(
+                embedding_result = self.__embedding_open.embed_documents(
                     pub_id_to_chunks[pub_id])
             else:
                 # Logic for HuggingFace embeddings
@@ -191,7 +191,7 @@ class IndexEmbedding(Embedding):
         v1 (list of float): The first vector.
         v2 (list of float): The second vector.
         """
-        return 1 - spatial.distance.cosine(v1, v2)
+        return 1 - spatial.distance.cosine(v1, v1)
 
     def __build_vector_index(self) -> None:
         """
@@ -200,6 +200,7 @@ class IndexEmbedding(Embedding):
         if not os.path.exists(self.__embedding_path):
             self.__run_batch_embeddings_ingestion()
         df = pd.read_csv(self.__embedding_path)
+        df = df.reset_index()
         index = [(row['index'], row['embedding'], row['text'])
                  for _, row in df.iterrows()]
         # make embeddings into list of floats
@@ -260,7 +261,7 @@ class IndexEmbedding(Embedding):
         embeddings, _ = self.__retrieve_vector_index()
         if self.__use_openai:
             # Logic for OpenAI embeddings
-            embedding_result = self.__embedding_open.aembed_query(query)
+            embedding_result = self.__embedding_open.embed_query(query)
         else:
             # Logic for HuggingFace embeddings
             embedding_result = self.__embeddings_hugging.embed_query(query)
