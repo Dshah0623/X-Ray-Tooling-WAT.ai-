@@ -15,6 +15,6 @@ class Flow:
   flows: list[str] = [template for template in flows_json]
 
   @classmethod
-  def template(cls, question: str, relevant_documents: list[str], flow_type: FlowType):
-    template_filled = cls.flows[flow_type.value].format(question=question, relevant_documents=relevant_documents)
+  def template(cls, injury: str, injury_location:str, flow_type: FlowType):
+    template_filled = cls.flows[flow_type.value].format(injury=injury, location=injury_location)
     return template_filled

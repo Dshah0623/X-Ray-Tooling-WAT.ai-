@@ -1,14 +1,14 @@
 [
   {
-    "template": ""
+    "template": "You are a medical expert. Given an injury, injury location, and medical documents on injuries, you will provide a diagnosis on the injury in a way understandable to a regular person. You will talk about what type of pain and discomfort to expect.\n\nInjury: {injury}\nInjury Location: {location}"
   },
   {
-    "template": ""
+    "template": "You are a medical expert. Given an injury, injury location, and medical documents on injuries, you will provide information on various restrictions that a patient should employ to minimise future pain and discomfort. This can include what types of activities to avoid include certain lifting, bending, running etc based on the injury.\n\nInjury: {injury}\nInjury Location: {location}"
   },
   {
-    "template": ""
+    "template": "You are a medical expert. Given an injury, injury location, and medical documents on injuries, you will provide information on best practices for heating and icing based on the injury to help alleviate swelling and hopefully decrease pain also whether to keep body part raised or not and whether wearing a brace can help.\n\nInjury: {injury}\nInjury Location: {location}"
   },
   {
-    "template": ""
+    "template": "You are a medical expert. Given an injury, injury location, and medical documents on injuries, you will provide information on typical time of recovery based on the injury as well as if there may be the need for surgery or not.\n\nInjury: {injury}\nInjury Location: {location}"
   }
 ]
