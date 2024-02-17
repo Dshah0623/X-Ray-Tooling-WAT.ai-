@@ -219,15 +219,6 @@ class PubmedEmbedding:
         )
         return response.text
 
-    def create_populate_chroma_db(self, input_file="RAG/datasets/xray_articles_with_embeddings2.csv"):
-        loader = CSVLoader(
-            file_path=input_file)
-        data = loader.load()
-
-        print(data)
-        for spec in data:
-            print(spec["page_content"])
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pubmed Embedding Tool")
@@ -284,16 +275,9 @@ if __name__ == "__main__":
         print(f"NLP: {out}")
     if args.cohere_response:
         query = "Alzheimers disease"
-        """
-        since I'm running on windows the jq loader doesn't function and I can't use the JSONloader from langchain,
-        so I just load the json normally into the form [{"snippet": text1}, {"snippet": text2}, ...]
-        """
-        with open("RAG/datasets/results.json", "r") as json_file:
-            docs = json.load(json_file)
-        docs = [{"snippet": value} for value in docs.values()]
-        # result = pe.run_similarity_search(query)
-        # pe.results_to_json(result)
-        # docs = pe.load_file()
+        result = pe.run_similarity_search(query)
+        pe.results_to_json(result)
+        docs = pe.load_file()
         out = pe.nlp_cohere(docs, query)
         print(f"NLP: {out}")
 
