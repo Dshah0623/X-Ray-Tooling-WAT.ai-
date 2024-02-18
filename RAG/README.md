@@ -24,7 +24,7 @@ professional, C. C. medical. (n.d.). Bruises (ecchymosis): Symptoms, causes, tre
 5. Prompt engineering to iterate on quality of cohere calls
 
 # To run a chat:
-`python chat_interface.py`
+`python RAG/chat_interface.py`
 Use the following flags to change options:
 
 `--use_cohere` will use cohere instead of open ai as the llm.

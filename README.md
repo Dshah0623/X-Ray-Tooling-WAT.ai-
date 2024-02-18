@@ -33,6 +33,16 @@ To start the backend and frontend services for the X-Ray-Tooling application, fo
    npm start
    ```
 
+# To run a chat through cli:
+`python RAG/chat_interface.py`
+Use the following flags to change options:
+
+`--use_cohere` will use cohere instead of open ai as the llm.
+
+`--use_chroma` will use the chroma embedding db instead of a vector index
+
+`--use_open_ai_embeddings` will use open ai embeddings instead of huggingface embeddings
+
 ## Using the ChromaEmbedding Script
 
 The `ChromaEmbedding` script allows for various operations related to embedding models and Chroma database management. Below are the steps to run the script for different tasks:
