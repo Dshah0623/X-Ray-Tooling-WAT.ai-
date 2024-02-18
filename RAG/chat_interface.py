@@ -121,7 +121,7 @@ class OpenAI_LLM(Chat):
         self.__embedding = None
         if chroma_embedding:
             self.__embedding = ChromaEmbedding(
-                 use_openai=use_openai,
+                 use_open_ai=use_openai,
                  num_matches=num_matches,
                  dataset_path=dataset_path
             )
