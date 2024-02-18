@@ -1,45 +1,4 @@
-// import React, { createContext, useState, useContext  } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import { Link, useNavigate } from 'react-router-dom'
-// import {
-//     TextField,
-//     Typography,
-//     Button,
-//     Alert,
-//     AlertTitle,
-//     Grid,
-//     FormControlLabel,
-//     ButtonBase,
-//     AppBar, Toolbar, IconButton, Menu
-//   } from '@mui/material';
 
-// const Login = () => {
-//     const [Email, setEmail] = useState('');
-//     const [Password, setPassword] = useState('');
-//     const [showAlert, setShowAlert] = useState(false);
-//     const [AlertMessage, setAlertMessage] = useState('');
-
-//     const handleEmailChange = (event) => {
-//         setEmail(event.target.value);
-//     };
-//     const handlePasswordChange = (event) => {
-//         setPassword(event.target.value);
-//     };
-//     let navigate = useNavigate(); 
-//     const routeChange = () =>{ 
-//         navigate('/');
-//     }
-
-//     return(
-//         <div>
-
-
-//         </div>
-//     )
-
-
-// };
-// export default Login;
 import React, { useState } from 'react';
 import {
   TextField,
@@ -50,6 +9,8 @@ import {
   AlertTitle,
   AppBar,
   Toolbar,
+  Box,
+  ButtonBase
 } from '@mui/material';
 import { auth } from "../firebase";
 import {signInWithEmailAndPassword} from "firebase/auth"
@@ -86,8 +47,14 @@ const Login = () => {
             // setShowAlert(true)
             // setAlertMessage(error.message)
             console.error('Firebase Error: ', error);
+
         });
   };
+
+  const SignUp = () => {  
+    navigate('/SignUp');
+  }
+
 
   return (
     <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px' }}>
@@ -121,6 +88,13 @@ const Login = () => {
           <Button variant="contained" color="primary" onClick={handleLogin}>
             Login
           </Button>
+        </Grid>
+        <Grid item xs={12} onClick={SignUp}>
+        <ButtonBase sx={{color: '#5A5A5A',textDecoration: 'underline', marginTop:'0px'}}>
+            <Typography variant="body1" component="span">
+              Don't have an account? Sign Up.
+            </Typography>
+          </ButtonBase>
         </Grid>
       </Grid>
 
