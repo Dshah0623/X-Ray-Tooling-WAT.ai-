@@ -26,7 +26,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.document_loaders.csv_loader import CSVLoader
-
+from flows import Flow, FlowType
 
 class PubmedEmbedding:
     def __init__(self):
@@ -213,6 +213,22 @@ class PubmedEmbedding:
     def nlp_cohere(self, docs, query, max_tokens=500) -> str:
         response = self.co.chat(
             message=query,
+            documents=docs,
+            # conversation_id=self.conversation_id,         ADD BACK WHEN WE WANT TO HAVE ONGOING CONVERSATIONS
+            max_tokens=max_tokens,
+        )
+        return response.text
+    
+    def nlp_openai_templated(self, injury: str, injury_location:str, flow_type: FlowType, docs) -> str:
+        llm = OpenAI(
+            temperature=0, openai_api_key=self.open)
+        chain = load_qa_chain(llm, chain_type="stuff")
+        out = chain.run(input_documents=docs, question=Flow.template(injury, injury_location, flow_type))
+        return out
+
+    def nlp_cohere_templated(self, injury: str, injury_location:str, flow_type: FlowType, docs, max_tokens=500) -> str:
+        response = self.co.chat(
+            message=Flow.template(injury, injury_location, flow_type),
             documents=docs,
             # conversation_id=self.conversation_id,         ADD BACK WHEN WE WANT TO HAVE ONGOING CONVERSATIONS
             max_tokens=max_tokens,
