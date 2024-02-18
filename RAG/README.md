@@ -23,6 +23,16 @@ professional, C. C. medical. (n.d.). Bruises (ecchymosis): Symptoms, causes, tre
 4. Integrate with GPT api to compare performance
 5. Prompt engineering to iterate on quality of cohere calls
 
+# To run a chat:
+`python chat_interface.py`
+Use the following flags to change options:
+
+`--use_cohere` will use cohere instead of open ai as the llm.
+
+`--use_chroma` will use the chroma embedding db instead of a vector index
+
+`--use_open_ai_embeddings` will use open ai embeddings instead of huggingface embeddings
+
 # To run a batch job of embeddings creation:
 
 `python pubmed_embeddings.py --run_batch`
