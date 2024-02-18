@@ -6,3 +6,5 @@ sentence-transformers
 torch
 fastapi
 openai
+uvicorn
+python-multipart
