@@ -98,7 +98,7 @@ class ChromaEmbedding(Embedding):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
-            vector_db = Chroma.from_documents(self.__xray_chunked_articles,
+            vector_db = Chroma.from_documents(self.__xray_chunked_articles[:5], # TODO: REMOVE THE :5
                                               self.__embedding_in_use,
                                               persist_directory=self.__persist_chroma_directory)
 

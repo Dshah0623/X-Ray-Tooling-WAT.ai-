@@ -56,7 +56,7 @@ class Cohere(Chat):
         self.__embedding = None
         if chroma_embedding:
             self.__embedding = ChromaEmbedding(
-                 use_openai=use_openai,
+                 use_open_ai=use_openai,
                  num_matches=num_matches,
                  dataset_path=dataset_path
             )
@@ -92,7 +92,7 @@ class Cohere(Chat):
         """
         Cleans up resources
         """
-        self.__embedding.destroy()
+        self.__embedding.clear()
     
 class OpenAI_LLM(Chat):
     """
@@ -154,7 +154,7 @@ class OpenAI_LLM(Chat):
         """
         Cleans up resources.
         """
-        self.__embedding.destroy()
+        self.__embedding.clear()
 
 if __name__=="__main__":
     chat = None
@@ -189,4 +189,3 @@ if __name__=="__main__":
         else:
             response = chat.query(message)
             print(response)
-            print(type(response))
