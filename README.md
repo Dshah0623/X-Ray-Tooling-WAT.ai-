@@ -1,18 +1,74 @@
 # X-Ray-Tooling
 
-To set up:
+## Setup Instructions
 
-1. Install python and pip
-2. `python -m venv venv`
-3. `source venv/bin/activate`
-4. `pip install -r requirements.txt`
-5. Get Cohere API key and/or OpenAI API key, and set as environment variables in a new `.env` file in the base directory (refer to `.env.example` for format)
+To set up the environment and dependencies for the project, follow these steps:
 
-To setup backend and frontend:
+1. Install Python and pip on your system if they are not already installed.
+2. Create a virtual environment for the project to manage dependencies:
+   `python -m venv venv`
+3. Activate the virtual environment:
+   - On Windows:
+     `venv\Scripts\activate`
+   - On Unix or MacOS:
+     `source venv/bin/activate`
+4. Install the required Python packages from the `requirements.txt` file:
+   `pip install -r requirements.txt`
+5. Obtain a Cohere API key and set it as an environment variable `COHERE_API_KEY` in a `.env` file within the project directory.
 
-1. `cd ./xray-tooling-apis`
-2. `uvicorn app:app --reload`
-3. `cd ..`
-4. `cd ./xray-tooling-frontend`
-5. `npm install` // only need to do this once
-6. `npm start`
+## Running the Backend and Frontend
+
+To start the backend and frontend services for the X-Ray-Tooling application, follow these steps:
+
+1. Navigate to the backend directory and start the FastAPI server:
+
+   ```
+   cd ./xray-tooling-apis
+   uvicorn app:app --reload
+   ```
+
+2. In a new terminal, navigate to the frontend directory and start the React application:
+   ```
+   cd ../xray-tooling-frontend
+   npm start
+   ```
+
+# To run a chat through cli:
+`python RAG/chat_interface.py`
+Use the following flags to change options:
+
+`--use_cohere` will use cohere instead of open ai as the llm.
+
+`--use_chroma` will use the chroma embedding db instead of a vector index
+
+`--use_open_ai_embeddings` will use open ai embeddings instead of huggingface embeddings
+
+## Using the ChromaEmbedding Script
+
+The `ChromaEmbedding` script allows for various operations related to embedding models and Chroma database management. Below are the steps to run the script for different tasks:
+
+1. **Building the Chroma DB with OpenAI Embeddings:**
+   To initialize and populate the Chroma database using OpenAI embeddings, run:
+
+   `python chroma_embedding.py --use_open_ai build`
+
+2. **Loading the Chroma DB:**
+   To load the existing Chroma database, use:
+
+   `python chroma_embedding.py load`
+
+3. **Retrieving Documents Based on a Query with OpenAI Embeddings:**
+   For retrieving documents similar to a provided query using OpenAI embeddings, execute:
+
+   `python chroma_embedding.py --use_open_ai retrieve "your query here"`
+
+4. **Reuploading Documents to Chroma:**
+   To clear the current Chroma database and re-upload documents, run:
+
+   `python chroma_embedding.py reupload`
+
+5. **Clearing the Chroma DB:**
+   To remove all documents from the Chroma database, use:
+   `python chroma_embedding.py clear`
+
+**Ensure you have activated the virtual environment and installed all dependencies before running these commands.**
