@@ -2,3 +2,7 @@
 venv
 .pkl
 db
+
+*__pycache__
+
+

@@ -57,6 +57,10 @@ class ChromaEmbedding(Embedding):
         self.__embedding_in_use = self.__embedding_open if use_open_ai else self.__embeddings_hugging
         print(f"Using {'OpenAI' if use_open_ai else 'HuggingFace'} Embedding")
         self.__chroma_db = None
+        if not os.path.isdir('./db'):
+            self.create_and_populate_chroma()
+
+        self.load_chroma_db()
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -98,7 +102,7 @@ class ChromaEmbedding(Embedding):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
-            vector_db = Chroma.from_documents(self.__xray_chunked_articles,
+            vector_db = Chroma.from_documents(self.__xray_chunked_articles[:5], # TODO: REMOVE THE :5
                                               self.__embedding_in_use,
                                               persist_directory=self.__persist_chroma_directory)
 
@@ -121,7 +125,7 @@ class ChromaEmbedding(Embedding):
 
             self.__chroma_db = vector_db
 
-    def get_similar_documents(self, query) -> object:
+    def get_similar_documents(self, query) -> list[tuple[float, int, str]]:
         """
         Retrieves documents from the Chroma database based on a given query.
 
@@ -132,10 +136,12 @@ class ChromaEmbedding(Embedding):
         Returns:
             object: Retrieved documents from the Chroma database.
         """
-
         # TODO restrict return doc amount to self.__num_matches
         docs = self.__chroma_db.similarity_search(query)
-        return docs
+        parsed_docs = []
+        for doc in docs:
+            parsed_docs.append((0.0, doc.metadata['seq_num'], doc.page_content))
+        return parsed_docs
 
     def reupload_to_chroma(self) -> None:
         """

@@ -42,9 +42,9 @@ class IndexEmbedding(Embedding):
     def __init__(
             self,
             use_openai=False,
-            chunking_max_tokens=100,
             num_matches=5,
-            dataset_path="RAG/datasets/"
+            dataset_path="RAG/datasets/",
+            chunking_max_tokens=100
     ) -> None:
         """
         Args:
@@ -270,8 +270,6 @@ class IndexEmbedding(Embedding):
         """
         self.__silent_remove(self.__embedding_path)
         self.__silent_remove(self.__index_path)
-        self.__silent_remove(self.__chunked_articles_csv_path)
-        self.__silent_remove(self.__chunked_articles_json_path)
 
     def get_similar_documents(self, query) -> list[tuple[float, int, str]]:
         """
