@@ -2,6 +2,8 @@ from cohere import Client
 import os
 from langchain_openai import OpenAI
 from langchain.chains.question_answering import load_qa_chain
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda
+from langchain_core.prompts import ChatPromptTemplate
 from langchain.docstore.document import Document
 import uuid
 import argparse
@@ -9,6 +11,34 @@ import dotenv
 from chroma_embedding import ChromaEmbedding
 from index_embedding import IndexEmbedding
 from abc import ABC, abstractmethod
+from flows import FlowType, Flow
+import langchain 
+from langchain_community.llms import Cohere
+from operator import itemgetter
+
+
+# For Testing Purposes...
+langchain.debug = True
+
+
+class Chain:
+
+    def format_documents(docs: list[Document]):
+        formatted = [f"Relevant Document {i}:\n{doc.page_content}" for i, doc in enumerate(docs)]
+
+        return "\n\n".join(formatted)
+
+
+    @classmethod
+    def get_chain(cls, llm_client: object):
+        prompt = ChatPromptTemplate.from_template(Flow.root())
+        chain = (
+            {"template": itemgetter("template"), "documents": itemgetter("documents") | RunnableLambda(cls.format_documents)}
+            | prompt
+            | llm_client
+        )
+        return chain
+
 
 class Chat(ABC):
     @abstractmethod
@@ -18,6 +48,7 @@ class Chat(ABC):
         """
         pass
 
+
     @abstractmethod
     def end_chat(self) -> None:
         """
@@ -25,7 +56,9 @@ class Chat(ABC):
         """
         pass
 
-class Cohere(Chat):
+
+
+class Cohere_LLM(Chat):
     """
     A class that integrates with the Cohere API for conversational AI purposes.
 
@@ -40,6 +73,8 @@ class Cohere(Chat):
     __cohere_key = os.getenv('COHERE_API_KEY')
     __co = Client(__cohere_key)
     __conversation_id = str(uuid.uuid4())
+
+
 
     def __init__(self, chroma_embedding=True, use_openai=False, chunking_max_tokens=100, num_matches=5, max_tokens=500, dataset_path="RAG/datasets/"):
         """
@@ -88,6 +123,7 @@ class Cohere(Chat):
         )
         return response.text
     
+
     def end_chat(self) -> None:
         """
         Cleans up resources
@@ -105,7 +141,8 @@ class OpenAI_LLM(Chat):
     """
     dotenv.load_dotenv()
     __open_api_key = os.getenv('OPENAI_API_KEY')
-    __open_llm = OpenAI(temperature=0, openai_api_key=__open_api_key)
+    __open_llm = OpenAI(temperature=0, openai_api_key=__open_api_key, verbose=True)
+    __chain = Chain.get_chain(__open_llm)
 
     def __init__(self, chroma_embedding=True, use_openai=False, chunking_max_tokens=100, num_matches=5, dataset_path="RAG/datasets/") -> None:
         """
@@ -148,7 +185,7 @@ class OpenAI_LLM(Chat):
         docs = [Document(page_content=doc[2], metadata={"chunk": doc[1], "source": "local"}) for doc in rag_docs]
         chain = load_qa_chain(self.__open_llm, chain_type="stuff")
         out = chain.run(input_documents=docs, question=query)
-        return out
+        return out    
     
     def end_chat(self) -> None:
         """
@@ -177,6 +214,8 @@ if __name__=="__main__":
         chat = Cohere(args.use_chroma, args.use_open_ai_embeddings)
     else:
         chat = OpenAI_LLM(args.use_chroma, args.use_open_ai_embeddings)
+
+
 
     while True:
         # Get the user message

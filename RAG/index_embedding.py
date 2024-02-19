@@ -6,8 +6,9 @@ import time
 import pickle
 import dotenv
 from scipy import spatial
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.text_splitter import CharacterTextSplitter, NLTKTextSplitter, SpacyTextSplitter
 from embedding import Embedding
 
 
@@ -117,6 +118,30 @@ class IndexEmbedding(Embedding):
             tokens (list of str): The list of tokens to be chunked.
         """
         return [tokens[i:i+self.__chunking_max_tokens] for i in range(0, len(tokens), self.__chunking_max_tokens)]
+    
+
+    chunk_types = {
+        "character_splitter": CharacterTextSplitter,
+        "nltk": NLTKTextSplitter,
+        "spacy": SpacyTextSplitter
+    }
+
+    def __chunk(self, page, chunk_type="character_splitter"):
+        """
+        Types:
+        "character_splitter": CharacterTextSplitter
+        "nltk": NLTK
+        "spacy": spacy
+        """
+        if chunk_type not in self.chunk_types:
+            print("Type doesn't exist. Using default...")
+            chunk_type = "character_splitter"
+
+        text_splitter = self.chunk_types[chunk_type]()
+        docs = text_splitter.split_text(page)
+        return docs
+    
+
 
     def __create_chunked_dataset(self) -> None:
         """
