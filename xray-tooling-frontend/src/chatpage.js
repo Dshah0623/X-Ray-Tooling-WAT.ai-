@@ -48,21 +48,23 @@ const sendFlowQuery = async (flow) => {
 
 
   try {
-    console.log("FLOW");
-    console.log(flow);
+    // set loading
+    setFlowMessage("Loading...");
     const response = await fetch('http://127.0.0.1:8000/rag/flow', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ injury: injury, injuryLocation: injuryLocation, flow: flow, model: model }),
+      body: JSON.stringify({ injury: injury, injury_location: injuryLocation, flow: flow, model: model }),
     });
     if (response.ok) {
       const data = await response.json();
       console.log('RAG run:', data);
       setData(data);
-      const serverMessage = { text: data.response, sender: 'bot' };
-      setFlowMessage(serverMessage); // Add new server message to the conversation
+      const serverMessage = { text: data.response.content, sender: 'bot' };
+      setFlowMessage(serverMessage.text); // Add new server message to the conversation
+      console.log("FLOW MESSAGE");
+      console.log(flowMessage);
     }
   } catch (error) {
     console.error('Error running RAG:', error);
