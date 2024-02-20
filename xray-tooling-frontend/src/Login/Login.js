@@ -57,10 +57,10 @@ const Login = () => {
 
 
   return (
-    <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px' }}>
-       <AppBar position="static" style={{ background: 'Yellow' }}>
+    <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px',boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }}>
+       <AppBar position="static" style={{ background: '#4686ee' }}>
         <Toolbar>
-          <Typography style={{ color: 'Black' }} variant="h6">Welcome to XRAY Tooling Project</Typography>
+          <Typography style={{ color: 'white' }} variant="h6">Welcome to XRAY Tooling Project</Typography>
         </Toolbar>
       </AppBar>
       <Typography variant="h4">Login</Typography>
