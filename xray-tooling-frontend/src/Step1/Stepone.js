@@ -9,7 +9,6 @@ const Stepone = () => {
   const [image, setImage] = useState(null);
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   const fileInputRef = useRef(null);
-  const [completedProcessing, setCompletedProcessing] = useState(false);
 
   let headers = new Headers();
   headers.append('Access-Control-Allow-Origin', 'http://127.0.0.1:8000/upload');
@@ -51,46 +50,10 @@ const Stepone = () => {
     }
   };
 
-  const handleRunPhaseOne = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/phase1', {
-        method: 'GET',
-        //headers: headers,
-      });
-      if(response.ok) {
-        const data = await response.json();
-        console.log('Phase 1 run:', data);
-      }
-    }
-    catch (error) {
-      console.error('Error running phase 1:', error);
-      // Handle error
-    }
-  };  
 
-
-  const handleRunPhaseTwo = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/phase2', {
-        method: 'GET',
-        //headers: headers,
-      });
-      if(response.ok) {
-        const data = await response.json();
-        console.log('Phase 2 run:', data);
-      }
-    }
-    catch (error) {
-      console.error('Error running phase 2:', error);
-      // Handle error
-    }
-  }; 
   
   const handleResults = () => {
     handleSubmit();
-    handleRunPhaseOne();
-    handleRunPhaseTwo();
-    setCompletedProcessing(true);
     navigate('/Results');
   };
 
