@@ -1,6 +1,6 @@
 import os
 import json
-import dotenv
+from dotenv import load_dotenv
 import argparse
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -9,6 +9,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import shutil
 from embedding import Embedding
+load_dotenv(override=True)
 
 
 class ChromaEmbedding(Embedding):
@@ -38,7 +39,7 @@ class ChromaEmbedding(Embedding):
         num_matches=5,
         dataset_path="RAG/datasets/"
     ) -> None:
-        dotenv.load_dotenv()
+
         self.__open_key = os.getenv('OPENAI_API_KEY')
         self.__embeddings_hugging = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2")
@@ -102,7 +103,7 @@ class ChromaEmbedding(Embedding):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
-            vector_db = Chroma.from_documents(self.__xray_chunked_articles[:5], # TODO: REMOVE THE :5
+            vector_db = Chroma.from_documents(self.__xray_chunked_articles,  # TODO: REMOVE THE :5
                                               self.__embedding_in_use,
                                               persist_directory=self.__persist_chroma_directory)
 
@@ -140,7 +141,8 @@ class ChromaEmbedding(Embedding):
         docs = self.__chroma_db.similarity_search(query)
         parsed_docs = []
         for doc in docs:
-            parsed_docs.append((0.0, doc.metadata['seq_num'], doc.page_content))
+            parsed_docs.append(
+                (0.0, doc.metadata['seq_num'], doc.page_content))
         return parsed_docs
 
     def reupload_to_chroma(self) -> None:

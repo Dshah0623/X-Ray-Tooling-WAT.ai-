@@ -1,3 +1,8 @@
+from RAG.flows import FlowType
+from RAG.chat import Chat
+from pydantic import BaseModel
+import json
+from xray_tooling_apis.temp_embedding_module import PubmedEmbedding
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import torch
@@ -7,13 +12,11 @@ from torchvision.models import resnet50, efficientnet_b0, densenet121
 import torch.nn as nn
 import torchvision.transforms as transforms
 from PIL import Image
-import os, sys
+import os
+import sys
 
 from os.path import dirname, join, abspath
 sys.path.insert(0, abspath(join(dirname(__file__), '..')))
-from xray_tooling_apis.temp_embedding_module import PubmedEmbedding
-import json
-from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -25,7 +28,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-def modify_model(model,dropout_rate,num_classes=2):
+
+
+def modify_model(model, dropout_rate, num_classes=2):
     if hasattr(model, 'fc'):
         num_ftrs = model.fc.in_features
         model._fc = nn.Sequential(
@@ -44,9 +49,11 @@ def modify_model(model,dropout_rate,num_classes=2):
     else:
         raise Exception("Unknown model architecture")
     return model
-#model = modify_model(model, dropout_rate)
+
+
+# model = modify_model(model, dropout_rate)
 phase1_transform = transforms.Compose([
-    transforms.Resize((224,224)),
+    transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
@@ -55,7 +62,8 @@ phase2_transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                         std=[0.229, 0.224, 0.225]),
 ])
 
 phase1_weights = torch.load("../models/phase1_model.pth")
@@ -73,6 +81,9 @@ phase2_model = torch.load("../models/phase2_model.pth")
 phase2_model.eval()
 
 pubmed = PubmedEmbedding()
+# chroma = ChromaEmbedding()
+
+
 def run_similarity_search(query):
     with open("../RAG/datasets/results.json", "r") as json_file:
         docs = json.load(json_file)
@@ -80,22 +91,25 @@ def run_similarity_search(query):
     out = pubmed.nlp_cohere(docs, query)
     return out
 
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     global file_location
     contents = await file.read()
-    image_map = {"image/jpeg": ".jpg", "image/png": ".png", "image/bmp": ".bmp", "image/gif": ".gif"}
+    image_map = {"image/jpeg": ".jpg", "image/png": ".png",
+                 "image/bmp": ".bmp", "image/gif": ".gif"}
     file_location = "../assets/" + "1" + image_map[file.content_type]
     with open(file_location, "wb+") as file_object:
         file_object.write(contents)
     return {"info": f"file '{file.filename}' saved at '{file_location}'"}
+
 
 @app.get("/phase1")
 async def phase1():
     # img = read_image("../CV-research/camera.jpeg")
 
     # initializing model with weights
-    
+
     # model.eval()
     # preprocessing
     # preprocess = phase1_model.transforms()
@@ -111,10 +125,11 @@ async def phase1():
     prediction = phase1_model(img).squeeze(0).softmax(0)
     class_id = prediction.argmax().item()
     score = prediction[class_id].item()
-    #category_name = phase1_model.meta["categories"][class_id]
+    # category_name = phase1_model.meta["categories"][class_id]
     print(f"{class_id}: {100 * score:.1f}%")
     return {"class_id": class_id, "score": score}
-     
+
+
 @app.get("/phase2")
 async def phase2():
     global file_location
@@ -124,15 +139,9 @@ async def phase2():
     prediction = phase2_model(img).squeeze(0).softmax(0)
     class_id = prediction.argmax().item()
     score = prediction[class_id].item()
-    #category_name = phase1_model.meta["categories"][class_id]
+    # category_name = phase1_model.meta["categories"][class_id]
     print(f"{class_id}: {100 * score:.1f}%")
     return {"class_id": class_id, "score": score}
-
-
-
-
-from RAG.chat import Chat
-from RAG.flows import FlowType
 
 
 chat_cohere = Chat(llm="cohere")
@@ -141,10 +150,10 @@ chat_openai = Chat(llm="openai")
 models = {"cohere": chat_cohere, "openai": chat_openai}
 
 
-
 class Query(BaseModel):
     text: str
     model: str
+
 
 @app.post("/rag/query")
 async def rag_query(query: Query):
@@ -152,11 +161,11 @@ async def rag_query(query: Query):
 
     text = query.text
 
-    if model not in models: return {"error": "model not found."}
+    if model not in models:
+        return {"error": "model not found."}
 
     model = models[query.model]
     return {"query": text, "response": model.query(text)}
-
 
 
 class FlowQuery(BaseModel):
@@ -165,12 +174,14 @@ class FlowQuery(BaseModel):
     injury_location: str
     model: str
 
+
 @app.post("/rag/flow")
 async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
 
-    if model not in models: return {"error": "model not found."}
-    
+    if model not in models:
+        return {"error": "model not found."}
+
     flow = FlowType(flow_query.flow)
     model = models[flow_query.model]
 
