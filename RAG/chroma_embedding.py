@@ -1,6 +1,6 @@
 import os
 import json
-import dotenv
+from dotenv import load_dotenv
 import argparse
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -8,7 +8,8 @@ from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import shutil
-from RAG.embedding import Embedding
+from embedding import Embedding
+load_dotenv(override=True)
 
 
 class ChromaEmbedding(Embedding):
@@ -34,11 +35,11 @@ class ChromaEmbedding(Embedding):
 
     def __init__(
         self,
-        use_open_ai=False,
+        use_openai=False,
         num_matches=5,
         dataset_path="RAG/datasets/"
     ) -> None:
-        dotenv.load_dotenv()
+
         self.__open_key = os.getenv('OPENAI_API_KEY')
         self.__embeddings_hugging = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2")
@@ -54,8 +55,8 @@ class ChromaEmbedding(Embedding):
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
-        self.__embedding_in_use = self.__embedding_open if use_open_ai else self.__embeddings_hugging
-        print(f"Using {'OpenAI' if use_open_ai else 'HuggingFace'} Embedding")
+        self.__embedding_in_use = self.__embedding_open if use_openai else self.__embeddings_hugging
+        print(f"Using {'OpenAI' if use_openai else 'HuggingFace'} Embedding")
         self.__chroma_db = None
         if not os.path.isdir('./db'):
             self.create_and_populate_chroma()
@@ -102,7 +103,7 @@ class ChromaEmbedding(Embedding):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
-            vector_db = Chroma.from_documents(self.__xray_chunked_articles[:5], # TODO: REMOVE THE :5
+            vector_db = Chroma.from_documents(self.__xray_chunked_articles,  # TODO: REMOVE THE :5
                                               self.__embedding_in_use,
                                               persist_directory=self.__persist_chroma_directory)
 
@@ -140,7 +141,8 @@ class ChromaEmbedding(Embedding):
         docs = self.__chroma_db.similarity_search(query)
         parsed_docs = []
         for doc in docs:
-            parsed_docs.append((0.0, doc.metadata['seq_num'], doc.page_content))
+            parsed_docs.append(
+                (0.0, doc.metadata['seq_num'], doc.page_content))
         return parsed_docs
 
     def reupload_to_chroma(self) -> None:
@@ -212,7 +214,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
 
     # Option to choose between OpenAI and HuggingFace embeddings
-    parser.add_argument('--use_open_ai', action='store_true',
+    parser.add_argument('--use_openai', action='store_true',
                         help="Use OpenAI embeddings instead of HuggingFace's")
 
     # Commands for different operations
@@ -230,7 +232,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
-    chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
+    chroma = ChromaEmbedding(use_openai=args.use_openai)
 
     # Handle operations
     if args.operation == 'build':
