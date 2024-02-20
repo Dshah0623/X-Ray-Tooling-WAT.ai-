@@ -1,8 +1,5 @@
-from RAG.flows import FlowType
-from RAG.chat import Chat
 from pydantic import BaseModel
 import json
-from xray_tooling_apis.temp_embedding_module import PubmedEmbedding
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import torch
@@ -17,6 +14,10 @@ import sys
 
 from os.path import dirname, join, abspath
 sys.path.insert(0, abspath(join(dirname(__file__), '..')))
+
+from RAG.chat import Chat
+from RAG.flows import FlowType
+
 
 app = FastAPI()
 
@@ -80,16 +81,16 @@ file_location = ""
 phase2_model = torch.load("../models/phase2_model.pth")
 phase2_model.eval()
 
-pubmed = PubmedEmbedding()
+# pubmed = PubmedEmbedding()
 # chroma = ChromaEmbedding()
 
 
-def run_similarity_search(query):
-    with open("../RAG/datasets/results.json", "r") as json_file:
-        docs = json.load(json_file)
-    docs = [{"snippet": value} for value in docs.values()]
-    out = pubmed.nlp_cohere(docs, query)
-    return out
+# def run_similarity_search(query):
+#     with open("../RAG/datasets/results.json", "r") as json_file:
+#         docs = json.load(json_file)
+#     docs = [{"snippet": value} for value in docs.values()]
+#     out = pubmed.nlp_cohere(docs, query)
+#     return out
 
 
 @app.post("/upload")

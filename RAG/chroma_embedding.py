@@ -8,7 +8,7 @@ from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import shutil
-from embedding import Embedding
+from RAG.embedding import Embedding
 load_dotenv(override=True)
 
 
@@ -35,7 +35,7 @@ class ChromaEmbedding(Embedding):
 
     def __init__(
         self,
-        use_open_ai=False,
+        use_openai=False,
         num_matches=5,
         dataset_path="RAG/datasets/"
     ) -> None:
@@ -55,8 +55,8 @@ class ChromaEmbedding(Embedding):
         self.__xray_articles = self.__load_xray_articles()
         self.__xray_chunked_articles = self.__chunk_documents(
             self.__xray_articles)
-        self.__embedding_in_use = self.__embedding_open if use_open_ai else self.__embeddings_hugging
-        print(f"Using {'OpenAI' if use_open_ai else 'HuggingFace'} Embedding")
+        self.__embedding_in_use = self.__embedding_open if use_openai else self.__embeddings_hugging
+        print(f"Using {'OpenAI' if use_openai else 'HuggingFace'} Embedding")
         self.__chroma_db = None
         if not os.path.isdir('./db'):
             self.create_and_populate_chroma()
@@ -214,7 +214,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Chroma Embedding Tool")
 
     # Option to choose between OpenAI and HuggingFace embeddings
-    parser.add_argument('--use_open_ai', action='store_true',
+    parser.add_argument('--use_openai', action='store_true',
                         help="Use OpenAI embeddings instead of HuggingFace's")
 
     # Commands for different operations
@@ -232,7 +232,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Initialize ChromaEmbedding with or without OpenAI embeddings based on the command line argument
-    chroma = ChromaEmbedding(use_open_ai=args.use_open_ai)
+    chroma = ChromaEmbedding(use_openai=args.use_openai)
 
     # Handle operations
     if args.operation == 'build':
