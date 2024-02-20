@@ -8,7 +8,37 @@ from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import shutil
-from embedding import Embedding
+import os
+import sys
+import importlib
+# from embedding import Embedding
+
+
+def dynamic_import_embedding():
+    # Construct the module name based on the script's execution directory
+    # E.g., if you are in "path/to/module" and script is "dynamic_import.py",
+    # it would translate to "path.to.module"
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    # Add the directory containing the package to the system path.
+    sys.path.append(os.path.dirname(current_path))
+
+    # This might be the "package" if your file is in the root of the "package".
+    module_directory = os.path.basename(current_path)
+    try:
+        # "module_directory" could be the result of any directory manipulation
+        # logic you come up with based on __file__ or cwd.
+        module = importlib.import_module(f"{module_directory}.embedding")
+        Embedding = getattr(module, "Embedding")
+        return Embedding
+    except (ImportError, AttributeError):
+        print("Could not dynamically import Embedding.")
+        return None
+
+
+# Now, you can use this function to dynamically import `Embedding`:
+Embedding = dynamic_import_embedding()
+if Embedding is not None:
+    print("Embedding imported successfully!")
 load_dotenv(override=True)
 
 
@@ -58,10 +88,10 @@ class ChromaEmbedding(Embedding):
         self.__embedding_in_use = self.__embedding_open if use_openai else self.__embeddings_hugging
         print(f"Using {'OpenAI' if use_openai else 'HuggingFace'} Embedding")
         self.__chroma_db = None
-        if not os.path.isdir('./db'):
-            self.create_and_populate_chroma()
+        # if not os.path.isdir('./db'):
+        #     self.create_and_populate_chroma()
 
-        self.load_chroma_db()
+        # self.load_chroma_db()
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -99,7 +129,7 @@ class ChromaEmbedding(Embedding):
         Creates a Chroma database from chunked x-ray articles and populates it with embeddings.
         """
 
-        if os.path.isdir("db/chroma.sqlite3"):
+        if os.path.isdir("./db"):
             print("Chroma DB already exists. Skipping creation.")
         else:
             print("Creating Chroma DB...")
