@@ -58,7 +58,7 @@ phase2_transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-phase1_weights = torch.load("../models/phase1_model.pth")
+phase1_weights = torch.load(os.path.join(os.path.dirname(__file__),"../models/phase1_model.pth"))
 phase1_model = efficientnet_b0(pretrained=False)
 phase1_model = modify_model(phase1_model, dropout_rate=0.5)
 phase1_model.load_state_dict(phase1_weights)
@@ -69,23 +69,16 @@ file_location = ""
 # phase2_model = densenet121(pretrained=False)
 # #phase2_model = modify_model(phase2_model, dropout_rate=0.5)
 # phase2_model.load_state_dict(phase2_weights)
-phase2_model = torch.load("../models/phase2_model.pth")
+phase2_model = torch.load(os.path.join(os.path.dirname(__file__),"../models/phase2_model.pth"))
 phase2_model.eval()
 
-pubmed = PubmedEmbedding()
-def run_similarity_search(query):
-    with open("../RAG/datasets/results.json", "r") as json_file:
-        docs = json.load(json_file)
-    docs = [{"snippet": value} for value in docs.values()]
-    out = pubmed.nlp_cohere(docs, query)
-    return out
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     global file_location
     contents = await file.read()
     image_map = {"image/jpeg": ".jpg", "image/png": ".png", "image/bmp": ".bmp", "image/gif": ".gif"}
-    file_location = "../assets/" + "1" + image_map[file.content_type]
+    file_location = os.path.join(os.path.dirname(__file__),"../assets/", "1", image_map[file.content_type])
     with open(file_location, "wb+") as file_object:
         file_object.write(contents)
     return {"info": f"file '{file.filename}' saved at '{file_location}'"}
@@ -152,15 +145,13 @@ async def rag_query(query: Query):
 
     text = query.text
 
-    if model not in models: return {"error": "model not found."}
+    if query.model not in models: return {"error": "model not found."}
 
     model = models[query.model]
     return {"query": text, "response": model.query(text)}
 
-
-
 class FlowQuery(BaseModel):
-    flow: int
+    flow: str
     injury: str
     injury_location: str
     model: str
@@ -169,7 +160,7 @@ class FlowQuery(BaseModel):
 async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
 
-    if model not in models: return {"error": "model not found."}
+    if flow_query.model not in models: return {"error": "model not found."}
     
     flow = FlowType(flow_query.flow)
     model = models[flow_query.model]

@@ -9,10 +9,10 @@ from langchain.docstore.document import Document
 import uuid
 import argparse
 import dotenv
-from chroma_embedding import ChromaEmbedding
-from index_embedding import IndexEmbedding
+from RAG.chroma_embedding import ChromaEmbedding
+from RAG.index_embedding import IndexEmbedding
 from abc import ABC, abstractmethod
-from flows import FlowType, Flow
+from RAG.flows import FlowType, Flow
 import langchain 
 from operator import itemgetter
 
@@ -66,7 +66,7 @@ class Chat():
         self.__key = os.getenv(f'{llm.upper()}_API_KEY')
         
         if llm == "openai":
-            self.__client = OpenAI(temperature=0, openai_api_key=self.__key, verbose=True)
+            self.__client = OpenAI(temperature=0, openai_api_key=self.__key, verbose=True, model="gpt-4-0125-preview")
         elif llm == "cohere":
             self.__client = Cohere()
 
@@ -78,7 +78,7 @@ class Chat():
         self.__embedding = None
         if chroma_embedding:
             self.__embedding = ChromaEmbedding(
-                 use_openai=use_openai,
+                 use_open_ai=use_openai,
                  num_matches=num_matches,
                  dataset_path=dataset_path
             )

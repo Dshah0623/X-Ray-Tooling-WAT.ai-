@@ -9,7 +9,7 @@ from scipy import spatial
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter, NLTKTextSplitter, SpacyTextSplitter
-from embedding import Embedding
+from RAG.embedding import Embedding
 
 
 class IndexEmbedding(Embedding):

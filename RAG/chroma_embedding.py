@@ -8,7 +8,7 @@ from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import shutil
-from embedding import Embedding
+from RAG.embedding import Embedding
 
 
 class ChromaEmbedding(Embedding):
