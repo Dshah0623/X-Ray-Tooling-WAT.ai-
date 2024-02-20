@@ -1,6 +1,6 @@
 from cohere import Client
 import os
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain_community.llms import Cohere
 from langchain.chains.question_answering import load_qa_chain
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
@@ -66,7 +66,7 @@ class Chat():
         self.__key = os.getenv(f'{llm.upper()}_API_KEY')
         
         if llm == "openai":
-            self.__client = OpenAI(temperature=0, openai_api_key=self.__key, verbose=True, model="gpt-4-0125-preview")
+            self.__client = ChatOpenAI(temperature=0, openai_api_key=self.__key, verbose=True, model="gpt-4-0125-preview")
         elif llm == "cohere":
             self.__client = Cohere()
 
