@@ -5,16 +5,9 @@
 To set up the environment and dependencies for the project, follow these steps:
 
 1. Install Python and pip on your system if they are not already installed.
-2. Create a virtual environment for the project to manage dependencies:
-   `python -m venv venv`
-3. Activate the virtual environment:
-   - On Windows:
-     `venv\Scripts\activate`
-   - On Unix or MacOS:
-     `source venv/bin/activate`
-4. Install the required Python packages from the `requirements.txt` file:
-   `pip install -r requirements.txt`
-5. Obtain a Cohere API key and set it as an environment variable `COHERE_API_KEY` in a `.env` file within the project directory.
+2. Run the setup script: `./setup.sh`
+3. Obtain a Cohere API key and set it as an environment variable `COHERE_API_KEY` into a `.env` file within the root directory.
+4. (Optional) Obtain an OpenAI API key and set it as an environment variable `OPENAI_API_KEY` in the `.env` file within the root directory.
 
 ## Running the Backend and Frontend
 
