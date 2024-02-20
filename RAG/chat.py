@@ -152,14 +152,14 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     # Handle operations
-    """
-    if args.use_cohere:
-        chat = Cohere(args.use_chroma, args.use_open_ai_embeddings)
-    else:
-        chat = OpenAI_LLM(args.use_chroma, args.use_open_ai_embeddings)
-    """
 
-    chat = Chat("cohere", args.use_chroma, args.use_open_ai_embeddings)
+
+    if args.use_cohere:
+        chat = Chat("cohere", args.use_chroma, args.use_open_ai_embeddings)
+    else:
+        chat = Chat("openai", args.use_chroma, args.use_open_ai_embeddings)
+    
+
 
     injury = "Fracture"
     injury_location = "Ankle, Tibia Bone"
@@ -168,7 +168,6 @@ if __name__=="__main__":
     response = chat.flow_query(injury, injury_location, FlowType.BASE)
 
     print(f"\nResponse: {response}")
-
     while True:
         # Get the user message
         message = input("User: ")
@@ -181,3 +180,5 @@ if __name__=="__main__":
             response = chat.query(message)
             print(response)
             print(type(response))
+
+            

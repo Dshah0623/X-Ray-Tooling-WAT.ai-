@@ -128,12 +128,50 @@ async def phase2():
     print(f"{class_id}: {100 * score:.1f}%")
     return {"class_id": class_id, "score": score}
 
+
+
+
+from RAG.chat import Chat
+from RAG.flows import FlowType
+
+
+chat_cohere = Chat(llm="cohere")
+chat_openai = Chat(llm="openai")
+
+models = {"cohere": chat_cohere, "openai": chat_openai}
+
+
+
 class Query(BaseModel):
     text: str
+    model: str
 
-@app.post("/RAG")
-async def RAG(query: Query):
+@app.post("/rag/query")
+async def rag_query(query: Query):
     # return run_similarity_search(qu)
+
     text = query.text
-    print(text)
-    return {"query": text, "results": run_similarity_search(text)}
+
+    if model not in models: return {"error": "model not found."}
+
+    model = models[query.model]
+    return {"query": text, "response": model.query(text)}
+
+
+
+class FlowQuery(BaseModel):
+    flow: int
+    injury: str
+    injury_location: str
+    model: str
+
+@app.post("/rag/flow")
+async def rag_flow(flow_query: FlowQuery):
+    # return run_similarity_search(qu)
+
+    if model not in models: return {"error": "model not found."}
+    
+    flow = FlowType(flow_query.flow)
+    model = models[flow_query.model]
+
+    return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "flow": flow.value, "response": model.flow_query(flow_query.injury, flow_query.injury_location, flow)}
