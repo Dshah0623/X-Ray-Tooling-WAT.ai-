@@ -1,7 +1,7 @@
-# X-Ray Fracture Detection and Localization System
+# Rehab X-ray Helper Guy 
 
 ## Project Overview
-This project aims to develop an automated system for analyzing X-rays to identify fractures and determine the specific body part affected. Utilizing advanced machine learning and image processing techniques, this system seeks to support radiologists and healthcare professionals in diagnosing injuries more accurately and efficiently.
+This project aims to develop an automated system for analyzing X-rays to identify fractures and determine the specific body parts affected. This system uses advanced machine learning and image processing techniques to support radiologists and healthcare professionals in diagnosing injuries more accurately and efficiently. However, this dynamic product can also be an intermediatory rehabilitation assistant that can analyze user's x-rays and help them start the healing process before being seen by a doctor.  
 
 ## Features
 - **Fracture Detection:** Automatic identification of fractures in X-ray images.
