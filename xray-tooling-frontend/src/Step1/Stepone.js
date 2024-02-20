@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { auth, storage } from "../firebase";
 import { ref, uploadBytes, deleteObject, listAll, getDownloadURL } from "firebase/storage";
 import { Route, useNavigate } from 'react-router-dom';
+
 const Stepone = () => {
   const [image, setImage] = useState(null);
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
