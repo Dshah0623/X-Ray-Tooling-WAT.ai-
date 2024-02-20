@@ -147,7 +147,7 @@ class Query(BaseModel):
     model: str
 
 @app.post("/rag/query")
-async def RAG(query: Query):
+async def rag_query(query: Query):
     # return run_similarity_search(qu)
 
     text = query.text
@@ -166,7 +166,7 @@ class FlowQuery(BaseModel):
     model: str
 
 @app.post("/rag/flow")
-async def RAG(flow_query: FlowQuery):
+async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
 
     if model not in models: return {"error": "model not found."}
