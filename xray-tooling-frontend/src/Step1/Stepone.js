@@ -1,17 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { auth, storage } from "../firebase";
-import { ref, uploadBytes, deleteObject, listAll, getDownloadURL } from "firebase/storage";
-import { Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
-  TextField,
   Typography,
   Button,
-  Alert,
-  AlertTitle,
-  Grid,
-  FormControlLabel,
-  ButtonBase,
-  AppBar, Toolbar, IconButton, Menu, Card, CardContent, Paper, Select, MenuItem
+  AppBar, Toolbar, Card, CardContent, Paper, Select, MenuItem
 } from '@mui/material';
 const Stepone = () => {
   const [image, setImage] = useState(null);

@@ -23,18 +23,54 @@ professional, C. C. medical. (n.d.). Bruises (ecchymosis): Symptoms, causes, tre
 4. Integrate with GPT api to compare performance
 5. Prompt engineering to iterate on quality of cohere calls
 
-# To run a batch job of embeddings creation:
+# To run a chat:
 
-`python pubmed_embeddings.py --run_batch`
+`python RAG/chat_interface.py`
+Use the following flags to change options:
 
-This should take around 10-20 minutes.
+`--use_cohere` will use cohere instead of open ai as the llm.
 
-# To build vector index:
+`--use_chroma` will use the chroma embedding db instead of a vector index
 
-`python pubmed_embeddings.py --build_index`
+`--use_open_ai_embeddings` will use open ai embeddings instead of huggingface embeddings
 
-This should be under a minute
+# To run a chat through cli:
 
-# To run similarity search:
+`python RAG/chat_interface.py`
+Use the following flags to change options:
 
-`python pubmed_embeddings.py --similarity_search`
+`--use_cohere` will use cohere instead of open ai as the llm.
+
+`--use_chroma` will use the chroma embedding db instead of a vector index
+
+`--use_open_ai_embeddings` will use open ai embeddings instead of huggingface embeddings
+
+## Using the ChromaEmbedding Script
+
+The `ChromaEmbedding` script allows for various operations related to embedding models and Chroma database management. Below are the steps to run the script for different tasks:
+
+1. **Building the Chroma DB with OpenAI Embeddings:**
+   To initialize and populate the Chroma database using OpenAI embeddings, run:
+
+   `python RAG/chroma_embedding.py --use_open_ai build`
+
+2. **Loading the Chroma DB:**
+   To load the existing Chroma database, use:
+
+   `python RAG/chroma_embedding.py load`
+
+3. **Retrieving Documents Based on a Query with OpenAI Embeddings:**
+   For retrieving documents similar to a provided query using OpenAI embeddings, execute:
+
+   `python RAG/chroma_embedding.py --use_open_ai retrieve "your query here"`
+
+4. **Reuploading Documents to Chroma:**
+   To clear the current Chroma database and re-upload documents, run:
+
+   `python RAG/chroma_embedding.py reupload`
+
+5. **Clearing the Chroma DB:**
+   To remove all documents from the Chroma database, use:
+   `python RAG/chroma_embedding.py clear`
+
+**Ensure you have activated the virtual environment and installed all dependencies before running these commands.**
