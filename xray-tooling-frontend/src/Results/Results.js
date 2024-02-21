@@ -123,8 +123,8 @@ return (
                     return selected;
                 }}
                 >
-                  <MenuItem value="Override A">Fractured</MenuItem>
-                  <MenuItem value="Override B">Not Fractured</MenuItem>
+                  <MenuItem value="Fractured">Fractured</MenuItem>
+                  <MenuItem value="Not Fractured">Not Fractured</MenuItem>
               </Select>
             </Box>
 
