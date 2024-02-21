@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Container, Paper } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  Typography,
+  Button,
+  AppBar, Toolbar, Card, CardContent, Paper, Select, MenuItem, Container, Box, InputLabel
+} from '@mui/material';
 
 import classIdToBodyPart from './BodyPartMapping.json';
 
 const Results = () => {
   const [phaseOneResult, setPhaseOneResult] = useState(null);
   const [phaseTwoResult, setPhaseTwoResult] = useState(null);
+
+  let navigate = useNavigate();
+  const location = useLocation();
+
+  const { image } = location.state;
 
     const handleRunPhaseOne = async () => {
     try {
@@ -20,7 +30,7 @@ const Results = () => {
         } else {
           data["class_id"] = "Not fractured"
         }
-        setPhaseOneResult(data);
+        setPhaseOneResult(data["class_id"]);
       }
     }
     catch (error) {
@@ -46,7 +56,7 @@ const Results = () => {
             console.error('Invalid class_id received:', data["class_id"]);
           }
         }
-        setPhaseTwoResult(data);
+        setPhaseTwoResult(data["class_id"]);
       }
     } catch (error) {
       console.error('Error running phase 2:', error);
@@ -58,18 +68,111 @@ const Results = () => {
     handleRunPhaseTwo();
   }, []);
 
-  return (
-    <Container>
-      <Typography variant="h4" gutterBottom>Results</Typography>
-      <Paper elevation={3} sx={{ padding: '20px', margin: '20px 0' }}>
-        <Typography variant="h6">Phase One Results:</Typography>
-        <Typography>{phaseOneResult ? JSON.stringify(phaseOneResult) : 'Loading...'}</Typography>
-      </Paper>
-      <Paper elevation={3} sx={{ padding: '20px', margin: '20px 0' }}>
-        <Typography variant="h6">Phase Two Results:</Typography>
-        <Typography>{phaseTwoResult ? JSON.stringify(phaseTwoResult) : 'Loading...'}</Typography>
-      </Paper>
-    </Container>
+  const handleRAG = () => {
+    navigate('/RAG');
+  };
+
+  const handleLogin = () => {
+    navigate('/Login');
+  }
+
+  const handlePhaseOneSelectChange = (event) => {
+    setPhaseOneResult(event.target.value);
+  };
+
+  const handlePhaseTwoSelectChange = (event) => {
+    setPhaseTwoResult(event.target.value);
+  };
+
+  console.log(image);
+  const url = URL.createObjectURL(image);
+
+return (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100vw'}}>
+      <AppBar position="static" sx={{ backgroundColor: 'white', height: '65px', width: '100%', borderBottom: 'none', boxShadow: 'none' }}>
+          <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: 'none' }}>
+                <Typography variant="h6" component="div" sx={{ color: 'black', marginTop:'5px', fontWeight:'bold' }}>
+                <span style={{ color: '#4686ee' }}>X-Ray</span><span style={{ color: 'black' }}>Tooling</span>
+                </Typography>
+                <div sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Button color="inherit" sx={{ color: 'black', marginRight: '16px', }}>Results</Button>
+                  <Button color="inherit" sx={{ color: 'black', marginLeft:'16px' }} onClick={handleRAG}>Rehabilitation</Button>
+                </div>
+                <Button color="inherit" onClick={handleLogin} sx={{ color: 'white', backgroundColor:'#4686ee', borderRadius:'20px', width: '100px','&:hover': { backgroundColor: 'grey'} }} >Log In</Button>
+          </Toolbar>
+        </AppBar>
+        <Typography variant="h3" sx={{boxShadow:'none', fontWeight:'Bold'}}>Results</Typography>
+        <Card sx={{boxShadow:'none', display:'flex', alignContent:'horizontal', justifyContent:'space-between'}}>
+          <CardContent sx={{width:'60%'}}>
+            <Box sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', padding: '20px',borderRadius: '10px' }}> 
+              <Typography variant='h4' sx={{ textAlign: 'left' , marginBottom:'5px'}}>
+                <span style={{ color: '#4686ee' }}>Fracture Classification:</span> <span style={{ color: 'black' }}>{phaseOneResult ? phaseOneResult : 'Loading...'}</span>
+              </Typography>
+              <Typography variant='h5' sx={{ color: 'grey', textAlign: 'left' }}>
+                If fractures are present, we suggest consulting with your doctor or engaging with our <span sx={{ color: '#4686ee' }}>AI chatbot</span> to inquire about the optimal steps to take.
+              </Typography>
+              <Select
+                displayEmpty
+                value={phaseOneResult ? phaseOneResult : ''}
+                onChange={handlePhaseOneSelectChange}
+                sx={{ minWidth: '100px', marginLeft: '10px' }}
+                renderValue={(selected) => {
+                    if (selected === '') {
+                        return <em>Override</em>;
+                    }
+                    return selected;
+                }}
+                >
+                  <MenuItem value="Fractured">Fractured</MenuItem>
+                  <MenuItem value="Not Fractured">Not Fractured</MenuItem>
+              </Select>
+            </Box>
+
+            <Box sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', padding: '20px',borderRadius: '10px', marginTop:'2%' }}> 
+
+              <Typography variant='h4' sx={{ textAlign: 'left' , marginBottom:'5px'}}>
+                <span style={{ color: '#4686ee' }}>Body Part Classification:</span> <span style={{ color: 'black' }}>{phaseTwoResult ? phaseTwoResult : 'Loading...'}</span>
+              </Typography>
+              <Typography variant='h5' sx={{color:'grey', textAlign:'left'}}>Specific bone fractures most likely require unique rehabilitation plans.</Typography>
+                <Select 
+                    displayEmpty
+                    value={phaseTwoResult ? phaseTwoResult : ''}
+                    onChange={handlePhaseTwoSelectChange}
+                    sx={{ minWidth: '100px', marginLeft: '10px' }}
+                    renderValue={(selected) => {
+                        if (selected === '') {
+                            return <em>Override</em>;
+                        }
+                        return selected;
+                    }}
+                    >
+                  {Object.entries(classIdToBodyPart).map(([id, bodyPart]) => (
+                    <MenuItem key={id} value={bodyPart}>{bodyPart}</MenuItem>
+                    ))}
+              </Select>
+
+            </Box>
+
+          </CardContent>
+          <img src={url} style={{ maxWidth: '50%', height: 'auto',  borderRadius: '50px 50px 50px 50px' }} />
+        </Card>
+        <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              width: '165px',
+              borderRadius: '20px',
+              backgroundColor: '#89cff0', 
+              color: '#000080', 
+              marginLeft: '2%',
+              marginBottom: '20px',
+              marginTop: '5px'
+            }}
+            onClick={handleRAG}
+          >
+            AI Chatbot
+          </Button>
+    </div>
   );
 };
 

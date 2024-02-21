@@ -54,7 +54,7 @@ const Stepone = () => {
   
   const handleResults = () => {
     handleSubmit();
-    navigate('/Results');
+    navigate('/Results', { state: { image } });
   };
 
   const handleRAG = () => {
