@@ -265,7 +265,6 @@ if __name__ == "__main__":
     chroma = ChromaEmbedding(use_openai=args.use_openai)
 
     # Handle operations
-    
     if args.operation == 'retrieve':
         print(chroma.get_similar_documents(args.query))
     elif args.operation == 'reupload':
