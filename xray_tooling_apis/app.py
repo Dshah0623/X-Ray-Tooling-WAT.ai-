@@ -90,7 +90,8 @@ async def upload_file(file: UploadFile = File(...)):
     global file_location
     contents = await file.read()
     image_map = {"image/jpeg": ".jpg", "image/png": ".png", "image/bmp": ".bmp", "image/gif": ".gif"}
-    file_location = os.path.join(os.path.dirname(__file__),"../assets/", "1", image_map[file.content_type])
+    file_location = os.path.join(os.path.dirname(__file__),"../assets/", "1" + image_map[file.content_type])
+    print(file_location, "file_location")
     with open(file_location, "wb+") as file_object:
         file_object.write(contents)
     return {"info": f"file '{file.filename}' saved at '{file_location}'"}
@@ -111,6 +112,7 @@ async def phase1():
     # getting result category as predicted
     global file_location
     img_path = file_location  # Assuming file_location is the path to the image file
+    print(img_path)
     img = Image.open(img_path).convert("RGB")
     img = phase1_transform(img)
     img = img.unsqueeze(0)
