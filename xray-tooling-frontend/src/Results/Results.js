@@ -1,30 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Container, Paper } from '@mui/material';
 
-const classIdToBodyPart = {
-  0: 'Abdomen',
-  1: 'Ankle',
-  2: 'Cervical Spine',
-  3: 'Chest',
-  4: 'Clavicles',
-  5: 'Elbow',
-  6: 'Feet',
-  7: 'Finger',
-  8: 'Forearm',
-  9: 'Hand',
-  10: 'Hip',
-  11: 'Knee',
-  12: 'Lower Leg',
-  13: 'Lumbar Spine',
-  14: 'Others',
-  15: 'Pelvis',
-  16: 'Shoulder',
-  17: 'Sinus',
-  18: 'Skull',
-  19: 'Thigh',
-  20: 'Thoracic Spine',
-  21: 'Wrist',
-};
+import classIdToBodyPart from './BodyPartMapping.json';
 
 const Results = () => {
   const [phaseOneResult, setPhaseOneResult] = useState(null);
@@ -61,10 +38,10 @@ const Results = () => {
       if (response.ok) {
         let data = await response.json();
         console.log('Phase 2 run:', data);
-        if (data["class_id"] !== undefined) { // Ensure `class_id` exists in the data
+        if (data["class_id"] !== undefined) { 
           const bodyPart = classIdToBodyPart[data["class_id"]];
-          if (bodyPart) { // Check if the mapping was successful
-            data["class_id"] = bodyPart; // Update `class_id` with the body part string
+          if (bodyPart) { 
+            data["class_id"] = bodyPart; 
           } else {
             console.error('Invalid class_id received:', data["class_id"]);
           }
