@@ -11,8 +11,6 @@ import classIdToBodyPart from './BodyPartMapping.json';
 const Results = () => {
   const [phaseOneResult, setPhaseOneResult] = useState(null);
   const [phaseTwoResult, setPhaseTwoResult] = useState(null);
-//   const [selectedPhaseOneResult, setSelectedPhaseOneResult] = useState('');
-//   const [selectedPhaseTwoResult, setSelectedPhaseTwoResult] = useState('');
 
   let navigate = useNavigate();
   const location = useLocation();
