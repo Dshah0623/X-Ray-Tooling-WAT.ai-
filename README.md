@@ -8,6 +8,7 @@ To set up the environment and dependencies for the project, follow these steps:
 2. Run the setup script: `./setup.sh`
 3. Obtain a Cohere API key and set it as an environment variable `COHERE_API_KEY` into a `.env` file within the root directory.
 4. (Optional) Obtain an OpenAI API key and set it as an environment variable `OPENAI_API_KEY` in the `.env` file within the root directory.
+5. Run: npm install
 
 ## Running the Backend and Frontend
 
