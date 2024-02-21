@@ -63,8 +63,6 @@ const sendFlowQuery = async (flow) => {
       setData(data);
       const serverMessage = { text: data.response.content, sender: 'bot' };
       setFlowMessage(serverMessage.text); // Add new server message to the conversation
-      console.log("FLOW MESSAGE");
-      console.log(flowMessage);
     }
   } catch (error) {
     console.error('Error running RAG:', error);
@@ -94,13 +92,6 @@ const sendFlowStream = async (flow) => {
   }
   
 };
-
-// Fetch the original image
-fetch("./tortoise.png")
-  // Retrieve its body as ReadableStream
-
-
-
 
   const renderActiveFlow = () => {
     switch (activeFlow) {
