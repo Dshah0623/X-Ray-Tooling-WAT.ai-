@@ -72,6 +72,34 @@ const sendFlowQuery = async (flow) => {
   
 };
 
+const sendFlowStream = async (flow) => {
+  if (injury.trim() == '' || injuryLocation.trim() == '') return;
+  try {
+    // set loading
+    setFlowMessage("Loading...");
+    const response = await fetch('http://127.0.0.1:8000/rag/flow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ injury: injury, injury_location: injuryLocation, flow: flow, model: model }),
+    });
+
+    const reader = response.body.getReader();
+    const chunks = [];
+    
+
+  } catch (error) {
+    console.error('Error running RAG:', error);
+  }
+  
+};
+
+// Fetch the original image
+fetch("./tortoise.png")
+  // Retrieve its body as ReadableStream
+
+
 
 
   const renderActiveFlow = () => {

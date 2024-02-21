@@ -88,10 +88,10 @@ class ChromaEmbedding(Embedding):
         self.__embedding_in_use = self.__embedding_open if use_openai else self.__embeddings_hugging
         print(f"Using {'OpenAI' if use_openai else 'HuggingFace'} Embedding")
         self.__chroma_db = None
-        # if not os.path.isdir('./db'):
-        #     self.create_and_populate_chroma()
+        if not os.path.isdir('./db'):
+            self.create_and_populate_chroma()
 
-        # self.load_chroma_db()
+        self.load_chroma_db()
 
     def __load_and_chunk_articles(self) -> object:
         docs = self.__load_xray_articles()
@@ -99,7 +99,7 @@ class ChromaEmbedding(Embedding):
 
     def __process_json(self) -> object:
         # Load the original JSON
-        with open(self.__articles_path, "r") as file:
+        with open(os.path.join(os.path.dirname(__file__),self.__articles_path), "r") as file:
             data = json.load(file)
 
         # Process each document
@@ -108,12 +108,12 @@ class ChromaEmbedding(Embedding):
             doc['FullText'] = ' , '.join(doc['FullText'])
 
         # Save the processed JSON
-        with open(self.__processed_articles_path, "w") as file:
+        with open(os.path.join(os.path.dirname(__file__),self.__processed_articles_path), "w") as file:
             json.dump(data, file, indent=4)
 
     def __load_xray_articles(self) -> object:
         loader = JSONLoader(
-            file_path=self.__processed_articles_path,
+            file_path=os.path.join(os.path.dirname(__file__),self.__processed_articles_path),
             jq_schema='.[].FullText',
             text_content=True)
 
@@ -265,11 +265,8 @@ if __name__ == "__main__":
     chroma = ChromaEmbedding(use_openai=args.use_openai)
 
     # Handle operations
-    if args.operation == 'build':
-        chroma.create_and_populate_chroma()
-    elif args.operation == 'load':
-        chroma.load_chroma_db()
-    elif args.operation == 'retrieve':
+    
+    if args.operation == 'retrieve':
         print(chroma.get_similar_documents(args.query))
     elif args.operation == 'reupload':
         chroma.reupload_to_chroma()

@@ -111,7 +111,7 @@ class Chat():
     
     def stream_query(self, query):
         """
-        Processes a query using OpenAI's language model.
+        Stream a query using OpenAI's language model.
 
         Args:
             query (str): The query string.
@@ -124,8 +124,12 @@ class Chat():
         docs = [Document(page_content=doc[2], metadata={
                          "chunk": doc[1], "source": "local"}) for doc in rag_docs]
         chain = load_qa_chain(self.__client, chain_type="stuff")
-        out = chain.run(input_documents=docs, question=query)
-        return out
+        response = chain.stream({"input_documents":docs, "question":query}, return_only_outputs=True)
+
+        for chunk in response:
+            current_content = chunk
+            yield current_content["output_text"]
+
 
     def flow_query(self, injury: str, injury_location: str, flow: FlowType) -> object:
         """
@@ -147,6 +151,30 @@ class Chat():
 
         out = self.__chain.invoke({"template": flow_query, "documents": docs})
         return out
+
+    def stream_flow_query(self, injury: str, injury_location: str, flow: FlowType) -> object:
+        """
+        Processes a query using OpenAI's language model.
+
+        Args:
+            query (str): The query string.
+
+        Returns:
+            str: The response from the language model.
+        """
+        flow_query = Flow.template(injury, injury_location, flow)
+
+        rag_docs = self.__embedding.get_similar_documents(flow_query)
+        docs = [Document(page_content=doc[2], metadata={
+                         "chunk": doc[1], "source": "local"}) for doc in rag_docs]
+
+        print(f"Templated Query: {flow_query}")
+
+        out = self.__chain.stream({"template": flow_query, "documents": docs})
+
+        for chunk in out:
+            current_content = chunk
+            yield current_content.content
 
     def end_chat(self) -> None:
         """

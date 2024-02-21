@@ -171,8 +171,6 @@ async def rag_query_steam(query: Query):
 
     return StreamingResponse(model.stream_query(text), media_type="text/event-stream")
 
-    return {"query": text, "response": model.query(text)}
-
 class FlowQuery(BaseModel):
     flow: str
     injury: str
@@ -190,3 +188,15 @@ async def rag_flow(flow_query: FlowQuery):
     model = models[flow_query.model]
 
     return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "flow": flow.value, "response": model.flow_query(flow_query.injury, flow_query.injury_location, flow)}
+
+
+@app.post("/rag/flow/stream")
+async def rag_flow(flow_query: FlowQuery):
+    # return run_similarity_search(qu)
+
+    if flow_query.model not in models: return {"error": "model not found."}
+    
+    flow = FlowType(flow_query.flow)
+    model = models[flow_query.model]
+
+    return StreamingResponse(model.stream_flow_query(flow_query.injury, flow_query.injury_location, flow), media_type="text/event-stream")
