@@ -69,7 +69,7 @@ const Results = () => {
   }, []);
 
   const handleRAG = () => {
-    navigate('/RAG');
+    navigate('/RAG', { state: { phaseOneResult, phaseTwoResult } });
   };
 
   const handleLogin = () => {
@@ -102,7 +102,7 @@ return (
           </Toolbar>
         </AppBar>
         <Typography variant="h3" sx={{boxShadow:'none', fontWeight:'Bold'}}>Results</Typography>
-        <Card sx={{boxShadow:'none', display:'flex', alignContent:'horizontal', justifyContent:'space-between'}}>
+        <Card sx={{boxShadow:'none', display:'flex', flexDirection: 'row', justifyContent:'space-between'}}>
           <CardContent sx={{width:'60%'}}>
             <Box sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', padding: '20px',borderRadius: '10px' }}> 
               <Typography variant='h4' sx={{ textAlign: 'left' , marginBottom:'5px'}}>
@@ -154,23 +154,27 @@ return (
             </Box>
 
           </CardContent>
-          <img src={url} style={{ maxWidth: '50%', height: 'auto',  borderRadius: '50px 50px 50px 50px' }} />
+          <img src={url} style={{ maxWidth: '50%',maxHeight: '500px', width: 'auto', height: 'auto', objectFit: 'cover', borderRadius: '50px', marginRight: '100px' }} />
         </Card>
         <Button
             variant="contained"
             color="primary"
+            disabled={!phaseOneResult || !phaseTwoResult}
             sx={{
-              width: '165px',
+              width: '240px',
+              height: '80px',
+              fontSize: '20px',
+              fontWeight: 'bold',
               borderRadius: '20px',
               backgroundColor: '#89cff0', 
               color: '#000080', 
               marginLeft: '2%',
               marginBottom: '20px',
-              marginTop: '5px'
+              marginTop: '5px',
             }}
             onClick={handleRAG}
           >
-            AI Chatbot
+            Go to AI Chatbot
           </Button>
     </div>
   );
