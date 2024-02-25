@@ -236,13 +236,15 @@ const sendFlowStream = async (flow) => {
           </CardContent>
           <div className="chat-container"> 
             <div className="chat-screen">
-                <div className="messages">
+              <div className="messages">
                   {messages.map((message, index) => (
-                    <div key={index} className={`message ${message.sender}`}>
-                      {message.text}
-                    </div>
+                      <div className="message-container" key={index}>
+                          <div className={`message ${message.sender}`}>
+                              {message.text}
+                          </div>
+                      </div>
                   ))}
-                </div>
+              </div>
                 <div className="input-area">
                   <input
                     type="text"
