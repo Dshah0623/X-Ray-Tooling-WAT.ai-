@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import './chatpage.css';
+import { useLocation } from 'react-router-dom';
+
 
 const ChatScreen = () => {
+  // Passing forward state from previous page
+  const location = useLocation();
+  const { phaseOneResult, phaseTwoResult } = location.state;
+  
   const [activeFlow, setActiveFlow] = useState('Agent'); 
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const [injury, setInjury] = useState('');
-  const [injuryLocation, setInjuryLocation] = useState('');
+  const [injury, setInjury] = useState(phaseOneResult);
+  const [injuryLocation, setInjuryLocation] = useState(phaseTwoResult);
   const [flowMessage, setFlowMessage] = useState('')
 
   const [model, setModel] = useState('openai');
@@ -157,7 +163,7 @@ const sendFlowStream = async (flow) => {
     <div>
       <div className="top-bar">
         <button onClick={() => setActiveFlow('Agent')}>General Chat Agent</button>
-        <button onClick={() => setActiveFlow('Flows')}>Other Flows</button>
+        <button onClick={() => setActiveFlow('Flows')}>Injury-specific Flows</button>
         {/* add more flows here */}
       </div>
       {renderActiveFlow()}
