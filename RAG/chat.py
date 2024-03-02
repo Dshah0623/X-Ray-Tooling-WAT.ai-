@@ -109,6 +109,7 @@ class Chat():
         out = chain.run(input_documents=docs, question=query)
         return out
     
+    
     def stream_query(self, query):
         """
         Stream a query using OpenAI's language model.

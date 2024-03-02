@@ -192,6 +192,51 @@ async def rag_flow(flow_query: FlowQuery):
     return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "flow": flow.value, "response": model.flow_query(flow_query.injury, flow_query.injury_location, flow)}
 
 
+class MultiFlowQuery(BaseModel):
+    flows: list[str]
+    injury: str
+    injury_location: str
+    model: str
+
+import asyncio
+from concurrent.futures.thread import ThreadPoolExecutor
+import concurrent.futures
+
+def generate_flows(injury, injury_location, flows, model: Chat):
+  executor = ThreadPoolExecutor(max_workers=10)
+
+  futures = [executor.submit(model.flow_query, injury, injury_location, flow) for flow in flows]
+  done, not_done = concurrent.futures.wait(futures, return_when=concurrent.futures.ALL_COMPLETED)
+
+  print(done)
+
+  res = []
+
+  for task in done:
+    print(task)
+    res.append(task.result())
+
+  print(res)
+  return res
+
+
+@app.post("/rag/flow/async")
+async def rag_flow(flow_query: MultiFlowQuery):
+    # return run_similarity_search(qu)
+
+    if flow_query.model not in models: return {"error": "model not found."}
+    
+    flows = [FlowType(flow) for flow in flow_query.flows]
+    model = models[flow_query.model]
+
+    coroutine = generate_flows(flow_query.injury, flow_query.injury_location, flows, model)
+    print(coroutine)
+
+    return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "responses": [(flows[i].value, response) for i, response in enumerate(responses)]}
+
+
+
+
 @app.post("/rag/flow/stream")
 async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
