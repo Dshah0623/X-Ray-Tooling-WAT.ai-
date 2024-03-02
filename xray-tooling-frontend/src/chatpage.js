@@ -495,8 +495,8 @@ const ChatScreen = () => {
             component="div"
             sx={{ color: "black", marginTop: "5px", fontWeight: "bold" }}
           >
-            <span style={{ color: "#4686ee" }}>X-Ray</span>
-            <span style={{ color: "black" }}>Tooling</span>
+          <span style={{ color: '#4686ee', fontSize: 28 }}>X</span>
+          <span style={{ color: 'black', fontSize:28 }}>Care</span>
           </Typography>
           <div
             sx={{

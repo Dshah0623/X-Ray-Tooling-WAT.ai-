@@ -92,7 +92,7 @@ return (
       <AppBar position="static" sx={{ backgroundColor: 'white', height: '65px', width: '100%', borderBottom: 'none', boxShadow: 'none' }}>
           <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: 'none' }}>
                 <Typography variant="h6" component="div" sx={{ color: 'black', marginTop:'5px', fontWeight:'bold' }}>
-                <span style={{ color: '#4686ee' }}>X-Ray</span><span style={{ color: 'black' }}>Tooling</span>
+                  <span style={{ color: '#4686ee', fontSize: 28 }}>X</span><span style={{ color: 'black', fontSize:28 }}>Care</span>
                 </Typography>
                 <div sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <Button color="inherit" sx={{ color: 'black', marginRight: '16px', }}>Results</Button>
