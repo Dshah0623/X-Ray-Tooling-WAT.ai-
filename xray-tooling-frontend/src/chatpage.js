@@ -27,7 +27,7 @@ const ChatScreen = () => {
   const [data, setData] = useState('');
 
   let navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState('base');
+  const [selectedOption, setSelectedOption] = useState(null);
 
 // render flows beforehand
   useEffect(() => {
@@ -89,13 +89,20 @@ const sendFlows = async (flows) => {
       console.log('RAG run:', data);
       setData(data);
       
-      // console.log(flow)
-      // setFlowData(prevFlowData => ({
-      //     ...prevFlowData,
-      //     [flow]: data.response.content
-          
-      //   }));
-      // console.log(flowData);
+      console.log(data.responses.length);
+      var res = {};
+
+      for (let i = 0; i < data.responses.length; i++){
+        console.log("Flow: ", data.responses[i][0]);
+        console.log("Content: ", data.responses[i][1].content);
+
+        res[data.responses[i][0]] = data.responses[i][1].content;
+      }
+      
+      setFlowData(res);
+
+
+      console.log(res);
 
     }
   } catch (error) {
