@@ -6,14 +6,20 @@ import {
   AppBar, Toolbar, Card, CardContent, Paper, Select, MenuItem, Container, Box, InputLabel, FormControl, FormControlLabel, RadioGroup, Radio
 } from '@mui/material';
 import './chatpage.css';
+import { useLocation } from 'react-router-dom';
+
 
 const ChatScreen = () => {
+  // Passing forward state from previous page
+  const location = useLocation();
+  const { phaseOneResult, phaseTwoResult } = location.state;
+  
   const [activeFlow, setActiveFlow] = useState('Agent'); 
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const [injury, setInjury] = useState('');
-  const [injuryLocation, setInjuryLocation] = useState('');
+  const [injury, setInjury] = useState(phaseOneResult);
+  const [injuryLocation, setInjuryLocation] = useState(phaseTwoResult);
   const [flowMessage, setFlowMessage] = useState('')
 
   const [model, setModel] = useState('openai');
@@ -183,7 +189,7 @@ const sendFlowStream = async (flow) => {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100vw'}}>
       {/* <div className="top-bar">
         <button onClick={() => setActiveFlow('Agent')}>General Chat Agent</button>
-        <button onClick={() => setActiveFlow('Flows')}>Other Flows</button>
+        <button onClick={() => setActiveFlow('Flows')}>Injury-specific Flows</button>
         {/* add more flows here */}
       {/* </div>
       {renderActiveFlow()} */} 
