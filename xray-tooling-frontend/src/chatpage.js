@@ -33,9 +33,12 @@ const ChatScreen = () => {
   useEffect(() => {
     if (injury.trim() === '' || injuryLocation.trim() === '') return;
     const flowTypes = ['base', 'restriction', 'heat_ice', 'expectation'];
-    flowTypes.forEach(flowType => {
-      sendFlowQuery(flowType);
-    });
+    // flowTypes.forEach(flowType => {
+    //   sendFlowQuery(flowType);
+    // });
+
+    // testing
+    sendFlows(flowTypes);
   }, []);
 
 
@@ -67,6 +70,39 @@ const sendQuery = async () => {
   }
 };
 
+
+const sendFlows = async (flows) => {
+  if (injury.trim() == '' || injuryLocation.trim() == '') return;
+
+  try {
+    // set loading
+    setFlowMessage("Loading...");
+    const response = await fetch('http://127.0.0.1:8000/rag/flow/async', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ injury: injury, injury_location: injuryLocation, flows: flows, model: model }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log('RAG run:', data);
+      setData(data);
+      
+      // console.log(flow)
+      // setFlowData(prevFlowData => ({
+      //     ...prevFlowData,
+      //     [flow]: data.response.content
+          
+      //   }));
+      // console.log(flowData);
+
+    }
+  } catch (error) {
+    console.error('Error running RAG:', error);
+  }
+  
+};
 
 const sendFlowQuery = async (flow) => {
   if (injury.trim() == '' || injuryLocation.trim() == '') return;

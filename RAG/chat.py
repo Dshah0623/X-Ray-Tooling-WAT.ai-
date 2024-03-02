@@ -152,6 +152,8 @@ class Chat():
 
         out = self.__chain.invoke({"template": flow_query, "documents": docs})
         return out
+    
+    
 
     def stream_flow_query(self, injury: str, injury_location: str, flow: FlowType) -> object:
         """

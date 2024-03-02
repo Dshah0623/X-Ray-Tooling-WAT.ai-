@@ -202,21 +202,21 @@ import asyncio
 from concurrent.futures.thread import ThreadPoolExecutor
 import concurrent.futures
 
+def worker(injury, injury_location, flow, model: Chat):
+    response = model.flow_query(injury, injury_location, flow)
+    return (flow, response)
+
 def generate_flows(injury, injury_location, flows, model: Chat):
   executor = ThreadPoolExecutor(max_workers=10)
 
-  futures = [executor.submit(model.flow_query, injury, injury_location, flow) for flow in flows]
+  futures = [executor.submit(worker, injury, injury_location, flow, model) for flow in flows]
   done, not_done = concurrent.futures.wait(futures, return_when=concurrent.futures.ALL_COMPLETED)
-
-  print(done)
 
   res = []
 
   for task in done:
-    print(task)
     res.append(task.result())
 
-  print(res)
   return res
 
 
@@ -232,7 +232,7 @@ async def rag_flow(flow_query: MultiFlowQuery):
     coroutine = generate_flows(flow_query.injury, flow_query.injury_location, flows, model)
     print(coroutine)
 
-    return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "responses": [(flows[i].value, response) for i, response in enumerate(responses)]}
+    return {"injury": flow_query.injury, "injury_location": flow_query.injury_location, "responses": coroutine}
 
 
 
