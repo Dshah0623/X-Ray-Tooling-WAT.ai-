@@ -192,7 +192,7 @@ const sendFlowQuery = async (flow) => {
             </CardContent>
           </Card>
           <div className="messages">
-            <div className={`message bot`}>
+            <div className={`message flow`}>
               {flowMessage}
             </div>
           </div>
@@ -213,11 +213,10 @@ const sendFlowQuery = async (flow) => {
   }
 
   const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-    // sendFlowQuery(selectedOption);
-    console.log("HIIIIII")
-    setFlowMessage(flowData[selectedOption]);
-    console.log(flowMessage)
+    const newSelectedOption = event.target.value;
+    setSelectedOption(newSelectedOption);
+    setFlowMessage(flowData[newSelectedOption]);
+    console.log(flowMessage);
   };
 
   const handleResults = ()=>{
