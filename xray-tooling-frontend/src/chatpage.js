@@ -36,7 +36,7 @@ const ChatScreen = () => {
     flowTypes.forEach(flowType => {
       sendFlowQuery(flowType);
     });
-  }, [injury, injuryLocation]);
+  }, []);
 
 
 const sendQuery = async () => {
@@ -88,7 +88,7 @@ const sendFlowQuery = async (flow) => {
       console.log(flow)
       setFlowData(prevFlowData => ({
           ...prevFlowData,
-          [flow]: data.response
+          [flow]: data.response.content
           
         }));
       console.log(flowData)
