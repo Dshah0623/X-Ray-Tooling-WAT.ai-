@@ -1,3 +1,5 @@
+from RAG.flows import FlowType
+from RAG.chat import Chat
 from pydantic import BaseModel
 import json
 from fastapi import FastAPI, File, UploadFile
@@ -16,9 +18,6 @@ import sys
 
 from os.path import dirname, join, abspath
 sys.path.insert(0, abspath(join(dirname(__file__), '..')))
-
-from RAG.chat import Chat
-from RAG.flows import FlowType
 
 
 app = FastAPI()
@@ -69,7 +68,8 @@ phase2_transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225]),
 ])
 
-phase1_weights = torch.load(os.path.join(os.path.dirname(__file__),"../models/phase1_model.pth"))
+phase1_weights = torch.load(os.path.join(
+    os.path.dirname(__file__), "../models/phase1_model.pth"))
 phase1_model = efficientnet_b0(pretrained=False)
 phase1_model = modify_model(phase1_model, dropout_rate=0.5)
 phase1_model.load_state_dict(phase1_weights)
@@ -80,17 +80,19 @@ file_location = ""
 # phase2_model = densenet121(pretrained=False)
 # #phase2_model = modify_model(phase2_model, dropout_rate=0.5)
 # phase2_model.load_state_dict(phase2_weights)
-phase2_model = torch.load(os.path.join(os.path.dirname(__file__),"../models/phase2_model.pth"))
+phase2_model = torch.load(os.path.join(
+    os.path.dirname(__file__), "../models/phase2_model.pth"))
 phase2_model.eval()
-
 
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     global file_location
     contents = await file.read()
-    image_map = {"image/jpeg": ".jpg", "image/png": ".png", "image/bmp": ".bmp", "image/gif": ".gif"}
-    file_location = os.path.join(os.path.dirname(__file__),"../assets/", "1" + image_map[file.content_type])
+    image_map = {"image/jpeg": ".jpg", "image/png": ".png",
+                 "image/bmp": ".bmp", "image/gif": ".gif"}
+    file_location = os.path.join(os.path.dirname(
+        __file__), "../assets/", "1" + image_map[file.content_type])
     print(file_location, "file_location")
     with open(file_location, "wb+") as file_object:
         file_object.write(contents)
@@ -155,7 +157,8 @@ async def rag_query(query: Query):
 
     text = query.text
 
-    if query.model not in models: return {"error": "model not found."}
+    if query.model not in models:
+        return {"error": "model not found."}
 
     model = models[query.model]
     return {"query": text, "response": model.query(text)}
@@ -167,11 +170,13 @@ async def rag_query_steam(query: Query):
 
     text = query.text
 
-    if query.model not in models: return {"error": "model not found."}
+    if query.model not in models:
+        return {"error": "model not found."}
 
     model = models[query.model]
 
     return StreamingResponse(model.stream_query(text), media_type="text/event-stream")
+
 
 class FlowQuery(BaseModel):
     flow: str
@@ -184,8 +189,9 @@ class FlowQuery(BaseModel):
 async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
 
-    if flow_query.model not in models: return {"error": "model not found."}
-    
+    if flow_query.model not in models:
+        return {"error": "model not found."}
+
     flow = FlowType(flow_query.flow)
     model = models[flow_query.model]
 
@@ -241,8 +247,9 @@ async def rag_flow(flow_query: MultiFlowQuery):
 async def rag_flow(flow_query: FlowQuery):
     # return run_similarity_search(qu)
 
-    if flow_query.model not in models: return {"error": "model not found."}
-    
+    if flow_query.model not in models:
+        return {"error": "model not found."}
+
     flow = FlowType(flow_query.flow)
     model = models[flow_query.model]
 
