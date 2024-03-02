@@ -193,7 +193,7 @@ const ChatScreen = () => {
       console.error("Error running RAG:", error);
     }
   }
-};
+
 
 
 const sendFlows = async (flows) => {
@@ -221,12 +221,8 @@ const sendFlows = async (flows) => {
 
     
       for (let i = 0; i < data.responses.length; i++){
-        console.log("Flow: ", data.responses[i][0]);
-        console.log("Content: ", data.responses[i][1][1].content);
-        console.log("Docs: ", data.responses[i][1][0].content);
-
-        fData[data.responses[i][0]] = data.responses[i][1][1].content;
-        fDocs[data.responses[i][0]] = data.responses[i][1][0].content;
+        fData[data.responses[i][0]] = data.responses[i][1][0].content;
+        fDocs[data.responses[i][0]] = data.responses[i][1][1].map((doc) => doc.page_content);
 
       }
       
@@ -234,7 +230,9 @@ const sendFlows = async (flows) => {
       setFlowData(fData);
       setFlowDocs(fDocs);
 
-      console.log(res);
+      console.log("FData: ",fData);
+      console.log("FDocs: ",fDocs);
+
 
     }
   } catch (error) {
@@ -243,39 +241,6 @@ const sendFlows = async (flows) => {
   
 };
 
-const sendFlowQuery = async (flow) => {
-  if (injury.trim() == '' || injuryLocation.trim() == '') return;
-
-  try {
-    // set loading
-    setFlowMessage("Loading...");
-    const response = await fetch('http://127.0.0.1:8000/rag/flow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ injury: injury, injury_location: injuryLocation, flow: flow, model: model }),
-    });
-    if (response.ok) {
-      const data = await response.json();
-      console.log('RAG run:', data);
-      setData(data);
-      console.log(flow)
-      setFlowData((prevFlowData) => ({
-        ...prevFlowData,
-        [flow]: data.response[0].content,
-      }));
-      setFlowDocs((prevFlowDocs) => ({
-        ...prevFlowDocs,
-        [flow]: data.response[1].map((doc) => doc.page_content),
-      }));
-      console.log(flowData);
-    }
-  }catch (error) {
-    console.error('Error running RAG:', error);
-  }
-  
-};
 
   const renderFlowDocs = (flowDocs) => {
     // Check if flowDocs is empty and return a message or null to avoid rendering empty container
@@ -640,5 +605,5 @@ const sendFlowQuery = async (flow) => {
       </div>
     </div>
   );
-
+};
 export default ChatScreen;
