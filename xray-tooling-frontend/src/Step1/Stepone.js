@@ -86,7 +86,7 @@ const Stepone = () => {
         <AppBar position="static" sx={{ backgroundColor: 'white', height: '65px', width: '100%', borderBottom: 'none', boxShadow: 'none' }}>
           <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: 'none' }}>
                 <Typography variant="h6" component="div" sx={{ color: 'black', marginTop:'5px', fontWeight:'bold' }}>
-                <span style={{ color: '#4686ee' }}>X-Ray</span><span style={{ color: 'black' }}>Tooling</span>
+                <span style={{ color: '#4686ee', fontSize: 28 }}>X</span><span style={{ color: 'black', fontSize:28 }}>Care</span>
                 </Typography>
                 <div sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <Button color="inherit" onClick={handleResults} sx={{ color: 'black', marginRight: '16px', }}>Results</Button>
@@ -100,8 +100,11 @@ const Stepone = () => {
             <Typography variant="h2" sx={{ fontWeight: '500' }}>
             Your Personal <span style={{ color: '#4686ee' }}>Fracture</span> <span style={{ color: '#4686ee' }}>Rehabilitation</span> Assistant.
             </Typography>
-            <Typography variant="h5" sx={{marginTop:'50px', color:'grey'}}>
-              Simply by uploading an X-ray image, X-Ray Tooling will determine whether the image contains a fracture and identify the affected body part. Powered by a RAG model, our messaging system allows for interactive communication, providing rehabilitation advice tailored to your needs.
+            <Typography variant="h5" sx={{marginTop:'50px', color:'grey', textAlign: 'left'}}>
+              Simply by uploading an X-ray image, XCare will determine whether there is a fracture, and identify the affected body part.
+            </Typography>
+            <Typography variant="h5" sx={{marginTop:'50px', color:'grey', textAlign: 'left'}}>
+               Powered by Retreival Augmented Generation and Large Language Models, our chat and flows interface allow for interactive communication, providing rehabilitation advice tailored to your needs.
             </Typography>
           </CardContent>
           <img src="https://firebasestorage.googleapis.com/v0/b/xray-tooling.appspot.com/o/images%2Fstock-photo-portrait-of-young-black-female-medical-intern-holding-blue-clipboard.jpeg?alt=media&token=76625332-e7c7-475c-8a93-8d6ab05df8cb" style={{ maxWidth: '50%', height: 'auto',  borderRadius: '50px 0 0 50px' }} />
