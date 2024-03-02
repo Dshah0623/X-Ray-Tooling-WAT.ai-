@@ -40,7 +40,7 @@ const ChatScreen = () => {
   const [data, setData] = useState("");
 
   let navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState("base");
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const [chatDocs, setChatDocs] = useState([]);
   const [flowDocs, setFlowDocs] = useState({
@@ -73,14 +73,19 @@ const ChatScreen = () => {
 
   // render flows beforehand
   useEffect(() => {
+    if (injury.trim() === '' || injuryLocation.trim() === '') return;
+    const flowTypes = ['base', 'restriction', 'heat_ice', 'expectation'];
+    // testing
+  
+
     console.log("isSaved: ", isSaved);
 
-    if (injury.trim() === "" || injuryLocation.trim() === "") return;
+    sendFlows(flowTypes);
 
-    const flowTypes = ["base", "restriction", "heat_ice", "expectation"];
-    flowTypes.forEach((flowType) => {
-      sendFlowQuery(flowType);
-    });
+    // flowTypes.forEach((flowType) => {
+    //   sendFlowQuery(flowType);
+    // });
+
   }, [isSaved]);
 
   const sendQuery = async () => {
@@ -187,7 +192,55 @@ const ChatScreen = () => {
     } catch (error) {
       console.error("Error running RAG:", error);
     }
-  };
+  }
+
+
+
+const sendFlows = async (flows) => {
+  if (injury.trim() == '' || injuryLocation.trim() == '') return;
+
+  try {
+    // set loading
+    setFlowMessage("Loading...");
+    const response = await fetch('http://127.0.0.1:8000/rag/flow/async', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ injury: injury, injury_location: injuryLocation, flows: flows, model: model }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log('RAG run:', data);
+      setData(data);
+      
+      console.log(data.responses.length);
+      var fData = {};
+      var fDocs = {};
+
+
+    
+      for (let i = 0; i < data.responses.length; i++){
+        fData[data.responses[i][0]] = data.responses[i][1][0].content;
+        fDocs[data.responses[i][0]] = data.responses[i][1][1].map((doc) => doc.page_content);
+
+      }
+      
+
+      setFlowData(fData);
+      setFlowDocs(fDocs);
+
+      console.log("FData: ",fData);
+      console.log("FDocs: ",fDocs);
+
+
+    }
+  } catch (error) {
+    console.error('Error running RAG:', error);
+  }
+  
+};
+
 
   const renderFlowDocs = (flowDocs) => {
     // Check if flowDocs is empty and return a message or null to avoid rendering empty container
@@ -553,5 +606,4 @@ const ChatScreen = () => {
     </div>
   );
 };
-
 export default ChatScreen;
