@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex CUCAI_paper"] 1710105256 "CUCAI_paper.aux" "CUCAI_paper.bbl" "CUCAI_paper" 1710105257 0
-  "./references.bib" 1710097691 5492 96e5bc8e8c373bae30d432ac24d9ab5a ""
+["bibtex CUCAI_paper"] 1710105450 "CUCAI_paper.aux" "CUCAI_paper.bbl" "CUCAI_paper" 1710105807 0
+  "./references.bib" 1710105344 5922 4c195a950ecbc81a5a223a3cf30fd9f5 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "CUCAI_paper.aux" 1710105257 6938 c7ab4769303e0d1dee2b80e6d798f3ce "pdflatex"
+  "CUCAI_paper.aux" 1710105806 6793 7334989281b3b369240660cec0d48b67 "pdflatex"
   (generated)
   "CUCAI_paper.bbl"
   "CUCAI_paper.blg"
   (rewritten before read)
-["pdflatex"] 1710105256 "/Users/alialh/Documents/Programming/WatAI/X-Ray-Tooling/report_documents/CUCAI_paper.tex" "CUCAI_paper.pdf" "CUCAI_paper" 1710105257 0
-  "/Users/alialh/Documents/Programming/WatAI/X-Ray-Tooling/report_documents/CUCAI_paper.tex" 1710105255 23482 62a2de343ab2a051c09c083506159d17 ""
+["pdflatex"] 1710105806 "/Users/alialh/Documents/Programming/WatAI/X-Ray-Tooling/report_documents/CUCAI_paper.tex" "CUCAI_paper.pdf" "CUCAI_paper" 1710105807 0
+  "/Users/alialh/Documents/Programming/WatAI/X-Ray-Tooling/report_documents/CUCAI_paper.tex" 1710105805 23898 521bacfe7b6b6c55c6a6f370c6dd2700 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -107,10 +107,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1710097032 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1710097008 7883457 b5e64eaaadfe25385aa332ad73605642 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "CUCAI_paper.aux" 1710105257 6938 c7ab4769303e0d1dee2b80e6d798f3ce "pdflatex"
-  "CUCAI_paper.bbl" 1710105256 2785 5c683fdbf172845412345e38b76ecfad "bibtex CUCAI_paper"
-  "CUCAI_paper.out" 1710105257 4244 53375ee8fbc7133d318422d7f54bf830 "pdflatex"
-  "CUCAI_paper.tex" 1710105255 23482 62a2de343ab2a051c09c083506159d17 ""
+  "CUCAI_paper.aux" 1710105806 6793 7334989281b3b369240660cec0d48b67 "pdflatex"
+  "CUCAI_paper.bbl" 1710105451 3079 e372268c55a96f48a3151fa767411314 "bibtex CUCAI_paper"
+  "CUCAI_paper.out" 1710105806 4035 56a6b59d85b5da646f8a9001ce4ac483 "pdflatex"
+  "CUCAI_paper.tex" 1710105805 23898 521bacfe7b6b6c55c6a6f370c6dd2700 ""
+  "RAG_flow.png" 1710105344 176340 a59107d8d51fa1d8484674929436a8f5 ""
   "ethics.jpg" 1710097691 206861 4183599c5e03ef4b1266a1cc84a400b6 ""
   (generated)
   "CUCAI_paper.aux"

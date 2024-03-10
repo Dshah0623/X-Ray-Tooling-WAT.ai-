@@ -304,22 +304,6 @@ Finally, users receive a diagnosis summary and a suggested treatment plan, gener
 
 \section{Results}
 Our results demonstrate that our initial goal of producing a pipeline capable of diagnosing a fracture given an X-ray was successful. For Step 1 \& 2 (identifying the presence of a fracture and classifying a fracture's location), the DenseNet and EfficientNet models demonstrated high-quality results: following training and hyperparameter tuning, the models were able to achieve an accuracy of 86.60\% and 91.30\% respectively on an unseen 'test' dataset. 
-\begin{table}[H] % use [H] to force a figure/table/equation/etc to render [H]ere. It doesn't always look good, so make sure to check your pdf
-\centering
-\caption{Example table showing the results of an experiment.}
-\begin{tabular}{|l|c|c|c|c|}
-\hline
-\multicolumn{1}{|c|}{\textbf{Model}} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\ \hline
-CNN                                  & 97.78\%           & 82.32\%            & 88.66\%         & 90.61\%     \\ \hline
-SVM                                  & 86.43\%           & 78.41\%            & 67.43\%         & 55.21\%     \\ \hline
-RNN                                  & 79.21\%           & 94.13\%            & 80.03\%         & 75.79\%     \\ \hline
-\end{tabular}
-\end{table}
-
-Below is an example of a table to display results. You can add columns and rows. Describe what information is presented in the table in the caption. Make sure to describe the significance of the information presented in each table and figure. Also, \href{https://www.tablesgenerator.com/}{here} is a useful website for generating tables.
-
-\subsection{Ethical Considerations}
-In this section write about the possible Ethical Considerations you thought of when writing the paper. It is important to think about the possible implications of your research.
 
 % \subsection{Replication Package}
 % If you have a public github or Kaggle Notebooks that people can run to replicate your experiments, uncomment and link them here like this: ~\href{https://www.kaggle.com/code/rababazeem/aeslc-kcentergreedy/notebook?scriptVersionId=158372243}{AESLC Kaggle Notebook}. 
@@ -332,10 +316,10 @@ In this section write about the possible Ethical Considerations you thought of w
 \end{figure}
 
 \section{Conclusion}
-In this section wrap up your project and give a summary of the work that was done. What were the overall results and contributions? What are the impacts of this research on other people?
+Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, this product significantly improves the accuracy and efficiency of X-ray image diagnosis in the medical field. Leveraging DenseNet and EfficientNet CNNs trained on extensive datasets, the Computer Vision models achieved high functional accuracies. The RAG element ensures that users receive the most accurate and scientifically valid information by retrieving relevant data from the PubMed papers database. Delivering quick, accurate, and up-to-date information through an electronic matter generates impactful outcomes for patient care, including the elimination of extended waiting times for doctor consultations regarding results and follow-up procedures.
 
 \section{Future Work}
-In this section write about the possible future works your team would do on this topic or related topics. Describe what your next steps would be in its development, what challenges remain, and what’s most important in your opinion to work on next. 
+Moving forward, we intend to begin refining this pipeline for real usage in the medical field. Primarily, this involves interviewing various clinicians and medical researchers to gain further insight into deployment for our product. Additionally, we intend to improve the accuracy of our product by refining our testing and iterative processes, as well as expanding our available suite of tools.
 
 \section{Limitations}
 Talk about any limitations you experienced during your project here related to resources, time, or any other constraints.

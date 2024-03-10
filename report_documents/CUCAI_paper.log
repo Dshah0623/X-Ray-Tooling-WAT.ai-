@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.10)  10 MAR 2024 17:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.10)  10 MAR 2024 17:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -397,49 +397,50 @@ Package hyperref Info: Link coloring OFF on input line 37.
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 176.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 184.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 176.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 184.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.239 
+l.238 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.239 
-      ] [3
+l.238 
+      ]
+<RAG_flow.png, id=170, 1745.52126pt x 1084.05pt>
+File: RAG_flow.png Graphic file (type png)
+<use RAG_flow.png>
+Package pdftex.def Info: RAG_flow.png  used on input line 288.
+(pdftex.def)             Requested size: 252.0pt x 156.49677pt.
+ [3
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.329 
+l.301 
       
-pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.329 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.329 
-      ]
-<ethics.jpg, id=185, 704.6325pt x 839.135pt>
-File: ethics.jpg Graphic file (type jpg)
-<use ethics.jpg>
-Package pdftex.def Info: ethics.jpg  used on input line 338.
-(pdftex.def)             Requested size: 252.0pt x 300.10371pt.
- [4
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.355 \newpage
+l.301 
+       <./RAG_flow.png>]
+<ethics.jpg, id=183, 704.6325pt x 839.135pt>
+File: ethics.jpg Graphic file (type jpg)
+<use ethics.jpg>
+Package pdftex.def Info: ethics.jpg  used on input line 313.
+(pdftex.def)             Requested size: 252.0pt x 300.10371pt.
+ [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.330 \newpage
                <./ethics.jpg>] (./CUCAI_paper.bbl)
 
 ** Conference Paper **
@@ -456,21 +457,21 @@ Before submitting the final camera ready copy, remember to:
 
 ] (./CUCAI_paper.aux)
 Package rerunfilecheck Info: File `CUCAI_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 53375EE8FBC7133D318422D7F54BF830;4244.
+(rerunfilecheck)             Checksum: 56A6B59D85B5DA646F8A9001CE4AC483;4035.
  ) 
 Here is how much of TeX's memory you used:
- 11132 strings out of 476025
- 176031 string characters out of 5790017
- 1885388 words of memory out of 5000000
- 31381 multiletter control sequences out of 15000+600000
+ 11139 strings out of 476025
+ 176128 string characters out of 5790017
+ 1877388 words of memory out of 5000000
+ 31387 multiletter control sequences out of 15000+600000
  550420 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,76p,1071b,436s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,76p,1071b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CUCAI_paper.pdf (5 pages, 312024 bytes).
+Output written on CUCAI_paper.pdf (5 pages, 454582 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

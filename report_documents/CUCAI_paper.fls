@@ -675,6 +675,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam1
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT ./RAG_flow.png
+INPUT ./RAG_flow.png
+INPUT RAG_flow.png
+INPUT ./RAG_flow.png
+INPUT ./RAG_flow.png
 INPUT ./ethics.jpg
 INPUT ./ethics.jpg
 INPUT ethics.jpg

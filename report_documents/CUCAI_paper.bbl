@@ -6,6 +6,11 @@
 \newblock {\em Acta Orthopaedica}, 88(6):581--586.
 \newblock PMID: 28681679.
 
+\bibitem[Abedeen et~al., 2023]{FracAtlas}
+Abedeen, I., Rahman, M., Prottyasha, F., Ahmed, T., Chowdhury, T., and Shatabda, S. (2023).
+\newblock Fracatlas: A dataset for fracture classification, localization and segmentation of musculoskeletal radiographs.
+\newblock {\em Scientific Data}, 10.
+
 \bibitem[Guermazi et~al., 2022]{Guermazi2022AI}
 Guermazi, A., Tannoury, C., Kompel, A.~J., Murakami, A.~M., Ducarouge, A., Gillibert, A., Li, X., Tournier, A., Lahoud, Y., Jarraya, M., Lacave, E., Rahimi, H., Pourchot, A., Parisien, R.~L., Merritt, A.~C., Comeau, D., Regnard, N.-E., and Hayashi, D. (2022).
 \newblock Improving radiographic fracture recognition performance and efficiency using artificial intelligence.

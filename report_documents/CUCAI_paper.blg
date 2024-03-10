@@ -5,45 +5,45 @@ The style file: apalike.bst
 Database file #1: references.bib
 Warning--to sort, need author or key in Olczak2017AIOrtho
 Warning--empty author in Olczak2017AIOrtho
-You've used 9 entries,
+You've used 10 entries,
             1935 wiz_defined-function locations,
-            542 strings with 6060 characters,
-and the built_in function-call counts, 4404 in all, are:
-= -- 394
-> -- 302
+            548 strings with 6326 characters,
+and the built_in function-call counts, 4837 in all, are:
+= -- 432
+> -- 335
 < -- 3
-+ -- 114
-- -- 112
-* -- 433
-:= -- 804
-add.period$ -- 33
-call.type$ -- 9
-change.case$ -- 101
-chr.to.int$ -- 9
-cite$ -- 12
-duplicate$ -- 118
-empty$ -- 232
-format.name$ -- 122
-if$ -- 815
++ -- 126
+- -- 124
+* -- 473
+:= -- 887
+add.period$ -- 36
+call.type$ -- 10
+change.case$ -- 112
+chr.to.int$ -- 10
+cite$ -- 13
+duplicate$ -- 131
+empty$ -- 252
+format.name$ -- 135
+if$ -- 893
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 54
-num.names$ -- 24
-pop$ -- 75
+missing$ -- 8
+newline$ -- 59
+num.names$ -- 27
+pop$ -- 84
 preamble$ -- 1
-purify$ -- 101
+purify$ -- 112
 quote$ -- 0
-skip$ -- 89
+skip$ -- 100
 stack$ -- 0
-substring$ -- 225
-swap$ -- 7
+substring$ -- 237
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 60
 warning$ -- 2
-while$ -- 23
+while$ -- 25
 width$ -- 0
-write$ -- 128
+write$ -- 141
 (There were 2 warnings)
