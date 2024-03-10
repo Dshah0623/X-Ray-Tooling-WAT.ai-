@@ -265,60 +265,16 @@ Test Accuracy & 90.06\% & 91.30\% \\ \hline
 
 To minimize overfitting and improve the test accuracy, we visually inspected the dataset for duplicate images. Although all images were unique, many shared similarities in terms of backgrounds and bone placement, potentially contributing to the risk of overfitting. Consequently, we concluded that training the model with a reduced number of epochs (3-5) would be more appropriate.
 
-Next, ten different model configurations with 3-5 epochs were tested, and the highest scoring model (ID \#9) was selected as the final "tuned" result. The outcomes of the 10 models are presented in Table~\ref{tab:model_outcomes}.
+[ADD MORE DETAILS ABOUT THE OVERFITTING]
 
-\begin{table}[H]
-\centering
-\caption{Outcomes of the 10 Model Configurations}
-\label{tab:model_outcomes}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-\textbf{ID} & \textbf{E} & \textbf{BS} & \textbf{Opt} & \textbf{LR} & \textbf{WD} & \textbf{TAcc} & \textbf{TeAcc} \\
-\hline
-1 & 5 & 32 & SGD & 0.001 & 0.001 & 96.11\% & 89.44\% \\
-2 & 3 & 64 & Adam & 0.0001 & 0.001 & 95.95\% & 88.51\% \\
-3 & 5 & 64 & RMS & 0.01 & 0.001 & 46.18\% & 40.68\% \\
-4 & 3 & 32 & RMS & 0.001 & 0.01 & 45.87\% & 45.96\% \\
-5 & 5 & 64 & SGD & 0.0001 & 0.01 & 50.23\% & 47.83\% \\
-6 & 3 & 32 & Adam & 0.01 & 0.01 & 45.95\% & 45.03\% \\
-7 & 5 & 32 & RMS & 0.001 & 0.1 & 44.63\% & 46.89\% \\
-8 & 3 & 64 & SGD & 0.0001 & 0.1 & 50.23\% & 48.76\% \\
-9 & 5 & 32 & Adam & 0.0001 & 0.1 & 99.38\% & 91.30\% \\
-10 & 3 & 32 & SGD & 0.01 & 0.1 & 44.55\% & 47.20\% \\
-\hline
-\end{tabular}
-\footnotesize
-\begin{flushleft}
-E: Epochs, BS: Batch Size, Opt: Optimizer, LR: Learning Rate, WD: Weight Decay, TAcc: Train Accuracy, TeAcc: Test Accuracy.
-\end{flushleft}
-\end{table}
+Next, ten different model configurations with 3-5 epochs were tested, and the highest scoring model was selected as the final "tuned" result.
+[add blurb about doing manual hyperparam tuning instead of optuna]
 
+Among the ten models, three exhibited high accuracy ($>70\%$), while the remaining models yielded accuracy below 50\%. To ensure consistent weight initialization across all models, the top-performing models were assessed with a fixed seed.
 
-Among the initial ten models, three exhibited high accuracy ($>70\%$), while the remaining models yielded accuracy below 50\%. To ensure consistent weight initialization across all models, the top-performing models (Models 1, 2, and 9) were reassessed after fixing the seed.
+In general, regarding our specific task, the batch size seemed the least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam performed well, alongside effective learning rates of 0.001 and 0.0001, as well as weight decays of 0.001 and 0.1.
 
-In general, regarding our specific task, the batch size seemed the least relevant, as successful models were achieved with varying batch sizes. Optimizers such as SGD and Adam performed well, alongside effective learning rates of 0.001 and 0.0001, as well as weight decays of 0.001 and 0.1.
-
-To confirm these inferred conclusions, we tested two more models (11 and 12), as shown in Table~\ref{tab:additional_models}.
-
-\begin{table}[H]
-\centering
-\caption{Performance of Additional Models}
-\label{tab:additional_models}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-\textbf{ID} & \textbf{E} & \textbf{BS} & \textbf{Opt} & \textbf{LR} & \textbf{WD} & \textbf{TAcc} & \textbf{TeAcc} \\
-\hline
-11 & 5 & 32 & Adam & 0.01 & 0.1 & 45.40\% & 43.79\% \\
-12 & 3 & 32 & Adagrad & 0.0001 & 0.1 & 79.67\% & 73.29\% \\
-\hline
-\end{tabular}
-\footnotesize
-\begin{flushleft}
-E: Epochs, BS: Batch Size, Opt: Optimizer, LR: Learning Rate, WD: Weight Decay, TAcc: Train Accuracy, TeAcc: Test Accuracy.
-\end{flushleft}
-\end{table}
-
-Model 11 was derived from the highest accuracy model (Model 9) to investigate the hypothesis that a learning rate of 0.01 would adversely affect its accuracy. The hypothesis proved correct, as Model 11 exhibited poor results. Additionally, Model 12 underwent tuning with the same hyperparameter configurations as Model 9, but with Adagrad as its optimizer. The outcomes indicate that Adagrad performed less effectively than Adam. Therefore, Adam remains the optimal optimizer for this task.
+Further investigation showed that a learning rate of 0.01 would adversely affect the highest accuracy model, and Adam remains the ideal optimizer for this task. 
 
 \subsection{Patient Diagnosis: RAG}
 To generate an accurate diagnosis for the provided X-ray, a Retrieval Augmented Generation (RAG) pipeline was developed. This pipeline integrates two embedding models: the open-source HuggingFace model and OpenAI’s text-embedding-002-ada model. These models were selected to balance cost and performance, with the HuggingFace model serving as a cost-effective alternative to the more expensive OpenAI model. Additionally, the pipeline utilizes two Large Language Models (LLMs): Cohere’s prompting LLM and OpenAI’s GPT-4, providing alternatives for cost efficiency and accuracy.
@@ -383,10 +339,10 @@ In this section wrap up your project and give a summary of the work that was don
 In this section write about the possible future works your team would do on this topic or related topics. Describe what your next steps would be in its development, what challenges remain, and what’s most important in your opinion to work on next. 
 
 \section{Limitations}
-Talk about any limitations you experienced during your project here related to resources, time, or any other contraints.
+Talk about any limitations you experienced during your project here related to resources, time, or any other constraints.
 
 \section{Acknowledgements}
-If any indivduals or organizations helped you with your project or your paper, make sure you acknowledge them here.
+If any individuals or organizations helped you with your project or your paper, make sure you acknowledge them here.
 
 \newpage
 
