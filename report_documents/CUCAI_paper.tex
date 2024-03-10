@@ -36,7 +36,7 @@
 
 \begin{document}
 
-\title{X-Care: Suite of Rehabilitation Tools}
+\title{X-Care: A Suite of Rehabilitation Tools To Assist X-Ray Patients}
 
 \author{
 
@@ -152,46 +152,74 @@ Although numerous works have shown the effectiveness of employing pre-trained de
 
 
 \section{Methodology}
-\subsection{X-Ray Classification \& Recognition: Computer Vision}
-We approach the problem of X-ray recognition and interpretation by dividing it into two parts: 
-The presence of a fracture (Binary Classification) and fracture’s location within the X-Ray scan.
+\subsection{X-Ray Classification \& Recognition: Approach}
+Our methodology for X-ray image recognition and interpretation would be divided into two phases: binary classification to determine the exstence of a fracture, and the subsequent identification of the fracture's precise location within the X-ray scan. 
 
-\paragraph{Research \& Plan}
-The initial stage involved researching the problems and devising a plan. We opted to use a DenseNet model for binary classification, with the aim of identifying the presence or absence of a fracture using the FracAtlas Dataset. An object detection algorithm, such as Faster R-CNN, was incorporated for detecting the fracture's location.
+\paragraph{Initial Research and Planning}
+We commenced the project with an in-depth investigation into the prevalent challenges within X-ray dagnostics, followed by strategic planning. For the binary classification task, we selected to experiment between DenseNet and EfficientNet architectures, targeting the detection of fractures with the FracAtlas Dataset. For localization of fractures, we 
+planned to incorporate an object detection model, such as Faster R-CNN.
+% The initial stage involved researching the problems and devising a plan. We opted to use a DenseNet model for binary classification, with the aim of identifying the presence or absence of a fracture using the FracAtlas Dataset. An object detection algorithm, such as Faster R-CNN, was incorporated for detecting the fracture's location.
 
-\paragraph{Plan Update}
-Upon implementation, we faced challenges integrating Faster R-CNN with DenseNet and discovered limitations in the FracAtlas dataset. Consequently, we adjusted our strategy to assign dedicated models for each step and sought a new dataset for more comprehensive body part classification.
+\paragraph{Revised Approach}
 
+During the exection phase, we encountered hurdles with the quality of our R-CNN model and the practicality of integrating an object-detection approach with our planned workflow. Theses challenges necessitated a revised approach, leading to the decision of building two CNN-based classification models to independently handle each phase: A binary classifier for fractures, and a multiary classificatier for localization. For the latter, this also required searching for a new dataset more comprehensive in body part classification.
+% Upon implementation, we faced challenges integrating Faster R-CNN with DenseNet and discovered limitations in the FracAtlas dataset. Consequently, we adjusted our strategy to assign dedicated models for each step and sought a new dataset for more comprehensive body part classification.
 \subsection{Step 1: Presence of a Fracture}
 \subsubsection{Model Information}
-The model for detecting the presence of fractures was trained on the FracAtlas dataset, comprising 4,083 annotated X-ray images. We utilized a DenseNet architecture for its efficiency in feature extraction, crucial for the binary classification task at hand. The classification was binary, with labels 1 (fractured) and 0 (not fractured). The dataset was divided into training, validation, and testing sets with a ratio of 70:15:15, ensuring a balanced approach to model training and evaluation.
+To train our fracture detection model, we utilized the FracAtlas dataset \cite{FracAtlas}, comprising 4,083 annotated X-ray images. Using the DenseNet121 and EfficientNet architectures as backbones, and weights from pre-trained artifacts using the ImageNet dataset, we trained the models to classify X-ray images as either fractured (1) or non-fractured (0). We used a 70:15:15 split for training, testing and validation to ensure the model's generalization.
+
+% We utilized  DenseNet architecture for its efficiency in feature extraction, crucial for the binary classification task at hand. The classification was binary, with labels 1 (fractured) and 0 (not fractured). The dataset was divided into training, validation, and testing sets with a ratio of 70:15:15, ensuring a balanced approach to model training and evaluation.
+
+
 
 \subsubsection{Testing Results}
-The initial reference model’s hyperparameters, configurations, and accuracy are as follows (Table~\ref{table:comparison}):
+We iterated on testing different hyperparameters and configurations to optimize the model's performance. By using Optuna, a hyperparameter optimization framework, we employed the Tree-structured Parzen Estimation algorithm to search for the best hyperparameters. This approach of Bayesian optimization allowed us to fine-tune the model's hyperparameters, including the number of epochs, batch size, optimizer, and learning rate.
+
+The initial reference models' hyperparameters, configurations, and accuracy are located in Table~\ref{table:comparison1} and Table~\ref{table:comparison2}.
 
 \begin{table}[H] % Forces the table to be placed here in the document
 \centering
-\caption{Comparison of Model Parameters and Performance Before and After Tuning}
-\label{table:comparison}
+\caption{Comparison of Model Parameters and Performance Before and After Tuning (EfficientNet)}
+\label{table:comparison1}
 \begin{tabular}{|l|c|c|}
 \hline
 \multicolumn{1}{|c|}{\textbf{Parameter}} & \textbf{Initial} & \textbf{Tuned} \\ \hline
 \#(Epochs)                               & 5                & 3              \\ \hline
 Batch Size                               & 64               & 64             \\ \hline
-Loss Function                            & BCE Loss         & BCE Loss       \\ \hline
+Loss Function                            & BCE              & BCE            \\ \hline
 Optimizer                                & SGD              & Adam           \\ \hline
 Learning Rate                            & 0.001            & 0.001          \\ \hline
 Validation Accuracy                      & 74.56\%          & 88.40\%        \\ \hline
 Test Accuracy                            & 71.84\%          & 86.60\%        \\ \hline
 \end{tabular}
 \footnotesize
+\end{table}
+\begin{table}[H] % Forces the table to be placed here in the document
+\centering
+\caption{Comparison of Model Parameters and Performance Before and After Tuning (DenseNet)}
+\label{table:comparison2}
+\begin{tabular}{|l|c|c|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Parameter}} & \textbf{Initial} & \textbf{Tuned} \\ \hline
+\#(Epochs)                               & 5                & 2              \\ \hline
+Batch Size                               & 64               & 32             \\ \hline
+Loss Function                            & BCE              & BCE            \\ \hline
+Optimizer                                & SGD              & Adam           \\ \hline
+Learning Rate                            & 0.001            & 0.00019          \\ \hline
+Validation Accuracy                      & 73.69\%          & 86.30\%        \\ \hline
+Test Accuracy                            & 70.65\%          & 85.15\%        \\ \hline
+\end{tabular}
+\footnotesize
 \begin{flushleft}
-BCE Loss: Binary Cross Entropy Loss.
+BCE: Binary Cross Entropy Loss.
 \end{flushleft}
 \end{table}
 
-We chose to initiate testing with this model and its configurations. The validation accuracy achieved 74.56\% across epochs 1-5. While this is a good start, there is room for improvement through hyperparameter testing. It can be inferred from these tests that the number of epochs does not significantly impact validation accuracy.
-After fine-tuning the hyperparameters, the test accuracy greatly increased to 86.6\%. The finalized model is as shown in Table~\ref{table:comparison}.
+We had inferred from manual inspection of the various trials with different hyperparameter configurations that 3 epochs were sufficient for the model to converge, and
+more epochs did not significantly impact the validation accuracy. After fine-tuning the hyperparameters, we achieved a test accuracy of 86.6\% with the EfficientNet model, a significant improvement over the initial 71.84\% accuracy.
+
+Upon experimentation, we saw that, almost universally with the same hyperparameter configurations, EfficientNet outperformed DenseNet in terms of accuracy. Thus, we opted to allocate more resources to testing and tuning the EfficientNet model. 
+
 
 \subsection{Step 2: Fracture Location (Multi-class Classification)}
 In this step, we focus on the multi-class classification of fractures based on their location within X-ray images. Identifying an optimal dataset for this purpose required a comprehensive review of available resources. Below, we detail our evaluation of several datasets considered for this task.
@@ -298,6 +326,13 @@ To generate an accurate diagnosis for the provided X-ray, a Retrieval Augmented 
 The RAG approach was preferred over fine-tuning models like GPT-4 due to its demonstrated accuracy with smaller datasets and the impracticality of annotating each prompt for GPT-4 fine-tuning. In the pre-processing stage, medical diagnosis documents from PubMed and Springer were converted into vector embeddings using Cohere’s Embedding model.
 
 Upon classification of the user’s X-Ray image and embedding of the fracture location and other patient information, this data is used to query a vector database. Relevant documents are then retrieved to provide context for the GPT-4 LLM, which generates the diagnosis response.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{RAG_flow.png}
+\caption{RAG Pipeline}
+\label{fig:image1}
+\end{figure}
 
 \subsection{Full Stack}
 The interface for user interaction with the system was developed using a React frontend and a Flask backend. The X-Ray diagnosis architecture facilitates user input through three distinct steps:
