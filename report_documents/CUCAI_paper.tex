@@ -319,7 +319,7 @@ The table ~\ref{tab:model_hyperparameters} lists the outcomes of multiple runs w
 In general, for our specific task, the batch size was least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam both performed well, alongside effective learning rates of 0.001 and 0.0001 and weight decays of 0.001 and 0.1.
 
 \subsection{Patient Diagnosis: RAG}
-To generate an accurate diagnosis for the provided X-ray, we build a customized Retrieval Augmented Generation (RAG) pipeline. This pipeline retreives document chunks sourced from the PubMed database of clinically verified medical documents, using their querying tool to find papers and journals related to X-ray imaging and rehabilitation. 
+To generate an accurate diagnosis for the provided X-ray, we built a customized Retrieval Augmented Generation (RAG) pipeline. This pipeline retreives document chunks sourced from the PubMed database of clinically verified medical documents, using their querying tool to find papers and journals related to X-ray imaging and rehabilitation. 
 
 We integrated two textual embedding models for similarity search: `all-MiniLM-L6-v2', an open-source model hosted on HuggingFace, and OpenAI’s `text-embedding-002-ada' model. We also added support and tooling for two Large Language Models (LLMs): Cohere's `Command Nightly', and OpenAI's `GPT-4-Turbo'. We generalized our modules in a way that we can support the integration of new models easily. 
 
@@ -327,9 +327,8 @@ We integrated two textual embedding models for similarity search: `all-MiniLM-L6
 
 We elected to use RAG over fine-tuning an LLM, as the former has demonstrated accuracy with smaller datasets \cite{lewis2021retrievalaugmented}, is prone to hallucination and innacurate information, and it is impractical to annotate each prompt for fine-tuning. 
 
+The RAG pipeline was designed as follows:
 % The RAG approach was preferred over fine-tuning models like GPT-4 due to its demonstrated accuracy with smaller datasets and the impracticality of annotating each prompt for GPT-4 fine-tuning. In the pre-processing stage, medical diagnosis documents from PubMed and Springer were converted into vector embeddings using Cohere’s Embedding model.
-
-Upon the system's ingestion and processing of a user's X-ray, information about their diagnosis is used to query a ChromaDB Vector Database instance. Relevant documents are then retrieved to provide context for the LLM, generating a natural language diagnosis response. 
 
 % The system ingests and processes X-ray images, pinpointing fracture locations alongside patient data to search a vector database, retrieving pertinent information to aid GPT-4's diagnostic response.
 
@@ -347,7 +346,7 @@ Upon the system's ingestion and processing of a user's X-ray, information about 
 % \subsubsection
 \subsubsection{First Stage: Identifying Databases}
 
-To populate our internal database of medical documents, Pubmed and Springer were decided as the top two sources due to their quality, scope, and size. Furthermore, Pubmed's API enables easy data ingestion. In Springer's case, Beautiful Soup was used to scrape the articles.
+To populate our internal database of medical documents, Pubmed and Springer were used due to their quality, size, and ease-of-use (accesible APIs and parseable formats).
 
 \subsubsection{Second Stage: Document Chunking}
 
