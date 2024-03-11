@@ -337,6 +337,23 @@ Now that all of the data has been ingested, we can utilize these documents in ou
 
 For a visual representation of this flow see Fig. 1. RAG Pipeline.
 
+To provide the user with a detailed diagnosis and treatment plan, various pre-defined "User Flows" have been designed. These flows are specially-designed prompt templates that utilise the Langchain API, to ensure the user receives all the fundamental information they need about their injury. As it stands, 4 user flows have been defined:
+
+\begin{table}[H]
+    \centering
+    \caption{User Flows}
+    \label{tab:model_hyperparameters}
+    \begin{tabular}{|p{1.5cm}|p{6cm}|}
+    \hline
+    \textbf{Flow Title} & \textbf{Description} \\ \hline
+    Base & A standard diagnosis of the injury and injury location \\ \hline
+    Restriction & Information on various motions to avoid given the identified injury, and any other physical restrictions to be aware of \\ \hline
+    Heat \& Ice & Suggestions on best heating \& icing procedures to alleviate swelling and pain  \\ \hline
+    Expectation & Information on the typical recovery time for the identified injury\\ \hline
+    \end{tabular}
+    \end{table}
+
+    
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{RAG_flow.png}

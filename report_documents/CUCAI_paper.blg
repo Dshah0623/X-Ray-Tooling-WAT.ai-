@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: CUCAI_paper.aux
+The style file: apalike.bst
+Database file #1: references.bib
+Warning--to sort, need author or key in Olczak2017AIOrtho
+Warning--to sort, need author or key in TorchvisionFasterRCNN
+Warning--empty year in TorchvisionFasterRCNN
+Warning--empty author in Olczak2017AIOrtho
+You've used 12 entries,
+            1935 wiz_defined-function locations,
+            560 strings with 6678 characters,
+and the built_in function-call counts, 5414 in all, are:
+= -- 490
+> -- 358
+< -- 3
++ -- 134
+- -- 132
+* -- 518
+:= -- 990
+add.period$ -- 42
+call.type$ -- 12
+change.case$ -- 126
+chr.to.int$ -- 12
+cite$ -- 18
+duplicate$ -- 154
+empty$ -- 290
+format.name$ -- 144
+if$ -- 1003
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 9
+newline$ -- 69
+num.names$ -- 30
+pop$ -- 96
+preamble$ -- 1
+purify$ -- 126
+quote$ -- 0
+skip$ -- 117
+stack$ -- 0
+substring$ -- 262
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 4
+while$ -- 27
+width$ -- 0
+write$ -- 165
+(There were 4 warnings)
