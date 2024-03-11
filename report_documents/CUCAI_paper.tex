@@ -319,19 +319,39 @@ The table ~\ref{tab:model_hyperparameters} lists the outcomes of multiple runs w
 In general, for our specific task, the batch size was least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam both performed well, alongside effective learning rates of 0.001 and 0.0001 and weight decays of 0.001 and 0.1.
 
 \subsection{Patient Diagnosis: RAG}
-To generate an accurate diagnosis for the provided X-ray, a Retrieval Augmented Generation (RAG) pipeline was developed. This pipeline integrates two embedding models: the open-source HuggingFace model and OpenAI’s text-embedding-002-ada model. These models were selected to balance cost and performance, with the HuggingFace model serving as a cost-effective alternative to the more expensive OpenAI model. Additionally, the pipeline utilizes two Large Language Models (LLMs): Cohere’s prompting LLM and OpenAI’s GPT-4, providing alternatives for cost efficiency and accuracy.
+To generate an accurate diagnosis for the provided X-ray, we build a customized Retrieval Augmented Generation (RAG) pipeline. This pipeline retreives document chunks sourced from the PubMed database of clinically verified medical documents, using their querying tool to find papers and journals related to X-ray imaging and rehabilitation. 
 
-The RAG approach was preferred over fine-tuning models like GPT-4 due to its demonstrated accuracy with smaller datasets and the impracticality of annotating each prompt for GPT-4 fine-tuning. In the pre-processing stage, medical diagnosis documents from PubMed and Springer were converted into vector embeddings using Cohere’s Embedding model.
+We integrated two textual embedding models for similarity search: `all-MiniLM-L6-v2', an open-source model hosted on HuggingFace, and OpenAI’s `text-embedding-002-ada' model. We also added support and tooling for two Large Language Models (LLMs): Cohere's `Command Nightly', and OpenAI's `GPT-4-Turbo'. We generalized our modules in a way that we can support the integration of new models easily. 
 
-Upon classification of the user’s X-Ray image and embedding of the fracture location and other patient information, this data is used to query a vector database. Relevant documents are then retrieved to provide context for the GPT-4 LLM, which generates the diagnosis response.
+% These models were selected to balance cost and performance, with the HuggingFace model serving as a cost-effective alternative to the more expensive OpenAI model. Additionally, the pipeline utilizes two Large Language Models (LLMs): Cohere’s prompting LLM and OpenAI’s GPT-4, providing alternatives for cost efficiency and accuracy.
 
+We elected to use RAG over fine-tuning an LLM, as the former has demonstrated accuracy with smaller datasets \cite{lewis2021retrievalaugmented}, is prone to hallucination and innacurate information, and it is impractical to annotate each prompt for fine-tuning. 
+
+% The RAG approach was preferred over fine-tuning models like GPT-4 due to its demonstrated accuracy with smaller datasets and the impracticality of annotating each prompt for GPT-4 fine-tuning. In the pre-processing stage, medical diagnosis documents from PubMed and Springer were converted into vector embeddings using Cohere’s Embedding model.
+
+Upon the system's ingestion and processing of a user's X-ray, information about their diagnosis is used to query a ChromaDB Vector Database instance. Relevant documents are then retrieved to provide context for the LLM, generating a natural language diagnosis response. 
+
+% The system ingests and processes X-ray images, pinpointing fracture locations alongside patient data to search a vector database, retrieving pertinent information to aid GPT-4's diagnostic response.
+
+% Initially, the most valuable medical documents for accurate diagnoses were gathered from Pubmed and Springer, chosen for their extensive, high-quality databases. Pubmed was favored for its straightforward API, and Springer's content was extracted via web scraping.
+
+% For efficient RAG system operation, documents were broken down into uniform 100-character chunks. This size was optimal for maintaining context and ensuring consistent, effective embedding for better database searches.
+
+% The chunked documents are then embedded, using either HuggingFace or higher-dimension OpenAI embeddings via Langchain, and stored with metadata in a Chroma database.
+
+% In use, a user's query is vectorized and matched against the document chunks in Chroma. The top five relevant pieces form the basis of the LLM response—enriched by both Cohere and GPT-4 models—providing an informed reply grounded in the specific facts from the documents. The user receives this alongside source citations, ensuring transparency and veracity.
+
+
+
+% Upon classification of the user’s X-Ray image and embedding of the fracture location and other patient information, this data is used to query a vector database. Relevant documents are then retrieved to provide context for the GPT-4 LLM, which generates the diagnosis response.
+% \subsubsection
 The first stage in building the RAG system was to identify high value medical diagnosis documents that can be considered factual information. After reviewing over ten sources of medical research papers, Pubmed and Springer were decided as the top two sources due to the quality, scope, and size of their databases. Furthermore, Pubmed's API enables easy data ingestion. In Springer's case, beautiful soup was used to scrape the articles.
 
 The second step of implementing the RAG pipeline is to chunk these documents. We explored chunking at a paragraph and sentence level before finally settling on a 100 character chunk size. Paragraphs vary too much in size making it difficult to properly embed each paragraph, and sentences often did not contain enough context. using a 100 character chunk size we found that the chunks have adequate context, and being a consistent size allows for better embedding of the chunks, and thus improved search for relevant documents.
 
 Once the documents are chunked they are embedded using HuggingFace or OpenAI embeddings, both utilized from the Langchain Python interface. HuggingFace embeddings are free, but OpenAI's embeddings are of a much higher dimension by default, enabling more refined search. Each chunk of the documents is then embedded and stored with some metadata in a Chroma database. 
 
-The chunks are stored in a Chroma DB JEEVAN WRITE THIS PART
+The chunks are stored in a Chroma DB ...
 
 Now that all of the data has been ingested, we can utilize these documents in our RAG flow. When a user sends a query, their query is embedded into the same vector space the Chroma-db is in. A similarity search is run in Chroma between the document chunks and the query to return the top 5 most relevant document chunks to the query. We take these 5 most similar chunks and send them as RAG documents to the llm model when we submit the user query. Both Cohere’s prompting LLM and OpenAI’s GPT-4 llm take the similar chunks as document parameters and use them to form a response to the query using not only their general knowledge, but also the specific fact based information in the document chunks. Cohere’s prompting LLM is used from Cohere's python interface, and OpenAI’s GPT-4 is used from the Langchain interface. The llm's process the query and RAG documents, creating a response that is informed on related and factual medical information from the RAG documents. The response is sent back to the user along with document metadata to provide a legitimate citation for the sources of medical information. 
 
@@ -372,17 +392,29 @@ After identifying both items, the user may override or correct the results as ne
 Next, users receive a diagnosis summary and a suggested treatment plan, generated by the 'User Flows' as described in the previous section. They have the option to modify and refine their treatment plan through certain user inputs in the interface, and interact with a general chat agent
 powered by the RAG pipeline to ask specific questions about their injury and receive more information.
 
-\section{Results}
-Our results demonstrate that our initial goal of producing a pipeline capable of diagnosing a fracture given an X-ray was successful. For Step 1 \& 2 (identifying the presence of a fracture and classifying a fracture's location), the DenseNet and EfficientNet models demonstrated high-quality results: following training and hyperparameter tuning, the models were able to achieve an accuracy of 86.60\% and 91.30\% respectively on an unseen 'test' dataset. 
+A link to the GitHub repository can be found here: \href{https://github.com/WAT-ai/X-Ray-Tooling}{https://github.com/WAT-ai/X-Ray-Tooling}.
 
-% \subsection{Replication Package}
-% If you have a public github or Kaggle Notebooks that people can run to replicate your experiments, uncomment and link them here like this: ~\href{https://www.kaggle.com/code/rababazeem/aeslc-kcentergreedy/notebook?scriptVersionId=158372243}{AESLC Kaggle Notebook}. 
 
 \section{Conclusion}
-Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, this product significantly improves the accuracy and efficiency of X-ray image diagnosis in the medical field. Leveraging DenseNet and EfficientNet CNNs trained on extensive datasets, the Computer Vision models achieved high functional accuracies. The RAG element ensures that users receive the most accurate and scientifically valid information by retrieving relevant data from the PubMed papers database. Delivering quick, accurate, and up-to-date information through an electronic matter generates impactful outcomes for patient care, including the elimination of extended waiting times for doctor consultations regarding results and follow-up procedures.
+The waiting period that exists between having diagnostic imaging taken and consultation with a doctor can be bridged, providing better patient care, speeding up recovery and reducing the period of uncertainty that follows injuries. The utilization of Supervised Learning and Retrieval Augmented Generation to create a diagnostic tool that improves accuracy and efficiency of X-ray fracture diagnosis can be achieved, as shown in the preceeding sections. We attempted employing a Faster RCNN model with a ResNet50 backbone, which resulted in low accuracy, making it impractical for application during  the current stage of the product. However, we achieved high functional accuracies utilizing CNN's trained on an extensive dataset while leveraging DenseNet and EfficientNet models. Overfitting issues were identified within the X-Ray localization model, which will be improved in future iterations. Quick, accurate and medically relevant information was successfully delivered to users, through the usage of a RAG pipeline that retrieved relevant data from a PubMed document database. Impactful outcomes for reduction of waiting times for consultations regarding results and follow-up procedures are clearly observed. 
 
-\section{Future Work}
+\subsection{Results}
+Our results demonstrate that our initial goal of producing a pipeline capable of diagnosing a fracture given an X-ray was successful. For Step 1 \& 2 (identifying the presence of a fracture and classifying a fracture's location), the DenseNet and EfficientNet models demonstrated high-quality results: following training and hyperparameter tuning, the models were able to achieve an accuracy of 86.60\% and 91.30\% respectively on an unseen 'test' dataset. 
+
+\subsection{Future Work}
 Looking ahead, our focus will be on improving our machine learning models and user-facing website for practical application in healthcare. This will entail engaging with clinicians in real hospitals, and medical researchers at Universities to deeply understand their needs and how our product can be best integrated into clinical workflows. We aim to refine our model's accuracy and architecture through rigorous testing and iterative development. Simultaneously, we plan to broaden our portfolio of tools, ensuring a comprehensive suite that addresses a wide range of medical needs.
+
+% \section{Results}
+% Our results demonstrate that our initial goal of producing a pipeline capable of diagnosing a fracture given an X-ray was successful. For Step 1 \& 2 (identifying the presence of a fracture and classifying a fracture's location), the DenseNet and EfficientNet models demonstrated high-quality results: following training and hyperparameter tuning, the models were able to achieve an accuracy of 86.60\% and 91.30\% respectively on an unseen 'test' dataset. 
+
+% % \subsection{Replication Package}
+% % If you have a public github or Kaggle Notebooks that people can run to replicate your experiments, uncomment and link them here like this: ~\href{https://www.kaggle.com/code/rababazeem/aeslc-kcentergreedy/notebook?scriptVersionId=158372243}{AESLC Kaggle Notebook}. 
+
+% \section{Conclusion}
+% Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, this product significantly improves the accuracy and efficiency of X-ray image diagnosis in the medical field. Leveraging DenseNet and EfficientNet CNNs trained on extensive datasets, the Computer Vision models achieved high functional accuracies. The RAG element ensures that users receive the most accurate and scientifically valid information by retrieving relevant data from the PubMed papers database. Delivering quick, accurate, and up-to-date information through an electronic matter generates impactful outcomes for patient care, including the elimination of extended waiting times for doctor consultations regarding results and follow-up procedures.
+
+% \section{Future Work}
+% Looking ahead, our focus will be on improving our machine learning models and user-facing website for practical application in healthcare. This will entail engaging with clinicians in real hospitals, and medical researchers at Universities to deeply understand their needs and how our product can be best integrated into clinical workflows. We aim to refine our model's accuracy and architecture through rigorous testing and iterative development. Simultaneously, we plan to broaden our portfolio of tools, ensuring a comprehensive suite that addresses a wide range of medical needs.
 
 
 
