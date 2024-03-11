@@ -281,7 +281,32 @@ Among the ten models, three exhibited high accuracy ($>70\%$), while the remaini
 
 In general, regarding our specific task, the batch size seemed the least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam performed well, alongside effective learning rates of 0.001 and 0.0001, as well as weight decays of 0.001 and 0.1.
 
-Further investigation showed that a learning rate of 0.01 would adversely affect the highest accuracy model, and Adam remains the ideal optimizer for this task. 
+Further investigation showed that a learning rate of 0.01 would adversely affect the highest accuracy model, and Adam remains the ideal optimizer for this task.
+
+\subsubsection{Exploratory Advances in Fracture Detection - Employing Faster R-CNN}
+
+This research employs a Faster R-CNN model with a ResNet50 backbone, renowned for its object detection prowess, to pinpoint fractures in medical imaging data from the FracAtlas dataset. The methodology integrates data pre-processing, such as image resizing and normalization, and leverages transfer learning to utilize pre-trained weights, enhancing the model’s capability to detect fractures accurately \cite{Ren2015FasterRT}. Hyperparameter optimization is performed using Optuna, focusing on learning rate, weight decay, and the number of epochs to refine model performance. The training process involves batch processing, forward and backward passes, and loss computation, with the Stochastic Gradient Descent (SGD) optimizer chosen for its effectiveness in deep learning model training. The model is periodically evaluated on a validation set to monitor performance and adjust hyperparameters accordingly \cite{TorchvisionFasterRCNN}.
+
+\begin{table}[H]
+\centering
+\caption{Performance Metrics of Model Training Across Different Hyperparameters}
+\label{tab:model_hyperparameters}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{S.No} & \textbf{Mean IOU} & \textbf{Lr} & \textbf{Weight\_decay} & \textbf{No of epochs} \\ \hline
+1 & 0.2032 & 0.00082 & 0.00011 & 6 \\ \hline
+2 & 0.2270 & 0.00095 & 0.00011 & 5 \\ \hline
+3 & 0.2177 & 0.00091 & 0.00010 & 5 \\ \hline
+4 & 0.2033 & 0.00044 & 0.00042 & 5 \\ \hline
+5 & 0.2470 & 0.00098 & 0.00022 & 5 \\ \hline
+6 & 0.2175 & 0.00032 & 0.00037 & 6 \\ \hline
+\end{tabular}
+\end{table}
+
+
+The table ~\ref{tab:model_hyperparameters} lists the outcomes of multiple runs with varying hyper parameters. The `Mean\_IOU` column represents the mean Intersection over Union, a common metric for evaluating the accuracy of an object detector on a particular dataset. The `Lr` column indicates the learning rate, `Weight\_decay` is a regularization term to prevent over fitting, and `No of epochs` shows how many complete passes the algorithm has made over the entire training dataset.
+
+\textbf{Results:} The dataset records indicate that the model performed best with a mean IOU of approximately 0.2471 when the learning rate was set to roughly 0.000988, paired with a weight decay of about 0.000225 over the course of 5 epochs. Notably, this configuration achieved the highest recorded mean IOU without the need for the most extended training period, indicating a more efficient learning process compared to other configurations. In contrast, the lowest mean IOU observed was approximately 0.2033 with a significantly lower learning rate of 0.000442 and a higher weight decay of 0.000420 across 5 epochs. This outcome could suggest that either the learning rate was too low for the model to make significant updates to its weights or the high weight decay overly penalized the model parameters, hindering its ability to fit the data effectively.
 
 \subsection{Patient Diagnosis: RAG}
 To generate an accurate diagnosis for the provided X-ray, a Retrieval Augmented Generation (RAG) pipeline was developed. This pipeline integrates two embedding models: the open-source HuggingFace model and OpenAI’s text-embedding-002-ada model. These models were selected to balance cost and performance, with the HuggingFace model serving as a cost-effective alternative to the more expensive OpenAI model. Additionally, the pipeline utilizes two Large Language Models (LLMs): Cohere’s prompting LLM and OpenAI’s GPT-4, providing alternatives for cost efficiency and accuracy.
@@ -327,15 +352,8 @@ Our results demonstrate that our initial goal of producing a pipeline capable of
 % \subsection{Replication Package}
 % If you have a public github or Kaggle Notebooks that people can run to replicate your experiments, uncomment and link them here like this: ~\href{https://www.kaggle.com/code/rababazeem/aeslc-kcentergreedy/notebook?scriptVersionId=158372243}{AESLC Kaggle Notebook}. 
 
-\begin{figure}
-\centering
-\includegraphics[width=\columnwidth]{ethics.jpg}
-\caption{Example of an image in a single column. Ethics.}
-\label{fig:image2}
-\end{figure}
-
 \section{Conclusion}
-Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, this product significantly improves the accuracy and efficiency of X-ray image diagnosis in the medical field. Leveraging DenseNet and EfficientNet CNNs trained on extensive datasets, the Computer Vision models achieved high functional accuracies. The RAG element ensures that users receive the most accurate and scientifically valid information by retrieving relevant data from the PubMed papers database. Delivering quick, accurate, and up-to-date information through an electronic matter generates impactful outcomes for patient care, including the elimination of extended waiting times for doctor consultations regarding results and follow-up procedures. However, there still exists room for further improvement. Primarily, our CNNs exhibit signs of overfitting, given their high training accuracies and noticeably lower validation/testing accuracies, implying that the models would benefit from further tuning. Additionally, our RAG component could be further strengthened through a more comprehensive data processing pipeline to ensure higher-quality LLM responses.
+Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, this product significantly improves the accuracy and efficiency of X-ray image diagnosis in the medical field. Leveraging DenseNet and EfficientNet CNNs trained on extensive datasets, the Computer Vision models achieved high functional accuracies. The RAG element ensures that users receive the most accurate and scientifically valid information by retrieving relevant data from the PubMed papers database. Delivering quick, accurate, and up-to-date information through an electronic matter generates impactful outcomes for patient care, including the elimination of extended waiting times for doctor consultations regarding results and follow-up procedures.
 
 \section{Future Work}
 Moving forward, we intend to begin refining this pipeline for real usage in the medical field. Primarily, this involves interviewing various clinicians and medical researchers to gain further insight into deployment for our product. Additionally, we intend to improve the accuracy of our product by refining our testing and iterative processes, as well as expanding our available suite of tools.
