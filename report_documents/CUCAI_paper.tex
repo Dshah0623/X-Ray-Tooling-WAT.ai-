@@ -349,25 +349,23 @@ The RAG pipeline was designed as follows:
 
 % Upon classification of the user’s X-Ray image and embedding of the fracture location and other patient information, this data is used to query a vector database. Relevant documents are then retrieved to provide context for the GPT-4 LLM, which generates the diagnosis response.
 % \subsubsection
-\subsubsection{First Stage: Identifying Databases}
+\subsubsection{Identifying Databases}
 
 To populate our internal database of medical documents, Pubmed and Springer were used due to their quality, size, and ease-of-use (accesible APIs and parseable formats).
 
-\subsubsection{Second Stage: Document Chunking}
+\subsubsection{Document Chunking}
 
-To split the documents into smaller "chunks", it was decided to use a standard 100 character chunk splitter. By using a 100 character chunk size, we found that the chunks contained adequate context, and the fixed size allows for higher-quality embeddings, and thus improved results.
+To split the documents into smaller ``chunks", we decided on a 500 character chunk splitter. By using a 500 character chunk size, we found that the chunks contained adequate context, and the fixed size allows for higher-quality embeddings, and thus improved results.
 
-\subsubsection{Third Stage: Embedding}
+\subsubsection{Embedding}
 
 The chunked documents were then embedded, using either HuggingFace or higher-dimensional OpenAI embeddings via Langchain, and stored with metadata in a Chroma database.
 
-\subsubsection{Fourth Stage: RAG Flow}
+\subsubsection{RAG Flow}
 
-In use, a user's query is vectorized and matched against the document chunks in Chroma. The top five relevant pieces form the basis of the LLM response—enriched by both Cohere and GPT-4 models—providing an informed reply grounded in the specific facts from the documents. The user receives this alongside source citations, ensuring transparency and veracity.
+In use, a user's query is vectorized and matched against the document chunks in Chroma. The top five relevant pieces form the basis of the LLM response—enriched by both Cohere and GPT-4 models—providing an informed reply grounded in the specific facts from the documents. The user receives this alongside source citations, ensuring transparency and veracity. For a visual representation of this flow see Figure~\ref{fig:image1}.
 
-For a visual representation of this flow see Fig. 1. RAG Pipeline.
-
-\subsubsection{Fifth Stage: User Flows}
+\subsubsection{User Flows}
 
 To provide the user with a detailed diagnosis and treatment plan, various pre-defined "User Flows" have been designed. These flows are specially-designed prompt templates that utilise the Langchain API, to ensure the user receives all the fundamental information they need about their injury. As it stands, 4 user flows have been defined:
 
