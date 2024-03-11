@@ -68,8 +68,10 @@
     \textit{University of Waterloo} \\
     \href{mailto:h273li@uwaterloo.ca}{h273li@uwaterloo.ca}
 }
- 
-\and
+
+\linebreakand
+
+% \and
 \IEEEauthorblockN{Guruprasanna Suresh}
 \IEEEauthorblockA{
     \textit{University of Waterloo} \\
@@ -223,16 +225,16 @@ BCE: Binary Cross Entropy Loss.
 \end{table}
 
 We had inferred from manual inspection of the various trials with different hyperparameter configurations that 3 epochs were sufficient for the model to converge, and
-more epochs did not significantly impact the validation accuracy. After fine-tuning the hyperparameters, we achieved a test accuracy of 86.6\% with the EfficientNet model, a significant improvement over the initial 71.84\% accuracy.
+more epochs did not significantly impact the test accuracy. After fine-tuning the hyperparameters, we achieved a validation accuracy of 86.6\% with the EfficientNet model, a significant improvement over the initial 71.84\% accuracy.
 
 Upon experimentation, we saw that, almost universally with the same hyperparameter configurations, EfficientNet outperformed DenseNet in terms of accuracy. Thus, we opted to allocate more resources to testing and tuning the EfficientNet model. 
 
 
-\subsection{Step 2: Fracture Location (Multi-class Classification)}
-In this step, we focus on the multi-class classification of fractures based on their location within X-ray images. Identifying an optimal dataset for this purpose required a comprehensive review of available resources. Below, we detail our evaluation of several datasets considered for this task.
+\subsection{Step 2: Fracture Location (Multiary Classification)}
+In this step, we focus on the body part classification of detected fractures based on their location within X-ray images. Identifying a suitable dataset for this purpose required a comprehensive review of available resources, as many lacked specificity and comprehensive labelling. Below, we detail our evaluation of several datasets considered for this task.
 
-\subsubsection{Datasets for Multi-class Classification}
-Our search for appropriate datasets yielded three promising candidates, each with distinct features and potential applications in fracture location classification.
+% \subsubsection{Datasets for Multi-class Classification}
+% Our search for appropriate datasets yielded three promising candidates, each with distinct features and potential applications in fracture location classification.
 
 \paragraph{UNIFESP X-Ray Body Part Classification Dataset}
 This dataset consists of 2,481 X-ray images across 22 body parts, annotated in a multilabel format, making it ideal for detailed classification tasks in our second step.
@@ -241,18 +243,22 @@ This dataset consists of 2,481 X-ray images across 22 body parts, annotated in a
 Derived from DICOM scans, it includes general labels such as "abdominal," "pediatric," and "adult." Its broad categorizations, however, lacked the specificity needed for precise classification in our study.
 
 \paragraph{MURA (Musculoskeletal Radiographs)}
-A large collection focusing on upper body parts, including 7 specific areas. While extensive, its scope was too narrow for the comprehensive classification goals of our project.
+A large collection focusing on upper body parts, including 7 specific areas. While extensive, its scope was too narrow for the broad classification goals of our project.\\
 
 
+We thus selected the UNIFESP dataset for its comprehensive coverage of body parts, which aligned with our classification objectives. 
 
 \subsubsection{Model Information}
-The selected dataset, UNIFESP X-Ray Body Part Classification, consists of 2481 images, narrowed down to 1606 images after preprocessing for clearer label distinction. We employed a DenseNet architecture tailored for a 22-class classification task, representing various body parts. The training and testing were conducted on an 80:20 split.
+We built off of a DenseNet architecture, and tailored it's output layer to support 22 output classes. The training and testing were conducted on an 80:20 split.
 
 \subsubsection{Data Preprocessing}
-Upon examination, it was discovered that only the training set of the UNIFESP dataset had labels. Thus, we could only use the images from the training set, totalling 1738 images. The labels, represented as numerical values ranging from 0 to 21 for the 22 body parts, were found under the "Target" column in the training CSV file. To streamline the dataset and make it easier to work with, images with multiple corresponding body part labels were removed, resulting in a finalized dataset of 1606 images. Then, we divided this dataset into an 80:20 ratio for training and testing, respectively.
+Upon examination, it was discovered that only the published training set of the UNIFESP dataset had labels. Thus, the number of usable images dropped to 1738 images. Additionally, some images in the dataset were labelled with multiple body parts, which were removed to simplify the classification task and remove unnecessary complexity. This resulted in a final dataset of 1606 images.
+
+The data labels, represented as numerical values ranging from 0 to 21 for each body part, and a 80:20 ratio was employed ratio for training and testing respectively. Due to the small size of the dataset, we wanted to include as many images as possible in the training set, and thus did not use a test set.
+ We intend on experimenting with data augmentation techniques to artificially increase the size of the dataset in the future.
 
 \subsubsection{Testing Results}
-In the initial trial, the model was trained with configurations summarized in Table~\ref{tab:model_performance}.
+In the initial trial, the model was trained with configurations summarized in Table~\ref{tab:model_performance}. 
 
 \begin{table}[H]
 \centering
@@ -270,14 +276,17 @@ Test Accuracy & 90.06\% & 91.30\% \\ \hline
 \end{tabular}
 \end{table}
 
-To minimize overfitting and improve the test accuracy, we visually inspected the dataset for duplicate images. Although all images were unique, many shared similarities in terms of backgrounds and bone placement, potentially contributing to the risk of overfitting. Consequently, we concluded that training the model with a reduced number of epochs (3-5) would be more appropriate.
+As shown, the validation accuracy was exceptionally high, reaching up to 99.38\%. This hints at a high likelihood of overfitting, and further investigation is required to ensure the model's generalizability. 
+Notably, the final test accuracy was 91.30\%, which is higher than expected and a potential cause for concern, considering the task of classifying between 22 labels. 
 
-[ADD MORE DETAILS ABOUT THE OVERFITTING]
+In an attempt to tackle this overfitting, we programmatically checked for image duplicates. Although all images were unique, many shared similarities in terms of backgrounds and bone placement. This lead to data invariance, and potentially contributed to the overfitting. 
+Consequently, we concluded that training the model with a reduced number of epochs (3-5) would be more appropriate, however this needs to be revisited in the future.
+
 
 Next, ten different model configurations with 3-5 epochs were tested, and the highest scoring model was selected as the final "tuned" result.
-[add blurb about doing manual hyperparam tuning instead of optuna]
+We employed manual hyperparameter tuning for this task, by running multiple trials with different configurations in parallel, and iteratively adjusting the hyperparameters based on the results of the trials. 
 
-Among the ten models, three exhibited high accuracy ($>70\%$), while the remaining models yielded accuracy below 50\%. To ensure consistent weight initialization across all models, the top-performing models were assessed with a fixed seed.
+Among the ten models, three exhibited high accuracy ($>70\%$), while the remaining models yielded accuracy below 50\%. This hinted at very high variance, potentially related to the earlier issues of overfitting. To ensure consistent weight initialization across all models, the top-performing models were assessed with a fixed seed.
 
 In general, regarding our specific task, the batch size seemed the least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam performed well, alongside effective learning rates of 0.001 and 0.0001, as well as weight decays of 0.001 and 0.1.
 
@@ -307,6 +316,7 @@ This research employs a Faster R-CNN model with a ResNet50 backbone, renowned fo
 The table ~\ref{tab:model_hyperparameters} lists the outcomes of multiple runs with varying hyper parameters. The `Mean\_IOU` column represents the mean Intersection over Union, a common metric for evaluating the accuracy of an object detector on a particular dataset. The `Lr` column indicates the learning rate, `Weight\_decay` is a regularization term to prevent over fitting, and `No of epochs` shows how many complete passes the algorithm has made over the entire training dataset.
 
 \textbf{Results:} The dataset records indicate that the model performed best with a mean IOU of approximately 0.2471 when the learning rate was set to roughly 0.000988, paired with a weight decay of about 0.000225 over the course of 5 epochs. Notably, this configuration achieved the highest recorded mean IOU without the need for the most extended training period, indicating a more efficient learning process compared to other configurations. In contrast, the lowest mean IOU observed was approximately 0.2033 with a significantly lower learning rate of 0.000442 and a higher weight decay of 0.000420 across 5 epochs. This outcome could suggest that either the learning rate was too low for the model to make significant updates to its weights or the high weight decay overly penalized the model parameters, hindering its ability to fit the data effectively.
+In general, for our specific task, the batch size was least relevant, as successful models were achieved with varying batch sizes. Optimizers SGD and Adam both performed well, alongside effective learning rates of 0.001 and 0.0001 and weight decays of 0.001 and 0.1.
 
 \subsection{Patient Diagnosis: RAG}
 To generate an accurate diagnosis for the provided X-ray, a Retrieval Augmented Generation (RAG) pipeline was developed. This pipeline integrates two embedding models: the open-source HuggingFace model and OpenAI’s text-embedding-002-ada model. These models were selected to balance cost and performance, with the HuggingFace model serving as a cost-effective alternative to the more expensive OpenAI model. Additionally, the pipeline utilizes two Large Language Models (LLMs): Cohere’s prompting LLM and OpenAI’s GPT-4, providing alternatives for cost efficiency and accuracy.
@@ -358,16 +368,16 @@ Having introduced a diagnostic tool that integrates Computer Vision and RAG AI, 
 \section{Future Work}
 Moving forward, we intend to begin refining this pipeline for real usage in the medical field. Primarily, this involves interviewing various clinicians and medical researchers to gain further insight into deployment for our product. Additionally, we intend to improve the accuracy of our product by refining our testing and iterative processes, as well as expanding our available suite of tools.
 
-\section{Limitations}
-Talk about any limitations you experienced during your project here related to resources, time, or any other constraints.
+% \section{Limitations}
+% Talk about any limitations you experienced during your project here related to resources, time, or any other constraints.
 
-\section{Acknowledgements}
-If any individuals or organizations helped you with your project or your paper, make sure you acknowledge them here.
+% \section{Acknowledgements}
+% If any individuals or organizations helped you with your project or your paper, make sure you acknowledge them here.
 
-\newpage
+% \newpage
 
-\section{Appendix}
-Use this section to add additional figures and tables.
+% \section{Appendix}
+% Use this section to add additional figures and tables.
 
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
